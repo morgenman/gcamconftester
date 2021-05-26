@@ -99,7 +99,7 @@ def wait_for_new_photo(folder, local=False):
             was = now
             time.sleep(1)
     logging.error("Не могу найти новое фото...")
-    exit()
+    tap_shutter()
 
 def get_key_from_camera_preferences(config_key):
     """
@@ -201,7 +201,7 @@ if __name__ == "__main__":
         find_and_write_to_xml(config_name, config_key, entry[1])        
         push_config(config_name)
         gcam_open_config()
-        time.sleep(1)
+        time.sleep(2)
         tap_shutter()
         #pull_last_photo(get_last_modified_file(camera_folder), config_key, entry[0])
         pull_last_photo(wait_for_new_photo(camera_folder), config_key, entry[0])
