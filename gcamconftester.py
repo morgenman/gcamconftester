@@ -11,11 +11,14 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
-camera_folder = '/storage/self/primary/DCIM/Camera'
-config_folder = '/storage/self/primary/ConfigsSettings8.2'
+camera_folder = '/storage/self/primary/DCIM/Camera' #папка в которой сохраняются фото
+config_folder = '/storage/self/primary/ConfigsSettings8.2' #папка куда закидывать конфиги
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 def adb_command(command):
+    """
+    Вызывает адб из папки adb/adb и выполняет command через него
+    """
     try:
         response = subprocess.check_output(os.path.join(__location__, "adb/adb") + " " + command, timeout=5)
     except subprocess.CalledProcessError:
@@ -37,7 +40,7 @@ def tap_shutter():
     #config 730 1930
     #ok 910 1384
     adb_command('shell input keyevent 25')
-    logging.info("Делаю фото")
+    logging.info("Жамкаю на кнопку спуска")
 
 def gcam_open_config():
     logging.info("Восстанавливаю конфиг в гкаме")
@@ -46,15 +49,24 @@ def gcam_open_config():
     adb_command('shell input tap 910 1384')
 
 def push_config(config_name):
+    """
+    Пушит конфиг config_name по адб в папку с конфигами
+    """
     adb_command(f'push {config_name} {config_folder}')
     logging.info("Закинул конфиг {0} в {1}".format(config_name, config_folder))
 
 # pull_last_photo(get_last_modified_file(camera_folder))
 def pull_last_photo(filename, config_key, value):
+    """
+    Вытаскивает файл по адб и сохраняет его как key_value.jpg'
+    """
     logging.info("Выгружаю фото с телефона")
     adb_command(f'pull {filename} {config_key}_{value}.jpg')
 
 def get_last_modified_file(folder, local=False):
+    """
+    Возвращает название последнего тронутого файла в folder
+    """
     if local:
         list_of_files = glob.glob(folder) 
         latest_file = max(list_of_files, key=os.path.getctime)
@@ -65,7 +77,10 @@ def get_last_modified_file(folder, local=False):
     return folder + "/" + res3
 
 def wait_for_new_photo(folder, local=False):
-    logging.info("Жду новое фото")
+    """
+    Ждет появление нового фото в папке folder и если оно появилось то возращает имя
+    """
+    logging.info("Жду появления нового фото")
     was = get_last_modified_file(folder, local)
     for i in range(20):
         now = get_last_modified_file(folder, local)
@@ -77,18 +92,18 @@ def wait_for_new_photo(folder, local=False):
                 now = get_last_modified_file(folder, local)
                 if now != was:
                     return now
-                time.sleep(2)
+                time.sleep(1)
 
             return now
         else:
             was = now
-            time.sleep(3)
+            time.sleep(1)
     logging.error("Не могу найти новое фото...")
     exit()
 
 def get_key_from_camera_preferences(config_key):
     """
-    Ищет ключ в camera_preferences.xml чтобы по нему узнать массивы для entries и entryValues
+    Ищет ключ camera_key в camera_preferences.xml чтобы по нему узнать массивы для entries и entryValues
     """
     try:
         tree = etree.parse("camera_preferences.xml")
@@ -136,7 +151,7 @@ def get_values_from_arrays(entries, entryValues):
 
 def get_number_of_items_from_array(entries_hash, div):
     """
-    Выдает нужное количество значений из массива расположенных на равном промежутке
+    Делит массив entries_hash на div значений и возвращает их
     """
     num = len(entries_hash)
     if div >= num:
@@ -152,7 +167,7 @@ def get_number_of_items_from_array(entries_hash, div):
 
 def find_and_write_to_xml(config_name, config_key, value):
     """
-    Ищет и пишет в хмл нужное значений в нужный ключ 
+    Ищет ключ config_key в config_name и меняет его значение на value
     """
     try:
         tree = etree.parse(config_name)
@@ -167,9 +182,6 @@ def find_and_write_to_xml(config_name, config_key, value):
             logging.error("В конфиге нет записи с этим ключем. Потом исправлю эту ошибку и сделаю добавление ключа вместо замены") #TODO: исправить
     except IOError as e:
         logging.error("Не могу обработать {0} - {1}".format(config_name, e))
-#def save_to_xml(config_to_save):
-
-#def connect_with_adb():
 
 if __name__ == "__main__":
     if len(argv) <2:
