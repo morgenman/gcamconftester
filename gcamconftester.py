@@ -32,9 +32,22 @@ def get_screen_size():
     return size
 
 def tap_shutter():
+    #shutter 550 1930
+    #config 730 1930
+    #ok 910 1384
     adb_command('shell input keyevent 25')
+    logging.info("Делаю фото")
 
+def gcam_open_config():
+    logging.info("Восстанавливаю конфиг в гкаме")
+    adb_command('shell input tap 730 1930 & sleep 0.1; input tap 730 1930')
+    time.sleep(5)
+    adb_command('shell input tap 910 1384')
+
+
+# pull_last_photo(get_last_modified_file(camera_folder))
 def pull_last_photo(filename):
+    logging.info("Выгружаю фото с телефона")
     adb_command(f'pull {filename} last_photo.jpg')
 
 def get_last_modified_file(folder, local=False):
