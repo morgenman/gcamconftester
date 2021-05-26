@@ -102,7 +102,7 @@ if __name__ == "__main__":
     entries, entryValues = get_key_from_camera_preferences(config_key)
     entries_hash = get_values_from_arrays(entries, entryValues)
     entries_hash = entries_hash[:-1] #убирает Off значение из списка
-    entries_hash = get_number_of_items_from_array(entries_hash, 130)
+    entries_hash = get_number_of_items_from_array(entries_hash, 5)
     for entry in entries_hash:
         logging.info("Обрабатываю {0} = {1}".format(entry[0], entry[1]))
         find_and_write_to_xml(config_name, config_key, entry[1])
