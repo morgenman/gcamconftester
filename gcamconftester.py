@@ -172,8 +172,13 @@ def find_and_write_to_xml(config_name, config_key, value):
 #def connect_with_adb():
 
 if __name__ == "__main__":
-    config_name = "8.2riv.xml"
-    config_key = "lib_sharpness_key"
+    if len(argv) <2:
+        logging.error("Использвание: python gcamconftester.py \"имя_конфига\" \"название_ключа_для_теста\"")
+        config_name = "8.2riv.xml"
+        config_key = "lib_sharpness_key"
+    else:
+        config_name = argv[1]
+        config_key = argv[2]
     logging.info("Буду подбирать значения ключа {0} для конфига {1}".format(config_key, config_name))
     entries, entryValues = get_key_from_camera_preferences(config_key)
     entries_hash = get_values_from_arrays(entries, entryValues)
