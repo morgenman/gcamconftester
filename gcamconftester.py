@@ -1,10 +1,11 @@
 from lxml import etree
-import os, sys
+import os, sys, math
 import numpy as np
+from itertools import accumulate
 
 def get_key_from_camera_preferences(config_key):
     """
-    Ищу ключ в camera_preferences.xml чтобы по нему узнать массивы для entries и entryValues
+    Ищет ключ в camera_preferences.xml чтобы по нему узнать массивы для entries и entryValues
     """
     try:
         tree = etree.parse("camera_preferences.xml")
@@ -20,7 +21,7 @@ def get_key_from_camera_preferences(config_key):
 
 def get_values_from_arrays(entries, entryValues):
     """
-    Ищу значения в нормальном виде и в хексе в arrays.xml по ключам из entries и entryValues
+    Ищет значения в нормальном виде и в хексе в arrays.xml по ключам из entries и entryValues
     """
     try:
         tree = etree.parse("arrays.xml")
@@ -41,9 +42,22 @@ def get_values_from_arrays(entries, entryValues):
     
     for element in entryValues_element:
         entryValues_array.append(element.text)
+    
     entries_hash = np.array(list(zip(entries_array,entryValues_array)))
-    print(entries_hash)
+    #print(entries_hash)
     return entries_hash
+
+def get_number_of_items_from_array(entries_hash, div):
+    """
+    Выдает нужное количество значений из массива расположенных на равном промежутке
+    """
+    num = len(entries_hash)
+    #div = 5
+    entries_hash_count = [num // div + (1 if x < num % div else 0)  for x in range (div)]
+    entries_hash_count = np.cumsum(entries_hash_count)
+    entries_hash_count = np.insert(entries_hash_count, 0, 0)
+    entries_hash = np.array(entries_hash)
+    return entries_hash[entries_hash_count-1]
 #def save_to_xml(config_to_save):
 
 #def connect_with_adb():
@@ -52,7 +66,9 @@ def get_values_from_arrays(entries, entryValues):
 
 if __name__ == "__main__":
     config_name = "8.2riv.xml"
-    config_key = "lib_sharpness_key"
+    config_key = "lib_grid_key"
     entries, entryValues = get_key_from_camera_preferences(config_key)
     entries_hash = get_values_from_arrays(entries, entryValues)
-    print(entries_hash[1][0], entries_hash[1][1])
+    entries_hash = entries_hash[:-1] #убирает Off значение из списка
+    print(get_number_of_items_from_array(entries_hash, 5))
+    
