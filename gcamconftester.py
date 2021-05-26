@@ -1,5 +1,6 @@
 from lxml import etree
 import os, sys
+import numpy as np
 
 def get_key_from_camera_preferences(config_key):
     """
@@ -18,6 +19,9 @@ def get_key_from_camera_preferences(config_key):
     return entries, entryValues
 
 def get_values_from_arrays(entries, entryValues):
+    """
+    Ищу значения в нормальном виде и в хексе в arrays.xml по ключам из entries и entryValues
+    """
     try:
         tree = etree.parse("arrays.xml")
         root = tree.getroot()
@@ -30,9 +34,16 @@ def get_values_from_arrays(entries, entryValues):
     except IOError as e:
         print("Не могу обработать arrays.xml - %sn" % e)
 
+    entries_array = []
+    entryValues_array = []
     for element in entries_element:
-        print(element.text)
+        entries_array.append(element.text)
     
+    for element in entryValues_element:
+        entryValues_array.append(element.text)
+    entries_hash = np.array(list(zip(entries_array,entryValues_array)))
+    print(entries_hash)
+    return entries_hash
 #def save_to_xml(config_to_save):
 
 #def connect_with_adb():
@@ -43,4 +54,5 @@ if __name__ == "__main__":
     config_name = "8.2riv.xml"
     config_key = "lib_sharpness_key"
     entries, entryValues = get_key_from_camera_preferences(config_key)
-    get_values_from_arrays(entries, entryValues)
+    entries_hash = get_values_from_arrays(entries, entryValues)
+    print(entries_hash[1][0], entries_hash[1][1])
