@@ -64,8 +64,10 @@ def get_number_of_items_from_array(entries_hash, div):
     Выдает нужное количество значений из массива расположенных на равном промежутке
     """
     num = len(entries_hash)
-    logging.info("Делю весь массив из {0} значений на {1} промежутков".format(num, div))
-    #div = 5
+    if div >= num:
+        logging.warning("В этом массиве меньше {0} значений. Просто возьму все значения".format(div))
+    else:
+        logging.info("Делю весь массив из {0} значений на {1} равных промежутков".format(num, div))
     entries_hash_count = [num // div + (1 if x < num % div else 0)  for x in range (div)]
     entries_hash_count = np.cumsum(entries_hash_count)
     entries_hash_count = np.insert(entries_hash_count, 0, 1)
@@ -77,13 +79,15 @@ def find_and_write_to_xml(config_name, config_key, value):
     """
     Ищет и пишет в хмл нужное значений в нужный ключ 
     """
-    #<string name="lib_sharpness_key">080080D2</string>
     try:
         tree = etree.parse(config_name)
         root = tree.getroot()
         config_search_string = ".//string[@name='" + config_key + "']"
         config_element = root.find(config_search_string)
-        #print(config_element.text)
+        logging.info("Текущее значение в конфиге - {0}. Меняю на {1}".format(config_element.text, value))
+        if config_element is not None:
+            config_element.text = value
+            etree.ElementTree(root).write(config_name, pretty_print=True)
     except IOError as e:
         logging.error("Не могу обработать {0} - {1}".format(config_name, e))
 
@@ -98,6 +102,7 @@ if __name__ == "__main__":
     entries, entryValues = get_key_from_camera_preferences(config_key)
     entries_hash = get_values_from_arrays(entries, entryValues)
     entries_hash = entries_hash[:-1] #убирает Off значение из списка
-    entries_hash = get_number_of_items_from_array(entries_hash, 5)
+    entries_hash = get_number_of_items_from_array(entries_hash, 130)
     for entry in entries_hash:
         logging.info("Обрабатываю {0} = {1}".format(entry[0], entry[1]))
+        find_and_write_to_xml(config_name, config_key, entry[1])
