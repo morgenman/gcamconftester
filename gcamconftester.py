@@ -12,6 +12,7 @@ logging.basicConfig(
     ]
 )
 camera_folder = '/storage/self/primary/DCIM/Camera'
+config_folder = '/storage/self/primary/ConfigsSettings8.2'
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 def adb_command(command):
@@ -41,14 +42,17 @@ def tap_shutter():
 def gcam_open_config():
     logging.info("Восстанавливаю конфиг в гкаме")
     adb_command('shell input tap 730 1930 & sleep 0.1; input tap 730 1930')
-    time.sleep(5)
+    time.sleep(1)
     adb_command('shell input tap 910 1384')
 
+def push_config(config_name):
+    adb_command(f'push {config_name} {config_folder}')
+    logging.info("Закинул конфиг {0} в {1}".format(config_name, config_folder))
 
 # pull_last_photo(get_last_modified_file(camera_folder))
-def pull_last_photo(filename):
+def pull_last_photo(filename, config_key, value):
     logging.info("Выгружаю фото с телефона")
-    adb_command(f'pull {filename} last_photo.jpg')
+    adb_command(f'pull {filename} {config_key}_{value}.jpg')
 
 def get_last_modified_file(folder, local=False):
     if local:
@@ -159,9 +163,10 @@ def find_and_write_to_xml(config_name, config_key, value):
         if config_element is not None:
             config_element.text = value
             etree.ElementTree(root).write(config_name, pretty_print=True)
+        else:
+            logging.error("В конфиге нет записи с этим ключем. Потом исправлю эту ошибку и сделаю добавление ключа вместо замены") #TODO: исправить
     except IOError as e:
         logging.error("Не могу обработать {0} - {1}".format(config_name, e))
-
 #def save_to_xml(config_to_save):
 
 #def connect_with_adb():
@@ -176,4 +181,11 @@ if __name__ == "__main__":
     entries_hash = get_number_of_items_from_array(entries_hash, 5)
     for entry in entries_hash:
         logging.info("Обрабатываю {0} = {1}".format(entry[0], entry[1]))
-        find_and_write_to_xml(config_name, config_key, entry[1])
+        find_and_write_to_xml(config_name, config_key, entry[1])        
+        push_config(config_name)
+        gcam_open_config()
+        time.sleep(1)
+        tap_shutter()
+        #pull_last_photo(get_last_modified_file(camera_folder), config_key, entry[0])
+        pull_last_photo(wait_for_new_photo(camera_folder), config_key, entry[0])
+        time.sleep(1)
