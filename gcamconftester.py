@@ -1,6 +1,7 @@
 from lxml import etree
-import os, sys, math, logging
+import os, sys, math, logging, subprocess, re, glob, time
 import numpy as np  
+from sys import argv
 
 logging.basicConfig(
     level=logging.INFO,
@@ -10,6 +11,63 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
+camera_folder = '/storage/self/primary/DCIM/Camera'
+__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+
+def adb_command(command):
+    try:
+        response = subprocess.check_output(os.path.join(__location__, "adb/adb") + " " + command, timeout=5)
+    except subprocess.CalledProcessError:
+        logging.error('Произошла ошибка adb. Проверьте, подключен ли телефон.')
+        exit()
+        response = 'Ошибка!'
+    except subprocess.TimeoutExpired:
+        logging.error('Процесс adb превысил время ожидания и был закрыт. Попробуем еще раз')
+        response = adb_command(command)
+    return response
+
+def get_screen_size():
+    res = adb_command("shell wm size")
+    size = re.findall(r"\d{3,4}", str(res))
+    return size
+
+def tap_shutter():
+    adb_command('shell input keyevent 25')
+
+def pull_last_photo(filename):
+    adb_command(f'pull {filename} last_photo.jpg')
+
+def get_last_modified_file(folder, local=False):
+    if local:
+        list_of_files = glob.glob(folder) 
+        latest_file = max(list_of_files, key=os.path.getctime)
+        return folder + "/" + latest_file
+    res = str(adb_command(f'shell "ls -lt {folder} | head"'))
+    res2 = [r for r in res.split(r'\r\n')]
+    res3 = res2[1].split()[-1]
+    return folder + "/" + res3
+
+def wait_for_new_photo(folder, local=False):
+    logging.info("Жду новое фото")
+    was = get_last_modified_file(folder, local)
+    for i in range(20):
+        now = get_last_modified_file(folder, local)
+        if now != was:
+            logging.info("Новое фото найдено: {0}".format(now))
+            logging.info('Жду окончания обработки фото...')
+            for j in range(10):
+                was = now
+                now = get_last_modified_file(folder, local)
+                if now != was:
+                    return now
+                time.sleep(2)
+
+            return now
+        else:
+            was = now
+            time.sleep(3)
+    logging.error("Не могу найти новое фото...")
+    exit()
 
 def get_key_from_camera_preferences(config_key):
     """
