@@ -55,7 +55,9 @@ def get_number_of_items_from_array(entries_hash, div):
     #div = 5
     entries_hash_count = [num // div + (1 if x < num % div else 0)  for x in range (div)]
     entries_hash_count = np.cumsum(entries_hash_count)
-    entries_hash_count = np.insert(entries_hash_count, 0, 0)
+    print(entries_hash_count)
+    entries_hash_count = np.insert(entries_hash_count, 0, 1)
+    print(entries_hash_count)
     entries_hash = np.array(entries_hash)
     return entries_hash[entries_hash_count-1]
 #def save_to_xml(config_to_save):
