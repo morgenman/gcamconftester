@@ -49,13 +49,13 @@ def gcam_open_config():
     scr_size = get_screen_size()
     w_conf = int(int(scr_size[0])/3)
     h_conf = int(int(scr_size[1])*0.8)
-    logging.info("Жму в точку - {0} {1}".format(w_conf, h_conf))
+    logging.info("Даблтап в {0} {1} для открытия меню конфигов".format(w_conf, h_conf))
     adb_command(f"shell input tap {w_conf} {h_conf} & sleep 0.1; input tap {w_conf} {h_conf}")
     #adb_command('shell input tap 730 1930 & sleep 0.1; input tap 730 1930')
     time.sleep(1)
     w_ok = int(int(scr_size[0]) - int(int(scr_size[0])/5)) #это пиздец какой-то
     h_ok = int(int(scr_size[1])*0.57)
-    logging.info("Жму в точку - {0} {1}".format(w_ok, h_ok))
+    logging.info("Жму в точку {0} {1} для восстановления конфига".format(w_ok, h_ok))
     adb_command(f"shell input tap {w_ok} {h_ok}")
 
 def push_config(config_name):
