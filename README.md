@@ -26,6 +26,9 @@ https://www.python.org/downloads/
 Пример: 
 ***python gcamconftester.py "8.2riv.xml" "lib_sharpness_key"***
 
+В результате работы в рядом со скриптом появится папка с название ключа в которой будут лежать фото с их значением которые удобно смотреть и сравнивать через FastStone Image Viewer
+![изображение](https://user-images.githubusercontent.com/2606215/119796119-c3fd2b80-bee1-11eb-82c2-89048871156e.png)
+
 Так же можно тестить кастомные адреса и их значения
 
 ***python gcamconftester.py имя_конфига -custom номер_кастомного_значения адрес значения_через_двоеточие***
