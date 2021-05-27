@@ -232,7 +232,7 @@ if __name__ == "__main__":
         num_values_to_test = int(argv[3])
     else:
         logging.error("Использвание: python gcamconftester.py \"имя_конфига\" \"название_ключа_для_теста\" [количество_значений_для_теста]")
-        logging.error("Использвание: python gcamconftester.py \"имя_конфига\" -custom номер_кастомного_значения адрес значения_через_двоеточие")
+        logging.error("Использвание: python gcamconftester.py \"имя_конфига\" --custom номер_кастомного_значения адрес значения_через_двоеточие")
         exit()
     new_config_name = config_name + "_test.xml"
     logging.info("Делаю копию конфига {0}".format(new_config_name))
