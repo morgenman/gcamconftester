@@ -184,11 +184,36 @@ def find_and_write_to_xml(config_name, config_key, value):
         logging.error("Не могу обработать {0} - {1}".format(config_name, e))
 
 if __name__ == "__main__":
-    if len(argv) <2:
+    if "-custom" in argv:
+        print(argv)
+        config_name = argv[1]
+        custom_addr_num = "lib_user_addr_" + argv[3]
+        custom_value_num = "lib_user_value_" + argv[3]
+        custom_addr = argv[4]
+        custom_values = argv[5]
+        custom_values = custom_values.split(",")
+        logging.info("Делаю фото без кастомного значения")
+        #tap_shutter()
+        #pull_last_photo(wait_for_new_photo(camera_folder), "NO_ADDR", "NO_VALUE")
+        time.sleep(1)
+        for entry in custom_values:
+            logging.info("Обрабатываю {0} = {1}".format(custom_addr_num, custom_addr))
+            find_and_write_to_xml(config_name, custom_addr_num, custom_addr)
+            logging.info("Обрабатываю {0} = {1}".format(custom_value_num, entry))
+            # push_config(config_name)
+            # gcam_open_config()
+            # time.sleep(2)
+            # tap_shutter()
+            # pull_last_photo(wait_for_new_photo(camera_folder), custom_addr, entry)
+            # time.sleep(1)
+        exit()
+    if len(argv) < 2:
         logging.error("Использвание: python gcamconftester.py \"имя_конфига\" \"название_ключа_для_теста\"")
+        logging.error("Использвание: python gcamconftester.py \"имя_конфига\" -custom номер_кастомного_значения адрес значения_через_запятую")
         config_name = "8.2riv.xml"
         config_key = "lib_sharpness_key"
-    else:
+        exit()
+    elif len(argv) == 3:
         config_name = argv[1]
         config_key = argv[2]
     logging.info("Буду подбирать значения ключа {0} для конфига {1}".format(config_key, config_name))

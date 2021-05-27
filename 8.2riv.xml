@@ -574,7 +574,7 @@
     <string name="pref_grgb_ldr_key">1</string>
     <string name="lib_lumadhsabre_l2b_key">0</string>
     <string name="lib_by_tele_key">0</string>
-    <string name="lib_sharpness_key">0801E8D2</string>
+    <string name="lib_sharpness_key">0801F8D2</string>
     <string name="lib_lumadlsabre_l2a_n5_key">0</string>
     <string name="lib_smoothness_tele_key">0</string>
     <string name="lib_sharpenmedium_l2_tele_key">0</string>
@@ -1544,7 +1544,7 @@
     <string name="lib_user_ldr_addr_6">010ae878</string>
     <string name="lib_user_ldr_addr_5">010AE0D4</string>
     <string name="lib_ldr_ldr_key">0</string>
-    <string name="lib_user_addr_3">007A6C60</string>
+    <string name="lib_user_addr_3">010ae878</string>
     <string name="lib_user_ldr_addr_4">01FAB398</string>
     <string name="lib_user_addr_2">0136D918</string>
     <string name="lib_user_ldr_addr_3">02115FB4</string>
