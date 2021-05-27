@@ -196,7 +196,7 @@ def find_and_write_to_xml(config_name, config_key, value):
 
 if __name__ == "__main__":
     num_values_to_test = 0
-    logging.info("Разрешение экрана - {0}".format(get_screen_size()))
+    #logging.info("Разрешение экрана - {0}".format(get_screen_size()))
     if "--custom" in argv:
         #print(argv)
         config_name = argv[1]
@@ -232,9 +232,9 @@ if __name__ == "__main__":
         config_name = argv[1]
         config_key = argv[2]
         num_values_to_test = int(argv[3])
-    if len(argv) < 2:
-        logging.error("Использвание: python gcamconftester.py \"имя_конфига\" \"название_ключа_для_теста\"")
-        logging.error("Использвание: python gcamconftester.py \"имя_конфига\" -custom номер_кастомного_значения адрес значения_через_запятую")
+    else:
+        logging.error("Использвание: python gcamconftester.py \"имя_конфига\" \"название_ключа_для_теста\" [количество_значений_для_теста]")
+        logging.error("Использвание: python gcamconftester.py \"имя_конфига\" -custom номер_кастомного_значения адрес значения_через_двоеточие")
         #config_name = "8.2riv.xml"
         #config_key = "lib_sharpness_key"
         exit()
