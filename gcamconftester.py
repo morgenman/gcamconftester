@@ -202,6 +202,7 @@ if __name__ == "__main__":
         config_name = argv[1]
         custom_addr_num = "lib_user_addr_" + argv[3]
         custom_value_num = "lib_user_value_" + argv[3]
+        custom_value_key = "lib_user_key_" + argv[3]
         custom_addr = argv[4]
         custom_values = argv[5]
         custom_values = custom_values.split(":")
@@ -209,10 +210,7 @@ if __name__ == "__main__":
         logging.info("Делаю копию конфига {0}".format(new_config_name))
         copyfile(config_name, new_config_name)
         config_name = new_config_name
-        #logging.info("Делаю фото без кастомного значения")
-        #tap_shutter()
-        #pull_last_photo(wait_for_new_photo(camera_folder), "NO_ADDR", "NO_VALUE")
-        #time.sleep(1)
+        find_and_write_to_xml(config_name, custom_value_key, "1") # Пишу lib_user_key_ для включения кастомного значения
         for entry in custom_values:
             logging.info("Обрабатываю {0} = {1}".format(custom_addr_num, custom_addr))
             find_and_write_to_xml(config_name, custom_addr_num, custom_addr)
@@ -235,8 +233,6 @@ if __name__ == "__main__":
     else:
         logging.error("Использвание: python gcamconftester.py \"имя_конфига\" \"название_ключа_для_теста\" [количество_значений_для_теста]")
         logging.error("Использвание: python gcamconftester.py \"имя_конфига\" -custom номер_кастомного_значения адрес значения_через_двоеточие")
-        #config_name = "8.2riv.xml"
-        #config_key = "lib_sharpness_key"
         exit()
     new_config_name = config_name + "_text.xml"
     logging.info("Делаю копию конфига {0}".format(new_config_name))

@@ -774,7 +774,7 @@
     <string name="lib_exposure_darker2_wide_key">0</string>
     <string name="lib_sabre1_n5_key">0</string>
     <string name="lib_user_key_3">1</string>
-    <string name="lib_user_key_2">1</string>
+    <string name="lib_user_key_2">0</string>
     <string name="fix_resolution_n5_key">0</string>
     <string name="lib_expocomp_wide_key">0</string>
     <string name="lib_user_key_5">1</string>
