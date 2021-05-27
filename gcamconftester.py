@@ -246,7 +246,7 @@ if __name__ == "__main__":
         num_values_to_test = 5
     entries_hash = get_number_of_items_from_array(entries_hash, num_values_to_test)
     for entry in entries_hash:
-        logging.info("Обрабатываю {0} = {1}".format(entry[0], entry[1]))
+        logging.info("Обрабатываю {0} = {1} ({2})".format(config_key, entry[0], entry[1]))
         find_and_write_to_xml(config_name, config_key, entry[1])        
         push_config(config_name)
         gcam_open_config()
