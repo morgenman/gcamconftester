@@ -167,6 +167,7 @@ def get_number_of_items_from_array(entries_hash, div):
     num = len(entries_hash)
     if div >= num:
         logging.warning("В этом массиве меньше {0} значений. Просто возьму все значения".format(div))
+        div = num
     else:
         logging.info("Делю весь массив из {0} значений на {1} равных промежутков".format(num, div))
     entries_hash_count = [num // div + (1 if x < num % div else 0)  for x in range (div)]
