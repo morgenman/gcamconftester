@@ -3,6 +3,7 @@ import os, sys, math, logging, subprocess, re, glob, time
 import numpy as np  
 from sys import argv
 from pathlib import Path
+from shutil import copyfile
 
 logging.basicConfig(
     level=logging.INFO,
@@ -204,6 +205,10 @@ if __name__ == "__main__":
         custom_addr = argv[4]
         custom_values = argv[5]
         custom_values = custom_values.split(":")
+        new_config_name = config_name + "_text.xml"
+        logging.info("Делаю копию конфига {0}".format(new_config_name))
+        copyfile(config_name, new_config_name)
+        config_name = new_config_name
         #logging.info("Делаю фото без кастомного значения")
         #tap_shutter()
         #pull_last_photo(wait_for_new_photo(camera_folder), "NO_ADDR", "NO_VALUE")
@@ -233,6 +238,10 @@ if __name__ == "__main__":
         #config_name = "8.2riv.xml"
         #config_key = "lib_sharpness_key"
         exit()
+    new_config_name = config_name + "_text.xml"
+    logging.info("Делаю копию конфига {0}".format(new_config_name))
+    copyfile(config_name, new_config_name)
+    config_name = new_config_name
     logging.info("Буду подбирать значения ключа {0} для конфига {1}".format(config_key, config_name))
     entries, entryValues = get_key_from_camera_preferences(config_key)
     entries_hash = get_values_from_arrays(entries, entryValues)
