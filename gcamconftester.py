@@ -2,6 +2,7 @@ from lxml import etree
 import os, sys, math, logging, subprocess, re, glob, time
 import numpy as np  
 from sys import argv
+from pathlib import Path
 
 logging.basicConfig(
     level=logging.INFO,
@@ -44,9 +45,17 @@ def tap_shutter():
 
 def gcam_open_config():
     logging.info("Восстанавливаю конфиг в гкаме")
-    adb_command('shell input tap 730 1930 & sleep 0.1; input tap 730 1930')
+    scr_size = get_screen_size()
+    w_conf = int(int(scr_size[0])/3)
+    h_conf = int(int(scr_size[1])*0.8)
+    logging.info("Жму в точку - {0} {1}".format(w_conf, h_conf))
+    adb_command(f"shell input tap {w_conf} {h_conf} & sleep 0.1; input tap {w_conf} {h_conf}")
+    #adb_command('shell input tap 730 1930 & sleep 0.1; input tap 730 1930')
     time.sleep(1)
-    adb_command('shell input tap 910 1384')
+    w_ok = int(int(scr_size[0]) - int(int(scr_size[0])/5)) #это пиздец какой-то
+    h_ok = int(int(scr_size[1])*0.57)
+    logging.info("Жму в точку - {0} {1}".format(w_ok, h_ok))
+    adb_command(f"shell input tap {w_ok} {h_ok}")
 
 def push_config(config_name):
     """
@@ -60,8 +69,9 @@ def pull_last_photo(filename, config_key, value):
     """
     Вытаскивает файл по адб и сохраняет его как key_value.jpg'
     """
-    logging.info("Выгружаю фото с телефона")
-    adb_command(f'pull {filename} {config_key}_{value}.jpg')
+    Path("{0}".format(config_key)).mkdir(parents=True, exist_ok=True)
+    logging.info("Выгружаю фото с телефона в папку {0}".format(config_key))
+    adb_command(f'pull {filename} {config_key}\{value}.jpg')
 
 def get_last_modified_file(folder, local=False):
     """
@@ -184,43 +194,52 @@ def find_and_write_to_xml(config_name, config_key, value):
         logging.error("Не могу обработать {0} - {1}".format(config_name, e))
 
 if __name__ == "__main__":
-    if "-custom" in argv:
-        print(argv)
+    num_values_to_test = 0
+    logging.info("Разрешение экрана - {0}".format(get_screen_size()))
+    if "--custom" in argv:
+        #print(argv)
         config_name = argv[1]
         custom_addr_num = "lib_user_addr_" + argv[3]
         custom_value_num = "lib_user_value_" + argv[3]
         custom_addr = argv[4]
         custom_values = argv[5]
-        custom_values = custom_values.split(",")
-        logging.info("Делаю фото без кастомного значения")
+        custom_values = custom_values.split(":")
+        #logging.info("Делаю фото без кастомного значения")
         #tap_shutter()
         #pull_last_photo(wait_for_new_photo(camera_folder), "NO_ADDR", "NO_VALUE")
-        time.sleep(1)
+        #time.sleep(1)
         for entry in custom_values:
             logging.info("Обрабатываю {0} = {1}".format(custom_addr_num, custom_addr))
             find_and_write_to_xml(config_name, custom_addr_num, custom_addr)
             logging.info("Обрабатываю {0} = {1}".format(custom_value_num, entry))
-            # push_config(config_name)
-            # gcam_open_config()
-            # time.sleep(2)
-            # tap_shutter()
-            # pull_last_photo(wait_for_new_photo(camera_folder), custom_addr, entry)
-            # time.sleep(1)
-        exit()
-    if len(argv) < 2:
-        logging.error("Использвание: python gcamconftester.py \"имя_конфига\" \"название_ключа_для_теста\"")
-        logging.error("Использвание: python gcamconftester.py \"имя_конфига\" -custom номер_кастомного_значения адрес значения_через_запятую")
-        config_name = "8.2riv.xml"
-        config_key = "lib_sharpness_key"
+            find_and_write_to_xml(config_name, custom_value_num, entry)
+            push_config(config_name)
+            gcam_open_config()
+            time.sleep(2)
+            tap_shutter()
+            pull_last_photo(wait_for_new_photo(camera_folder), custom_addr, entry)
+            time.sleep(1)
         exit()
     elif len(argv) == 3:
         config_name = argv[1]
         config_key = argv[2]
+    elif len(argv) == 4:
+        config_name = argv[1]
+        config_key = argv[2]
+        num_values_to_test = int(argv[3])
+    if len(argv) < 2:
+        logging.error("Использвание: python gcamconftester.py \"имя_конфига\" \"название_ключа_для_теста\"")
+        logging.error("Использвание: python gcamconftester.py \"имя_конфига\" -custom номер_кастомного_значения адрес значения_через_запятую")
+        #config_name = "8.2riv.xml"
+        #config_key = "lib_sharpness_key"
+        exit()
     logging.info("Буду подбирать значения ключа {0} для конфига {1}".format(config_key, config_name))
     entries, entryValues = get_key_from_camera_preferences(config_key)
     entries_hash = get_values_from_arrays(entries, entryValues)
     entries_hash = entries_hash[:-1] #убирает Off значение из списка
-    entries_hash = get_number_of_items_from_array(entries_hash, 5)
+    if num_values_to_test == 0:
+        num_values_to_test = 5
+    entries_hash = get_number_of_items_from_array(entries_hash, num_values_to_test)
     for entry in entries_hash:
         logging.info("Обрабатываю {0} = {1}".format(entry[0], entry[1]))
         find_and_write_to_xml(config_name, config_key, entry[1])        
