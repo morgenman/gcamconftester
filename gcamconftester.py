@@ -201,12 +201,12 @@ if __name__ == "__main__":
         #print(argv)
         config_name = argv[1]
         custom_addr_num = "lib_user_addr_" + argv[3]
-        custom_value_num = "lib_user_value_" + argv[3]
+        custom_value_num = "lib_user_value_" + argv[3] #TODO: сделать нормально
         custom_value_key = "lib_user_key_" + argv[3]
         custom_addr = argv[4]
         custom_values = argv[5]
         custom_values = custom_values.split(":")
-        new_config_name = config_name + "_text.xml"
+        new_config_name = config_name + "_test.xml"
         logging.info("Делаю копию конфига {0}".format(new_config_name))
         copyfile(config_name, new_config_name)
         config_name = new_config_name
@@ -234,7 +234,7 @@ if __name__ == "__main__":
         logging.error("Использвание: python gcamconftester.py \"имя_конфига\" \"название_ключа_для_теста\" [количество_значений_для_теста]")
         logging.error("Использвание: python gcamconftester.py \"имя_конфига\" -custom номер_кастомного_значения адрес значения_через_двоеточие")
         exit()
-    new_config_name = config_name + "_text.xml"
+    new_config_name = config_name + "_test.xml"
     logging.info("Делаю копию конфига {0}".format(new_config_name))
     copyfile(config_name, new_config_name)
     config_name = new_config_name
