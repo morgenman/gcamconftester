@@ -46,6 +46,7 @@ optional arguments:
 
 Пример:
 ```python gcamconftester.py -c "8.2riv.xml" --custom 2 -a 0de3694 -v 04008052:24008052:44008052```
+
 Это запишет в User Defined Value 2 адрес 0DE3694 и переберет значения 24008052,04008052,44008052
 ![изображение](https://user-images.githubusercontent.com/2606215/119966201-bfa14300-bfb3-11eb-8374-89e200edc713.png)
 
