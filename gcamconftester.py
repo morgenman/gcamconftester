@@ -1,5 +1,5 @@
 from lxml import etree
-import os, sys, math, logging, subprocess, re, glob, time
+import os, sys, math, logging, subprocess, re, glob, time, argparse
 import numpy as np  
 from sys import argv
 from pathlib import Path
@@ -195,22 +195,54 @@ def find_and_write_to_xml(config_name, config_key, value):
     except IOError as e:
         logging.error("Не могу обработать {0} - {1}".format(config_name, e))
 
+def get_camera_id_from_input(config_name, camera_name):
+    try:
+        tree = etree.parse(config_name)
+        root = tree.getroot()
+        camera_ids = [1, 2, 3, 4, 5, "ldr"]
+        for camera in camera_ids:
+            aux_search_string = ".//string[@name='pref_manual_aux_name_" + str(camera) + "_key']"
+            aux_element = root.find(aux_search_string)
+            if aux_element.text == camera_name:
+                return camera
+    except IOError as e:
+        logging.error("Не могу найти модуль с именем {0} в конфиге {1}".format(camera_name, config_name))
+
 if __name__ == "__main__":
-    num_values_to_test = 0
+    #pref_aux_key - ид камеры 0-5 на какую переключится
+    #pref_manual_aux_name_1-6_key - ручное название камеры типа Макро
+    # <set name="pref_list_camera_key">
+    #     <string>0</string>
+    #     <string>22</string>
+    #     <string>1</string>
+    #     <string>21</string>
+    # </set>
     #logging.info("Разрешение экрана - {0}".format(get_screen_size()))
-    if "--custom" in argv:
-        #print(argv)
-        config_name = argv[1]
-        custom_addr_num = "lib_user_addr_" + argv[3]
-        custom_value_num = "lib_user_value_" + argv[3] #TODO: сделать нормально
-        custom_value_key = "lib_user_key_" + argv[3]
-        custom_addr = argv[4]
-        custom_values = argv[5]
+    #print(get_camera_id_from_input("a1.xml", "Ширик"))
+    parser = argparse.ArgumentParser()
+    group = parser.add_mutually_exclusive_group(required=True)
+    parser.add_argument("-c", "--config", required=True, help="Название конфига")
+    group.add_argument("-k", "--key", required=False, help="Название ключа для перебора настроек")
+    parser.add_argument("-n", "--num", required=False, help="Количество значений для перебора")
+    group.add_argument("-custom", "--custom", required=False, help="Номер кастомного значения в патчере")
+    parser.add_argument("-a", "--address", required=False, help="Адрес кастомного значения")
+    parser.add_argument("-v", "--values", required=False, help="Кастомные значения через двоеточие")
+    args = parser.parse_args()
+    if args.custom and (args.address is None or args.values is None):
+        parser.error("Для работы --custom нужны --address адрес и --values значения")
+    if args.custom:
+        config_name = args.config
+        custom_addr_num = "lib_user_addr_" + args.custom
+        custom_value_num = "lib_user_value_" + args.custom
+        custom_value_key = "lib_user_key_" + args.custom
+        custom_addr = args.address
+        custom_values = args.values
         custom_values = custom_values.split(":")
         new_config_name = config_name + "_test.xml"
         logging.info("Делаю копию конфига {0}".format(new_config_name))
         copyfile(config_name, new_config_name)
         config_name = new_config_name
+        logging.info("Проверяю включен ли ключ {0} в конфиге".format(custom_value_key))
         find_and_write_to_xml(config_name, custom_value_key, "1") # Пишу lib_user_key_ для включения кастомного значения
         for entry in custom_values:
             logging.info("Обрабатываю {0} = {1}".format(custom_addr_num, custom_addr))
@@ -224,17 +256,10 @@ if __name__ == "__main__":
             pull_last_photo(wait_for_new_photo(camera_folder), custom_addr, entry)
             time.sleep(1)
         exit()
-    elif len(argv) == 3:
-        config_name = argv[1]
-        config_key = argv[2]
-    elif len(argv) == 4:
-        config_name = argv[1]
-        config_key = argv[2]
-        num_values_to_test = int(argv[3])
-    else:
-        logging.error("Использвание: python gcamconftester.py \"имя_конфига\" \"название_ключа_для_теста\" [количество_значений_для_теста]")
-        logging.error("Использвание: python gcamconftester.py \"имя_конфига\" --custom номер_кастомного_значения адрес значения_через_двоеточие")
-        exit()
+    config_name = args.config
+    config_key = args.key
+    num_values_to_test = 5 if not args.num else int(args.num)
+    
     new_config_name = config_name + "_test.xml"
     logging.info("Делаю копию конфига {0}".format(new_config_name))
     copyfile(config_name, new_config_name)
@@ -243,8 +268,6 @@ if __name__ == "__main__":
     entries, entryValues = get_key_from_camera_preferences(config_key)
     entries_hash = get_values_from_arrays(entries, entryValues)
     entries_hash = entries_hash[:-1] #убирает Off значение из списка
-    if num_values_to_test == 0:
-        num_values_to_test = 5
     entries_hash = get_number_of_items_from_array(entries_hash, num_values_to_test)
     for entry in entries_hash:
         logging.info("Обрабатываю {0} = {1} ({2})".format(config_key, entry[0], entry[1]))
