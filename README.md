@@ -8,12 +8,28 @@ https://www.python.org/downloads/
 6) Опять пишем в консоль "***.\adb\adb.exe connect IP_АДРЕС_ТЕЛЕФОНА:5555***" (IP адрес телефона можно узнать в настройках вайфая на телефоне или посмотреть в веб-интерфейсе роутера)
 7) Сохраняем на телефоне свой конфиг НА НУЖНОМ МОДУЛЕ и кидаем его в папку со скриптом 
 8) Ставим на телефоне время выключения экрана на подольше, запускаем гкам и ставим телефон на штатив или опираем на тапок
-# Запуск
-Для запуска в ту же консоль пишем
+# Использование
+```
+usage: gcamconftester.py [-h] -c CONFIG [-k KEY] [-n NUM] [-custom CUSTOM] [-a ADDRESS] [-v VALUES]
 
-"***python gcamconftester.py имя_конфига название_ключа_для_теста [количество_значений_для_теста]***"
+optional arguments:
+  -h, --help            show this help message and exit
+  -c CONFIG, --config CONFIG
+                        Название конфига
+  -k KEY, --key KEY     Название ключа для перебора настроек
+  -n NUM, --num NUM     Количество значений для перебора
+  -custom CUSTOM, --custom CUSTOM
+                        Номер кастомного значения в патчере
+  -a ADDRESS, --address ADDRESS
+                        Адрес кастомного значения
+  -v VALUES, --values VALUES
+                        Кастомные значения через двоеточие
+```
+Пример
 
-![изображение](https://user-images.githubusercontent.com/2606215/119790955-0d974780-bedd-11eb-881c-6b54ff523741.png)
+```python gcamconftester.py -c "8.2riv.xml" -k lib_sharpness_key -n 3```
+
+![изображение](https://user-images.githubusercontent.com/2606215/119966049-97194900-bfb3-11eb-87cd-f7c2a418f705.png)
 
 Если количество значений для теста не указано, то будут дефолтные 5
 
@@ -21,20 +37,18 @@ https://www.python.org/downloads/
 
 Желательно чтобы в имени конфига не было всяких всратых символов типа эмоджи, кавычек, пробелов и т.д
 
-Пример: 
-***python gcamconftester.py "8.2riv.xml" "lib_sharpness_key"***
-
 В результате работы рядом со скриптом появится папка с названием ключа. В этой папке будут лежать фото (имя = значение) которые удобно смотреть и сравнивать через FastStone Image Viewer
 ![изображение](https://user-images.githubusercontent.com/2606215/119796119-c3fd2b80-bee1-11eb-82c2-89048871156e.png)
 
 Так же можно тестить кастомные адреса и их значения
 
-***python gcamconftester.py имя_конфига -custom номер_кастомного_значения адрес значения_через_двоеточие***
+```python gcamconftester.py -c имя_конфига --custom номер_кастомного_значения_в_патчере -a адрес -v значения_через_двоеточие```
 
 Пример:
-***python gcamconftester.py "8.2riv.xml" --custom 2 0DE3694 24008052:04008052:44008052***
+```python gcamconftester.py -c "8.2riv.xml" --custom 2 -a 0de3694 -v 04008052:24008052:44008052```
 
-![изображение](https://user-images.githubusercontent.com/2606215/119791814-d7a69300-bedd-11eb-9036-e01444d66414.png)
+![изображение](https://user-images.githubusercontent.com/2606215/119966201-bfa14300-bfb3-11eb-8374-89e200edc713.png)
+
 
 
 Это запишет в User Defined Value 2 адрес 0DE3694 и переберет значения 24008052,04008052,44008052
