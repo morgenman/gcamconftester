@@ -223,6 +223,7 @@
     <string name="lib_user_curve_wide_14">0.9637142</string>
     <string name="lib_user_curve_wide_15">1.</string>
     <string name="lib_cg3_n5_key">0</string>
+    <string name="face_retouching_hint">1</string>
     <string name="pref_has_checked_photosphere_mode">0</string>
     <string name="lib_chromahigha_l2_key">E003679E</string>
     <string name="pref_switch_to_next_mode_command_string">-1</string>
@@ -312,7 +313,7 @@
     <string name="lib_curve_pdarks_front_key">333</string>
     <string name="lib_bflumamin_tele_key">0</string>
     <string name="pref_noise_smoothing_wide">1</string>
-    <string name="lib_curve_key">0</string>
+    <string name="lib_curve_key">1</string>
     <string name="lib_ldr_front_key">0</string>
     <string name="lib_lumadenoise5_front_key">0</string>
     <string name="lib_noisemodel_key">0</string>
@@ -401,6 +402,7 @@
     <string name="lib_expocor_front_key">0</string>
     <string name="lib_fixshastamerge1_n5_key">0</string>
     <string name="lib_gro_n4_key">0</string>
+    <string name="pref_camera_astro">0</string>
     <string name="lib_lumadlsabre_l4b_n5_key">0</string>
     <string name="lib_user_curve_n5_11">0.816</string>
     <string name="lib_user_curve_n5_12">0.875</string>
@@ -503,6 +505,7 @@
     <string name="lib_lumadmsabre_l4a_tele_key">0</string>
     <string name="bl_key_0">1</string>
     <string name="lib_exposure35_tele_key">0</string>
+    <string name="lib_allunkndevices_wide_key">0</string>
     <string name="lib_sabrtuny_n5_key">0</string>
     <string name="lib_lumanoise_key">E0F7074F</string>
     <string name="lib_lumadmsabre_l3a_ldr_key">0</string>
@@ -542,7 +545,7 @@
     <string name="lib_sharpenlow_l3_wide_key">0</string>
     <string name="pref_raw_key_front">1</string>
     <string name="lib_cg10_n5_key">0</string>
-    <string name="pref_model_style_n5_key">16</string>
+    <string name="pref_model_style_n5_key">14</string>
     <string name="lib_vignette_n5_key">0</string>
     <string name="pref_manual_cameraid_back_1_key">0</string>
     <string name="lib_lumadhsabre_l1a_n5_key">0</string>
@@ -576,7 +579,7 @@
     <string name="pref_grgb_ldr_key">1</string>
     <string name="lib_lumadhsabre_l2b_key">0</string>
     <string name="lib_by_tele_key">0</string>
-    <string name="lib_sharpness_key">080080D2</string>
+    <string name="lib_sharpness_key">08F8E7D2</string>
     <string name="lib_lumadlsabre_l2a_n5_key">0</string>
     <string name="lib_smoothness_tele_key">0</string>
     <string name="lib_sharpenmedium_l2_tele_key">0</string>
@@ -602,6 +605,7 @@
     <string name="lib_reducednoise_ldr_key">00102D1E</string>
     <string name="lib_spatialdenmi2_ldr_key">00000040</string>
     <string name="lib_lumadhsabre_l2_key">00000000</string>
+    <string name="lib_allunkndevices_front_key">0</string>
     <string name="pref_sectcurve_preset_ldr_key">0</string>
     <string name="lib_hdrsabrev1_wide_key">0</string>
     <string name="lib_lighting_tele_key">0</string>
@@ -660,11 +664,11 @@
     <string name="pref_gammacurve_preset_n5_key">0</string>
     <string name="lib_saturation_front_key">0</string>
     <string name="lib_sharpenloww_l2_wide_key">0</string>
-    <string name="pref_model_n4_key">16</string>
+    <string name="pref_model_n4_key">14</string>
     <string name="lib_contrast_3_key">0</string>
     <int name="tooltip_impression_count_for_catshark_toggle_tooltip" value="4" />
     <string name="lib_user_front_value_10"></string>
-    <string name="pref_model_ldr_key">16</string>
+    <string name="pref_model_ldr_key">14</string>
     <string name="lib_user_front_value_12"></string>
     <string name="lib_user_front_value_11"></string>
     <string name="lib_sharpenveryloww_l3_key">00409C45</string>
@@ -701,7 +705,7 @@
     <string name="lib_sect_pdarks_ldr_key">333</string>
     <string name="lib_coefsabrtunoise_ldr_key">0</string>
     <string name="lib_chromalow_l4_key">0</string>
-    <string name="pref_model_wide_key">16</string>
+    <string name="pref_model_wide_key">14</string>
     <string name="pref_processing_col">1</string>
     <string name="lib_sharpenmediumw_l1_key">00409C45</string>
     <string name="pref_has_checked_ornament_mode">0</string>
@@ -710,6 +714,7 @@
     <string name="lib_lumadlsabre_l4_n4_key">0</string>
     <string name="lib_user_value_8">0869a872</string>
     <string name="lib_user_value_9">0BF0371E</string>
+    <string name="lib_blurpreview_n5_key">0</string>
     <string name="lib_sect_pwhites_key">333</string>
     <string name="lib_lumadlsabre_l1a_tele_key">0</string>
     <string name="lib_hdrup_n5_key">0</string>
@@ -753,7 +758,7 @@
     <string name="lib_sharpenhigh_l2_ldr_key">00409C45</string>
     <string name="pref_gammacurve_preset_tele_key">0</string>
     <string name="lib_lumadmsabre_l3b_wide_key">0</string>
-    <string name="pref_aemode_front_key">0</string>
+    <string name="pref_aemode_front_key">11</string>
     <string name="lib_blackness_tele_key">0</string>
     <string name="lib_hdrsabrev1_front_key">0</string>
     <string name="lib_smoothness_key">0</string>
@@ -929,6 +934,7 @@
     <string name="lib_filtercoef3_key">0</string>
     <string name="pref_frames_hdr_key">16</string>
     <string name="tf_af_key">0</string>
+    <string name="lib_allunkndevices_n4_key">0</string>
     <string name="lib_lumadenoise2_n4_key">0</string>
     <string name="lib_lumadlsabre_l3b_ldr_key">0</string>
     <string name="pref_sectcurve_preset_tele_key">0</string>
@@ -1002,6 +1008,7 @@
     <string name="lib_lumadmsabre_l5_key">00000000</string>
     <string name="lib_user_ldr_addr_12"></string>
     <string name="lib_exposure_n4_key">0</string>
+    <string name="lib_allunkndevices_ldr_key">28008052</string>
     <string name="lib_user_n4_value_9"></string>
     <string name="lib_user_n4_value_7"></string>
     <string name="lib_user_n4_value_8"></string>
@@ -1028,6 +1035,7 @@
     <string name="lib_exposition_n4_key">0</string>
     <string name="lib_sharpenhigh_l1_front_key">0</string>
     <string name="black_level_f_key">0</string>
+    <string name="lib_blurpreview_ldr_key">84048052</string>
     <string name="lib_sabrenoiseart_n4_key">0</string>
     <string name="bg_wide_key">-0.914</string>
     <string name="lib_lumadlsabre_l2b_key">0</string>
@@ -1067,6 +1075,7 @@
     <string name="libs_ldr_key">0</string>
     <string name="pref_color_transform_wide_key">0</string>
     <string name="lib_lumadlsabre_l3b_n4_key">0</string>
+    <string name="lib_allunkndevices_tele_key">0</string>
     <string name="bb_n4_key">1.83</string>
     <string name="lib_lumadhsabre_l1a_tele_key">0</string>
     <string name="lib_smoothing2_front_key">0</string>
@@ -1211,6 +1220,7 @@
     <string name="pref_sabre_tele_key">0</string>
     <string name="pref_awb_n4_key">19</string>
     <string name="lib_user_wide_value_11">0000000000000000A27F828B1535783FA1DB4B1AA375943FED815660C8EAA63F12C2A38D23D6B23FF8A57EDE54A4BA3FC74B37894160C13F16F6B4C35F93C53FA0C37C7901F6C93F793BC269C18BCE3F05DD5ED218ADD13FE38DCC237F30D43F999EB0C403CAD63F76FD82DDB06DD93FE9263108AC1CDC3F895E46B1DCD2DE3F2D5BEB8B84B6E03F4F1E166A4DF3E13F3D2CD49AE61DE33F49BA66F2CD36E43FCB2DAD86C43DE53FE15D2EE23B31E63FBD18CA897615E73F51A5660FB402E83FA0C37C7901F6E83F0C59DDEA39E9E93FB8CCE9B298D8EA3FC3F5285C8FC2EB3FDAFE959526A5EC3F94FB1D8A027DED3F8CD651D50451EE3F10751F80D426EF3F000000000000F03F</string>
+    <string name="lib_allunkndevices_key">28008052</string>
     <string name="lib_user_wide_value_12">000000000000000039B4C876BE9F8A3FE63FA4DFBE0EAC3F25068195438BBC3FEFC9C342AD69C63FF0164850FC18CF3FCC7F48BF7D1DD43FFF21FDF675E0D83F6ABC74931804DE3FF163CC5D4BC8E13F75029A081B9EE43FC05B2041F163E73F4F401361C3D3E93FEC51B81E85EBEB3FAA60545227A0ED3F355EBA490C02EF3F000000000000F03F</string>
     <string name="lib_sharp1_key">0</string>
     <string name="lib_sharpdistrib3_ldr_key">0</string>
@@ -1365,7 +1375,7 @@
     <string name="lib_softcontrast_key">0869A872</string>
     <string name="lib_lumadlsabre_l3a_front_key">0</string>
     <string name="lib_fixshastamerge1_wide_key">09F0371E</string>
-    <string name="pref_model_style_tele_key">16</string>
+    <string name="pref_model_style_tele_key">14</string>
     <string name="lib_reducednoise_tele_key">0</string>
     <string name="lib_saturation_wide_key">0</string>
     <string name="lib_chromamicro_wide_key">0</string>
@@ -1455,9 +1465,9 @@
     <string name="lib_curve_pwhites_ldr_key">333</string>
     <string name="lib_temporalbin_n4_key">0</string>
     <string name="lib_sharpnew_n5_key">0</string>
-    <string name="pref_model_tele_key">16</string>
+    <string name="pref_model_tele_key">14</string>
     <string name="lib_lumadenoise_key">0</string>
-    <string name="pref_model_style_ldr_key">16</string>
+    <string name="pref_model_style_ldr_key">14</string>
     <string name="lib_user_key_10">1</string>
     <string name="lib_grid_n4_key">0</string>
     <string name="lib_user_key_11">0</string>
@@ -1510,7 +1520,7 @@
     <string name="pref_camera_video_back_flashmode_thermally_disabled_key">0</string>
     <string name="lib_gro_n5_key">0</string>
     <string name="lib_lumadlsabre_l4_n5_key">0</string>
-    <string name="pref_model_style_wide_key">16</string>
+    <string name="pref_model_style_wide_key">14</string>
     <string name="lib_sharpenveryloww_l2_wide_key">0</string>
     <string name="br_n4_key">0.119</string>
     <string name="lib_coefsabrtunoise_n5_key">0</string>
@@ -1581,6 +1591,7 @@
     <string name="lib_user_curve_ldr_15">1.0</string>
     <string name="lib_user_curve_ldr_12">0.88843503</string>
     <string name="lib_user_curve_ldr_13">0.92700954</string>
+    <string name="lib_blurpreview_front_key">0</string>
     <string name="lib_sharpenhigh_l2_key">00409C45</string>
     <string name="lib_sharpsmoothing_key">000080BF</string>
     <string name="lib_cg1_key">0</string>
@@ -1590,6 +1601,7 @@
     <string name="pref_has_checked_cuttlefish_mode">1</string>
     <string name="lib_exposure_ldr_key">0</string>
     <string name="lib_lighting_n5_key">0</string>
+    <string name="lib_blurpreview_wide_key">0</string>
     <string name="lib_gamma_pdarks_tele_key">333</string>
     <string name="lib_spatialsub1_key">0</string>
     <string name="lib_contrast_2_wide_key">000000000000E03F</string>
@@ -1621,7 +1633,7 @@
     <string name="lib_lumadmsabre_l4b_ldr_key">0</string>
     <string name="lib_sharpenveryloww_l3_n5_key">0</string>
     <string name="lib_darkenlight_n4_key">0</string>
-    <string name="pref_af_mode_back">2</string>
+    <string name="pref_af_mode_back">0</string>
     <string name="lib_sabre2_n4_key">0</string>
     <string name="lib_user_tele_key_9">0</string>
     <string name="lib_user_tele_key_8">0</string>
@@ -1677,7 +1689,7 @@
     <string name="lib_smoothness_wide_key">0010221e</string>
     <string name="lib_chromalow_l1_key">0</string>
     <string name="lib_bflumamax_n4_key">0</string>
-    <string name="pref_model_back_key">16</string>
+    <string name="pref_model_back_key">14</string>
     <string name="lib_sharpenmedium_l3_ldr_key">00409C45</string>
     <string name="lib_lumadmsabre_l2a_tele_key">0</string>
     <string name="lib_lumadlsabre_l4b_n4_key">0</string>
@@ -1754,7 +1766,7 @@
     <string name="lib_sharpness_wide_key">48FBE7D2</string>
     <string name="rb_n4_key">0.258</string>
     <string name="lib_lumadlsabre_l1_n5_key">0</string>
-    <string name="pref_model_style_front_key">16</string>
+    <string name="pref_model_style_front_key">14</string>
     <string name="lib_lumadenoise1_n4_key">0</string>
     <string name="perf_has_run_second_education">0</string>
     <string name="lib_exposition_wide_key">0</string>
@@ -1785,7 +1797,7 @@
     <string name="lib_user_wide_value_9"></string>
     <string name="lib_sharpenmediumw_l2_ldr_key">00409C45</string>
     <string name="lib_lumadlsabre_l4_key">00000000</string>
-    <string name="pref_camera_dirty_lens_history_key0">-0.10441315|-4.430123|-6.583338|-2.9507782|-4.6227345|-2.6268876|-2.1803484|-2.7357433|-7.4724274|-9.165039|-7.407871|-5.961273|-5.3366857|-2.4411712|-4.1659436|-4.222103|-4.0528092|-8.214885|-4.590034|-4.6357026|-3.6309576|-2.5892704|-2.2407808|-0.13257116|0.2463308|0.256602|-6.6359935|-3.8736808|-3.2609344|-3.5965447|-1.9075251|-2.0771852|</string>
+    <string name="pref_camera_dirty_lens_history_key0">-2.4168665|-5.8281507|-6.208039|-5.899418|-5.1113763|-5.1929464|-2.6844065|-2.2151084|-6.3246717|-2.318819|-4.3807373|-4.478455|-4.609061|1.1467689|-0.057003297|-3.4249165|-3.3097894|-1.3444797|-1.900961|-2.2303784|-6.1396103|0.007037312|-1.5415151|0.072026774|-1.4946511|-0.79615015|-0.59755266|-0.678462|-2.6401184|-1.1451513|-1.5361358|-1.354281|</string>
     <string name="pref_awb_wide_key">19</string>
     <string name="pref_camera_dirty_lens_history_key1"></string>
     <string name="opmode_video_key">32772</string>
@@ -1817,7 +1829,7 @@
     <string name="lib_expocor_n5_key">0</string>
     <string name="lib_lumadhsabre_l3_n5_key">0</string>
     <string name="lib_noisereductao_key">00902D1E</string>
-    <string name="pref_model_style_back_key">16</string>
+    <string name="pref_model_style_back_key">14</string>
     <string name="lib_bfchromamin_wide_key">0</string>
     <string name="lib_green_tele_key">0</string>
     <string name="lib_lumadmsabre_l4_tele_key">00000000</string>
@@ -1870,7 +1882,7 @@
     <string name="pref_social_app_com_google_android_apps_messaging">1</string>
     <string name="lib_colprocessing_front_key">0</string>
     <string name="lib_exposure15_ldr_key">0</string>
-    <string name="pref_model_n5_key">16</string>
+    <string name="pref_model_n5_key">14</string>
     <boolean name="autotimer_tutorial_shown" value="true" />
     <string name="lib_lumadmsabre_l4_key">00000000</string>
     <string name="lib_sharpdistribr1_tele_key">0</string>
@@ -1919,6 +1931,7 @@
     <string name="pref_gallery_key">0</string>
     <string name="lib_lumadhsabre_l3_front_key">0</string>
     <string name="lib_depth1_tele_key">0</string>
+    <string name="lib_blurpreview_tele_key">0</string>
     <string name="lib_zipper1_key">0</string>
     <string name="fix_resolution_key">37</string>
     <string name="lib_sabre2_tele_key">0</string>
@@ -1929,7 +1942,7 @@
     <boolean name="early_focus_unlock" value="false" />
     <string name="lib_cg2_n5_key">0</string>
     <string name="lib_spatialdenmi2_front_key">0</string>
-    <string name="lib_hdrrangeminus_key">03103D1E</string>
+    <string name="lib_hdrrangeminus_key">03903C1E</string>
     <string name="lib_sharpenhigh_l2_front_key">0</string>
     <string name="lib_lumadmsabre_l5_n4_key">0</string>
     <string name="lib_contrast_1_ldr_key">0</string>
@@ -2045,6 +2058,7 @@
     <string name="pref_sabre_n5_key">0</string>
     <string name="lib_colprocessing_ldr_key">08008052</string>
     <string name="pref_gammacurve_preset_wide_key">0</string>
+    <string name="lib_blurpreview_n4_key">0</string>
     <string name="lib_blackness_n4_key">0</string>
     <string name="lib_sharpenlow_l1_key">00409C45</string>
     <string name="lib_lumadenoise3_wide_key">0</string>
@@ -2069,7 +2083,7 @@
     <string name="lib_lumadmsabre_l2b_tele_key">0</string>
     <string name="pref_enable_patcher_wide_key">1</string>
     <string name="rg_front_key">-0.94</string>
-    <string name="pref_model_style_n4_key">16</string>
+    <string name="pref_model_style_n4_key">14</string>
     <string name="lib_sabre1_n4_key">0</string>
     <string name="rr_tele_key">1.68</string>
     <string name="lib_sect_whites_front_key">15</string>
@@ -2150,7 +2164,7 @@
     <string name="lib_user_curve_front_1">0.055</string>
     <string name="lib_smoothing1_key">0</string>
     <string name="lib_user_gamma_21">0.72137</string>
-    <string name="lib_sharpness_ldr_key">080080D2</string>
+    <string name="lib_sharpness_ldr_key">08F8E7D2</string>
     <string name="lib_user_curve_front_0">0.013</string>
     <string name="lib_user_gamma_22">0.75033</string>
     <string name="lib_lumadenoise2_n5_key">0</string>
@@ -2183,6 +2197,7 @@
     <string name="lib_denoise1_wide_key">0</string>
     <string name="lib_hdr2b_key">0</string>
     <string name="lib_lumadhsabre_l4b_n4_key">0</string>
+    <string name="lib_allunkndevices_n5_key">0</string>
     <string name="lib_noisereducta2_key">0</string>
     <string name="lib_lumanoise_tele_key">0</string>
     <string name="lib_smoothingsabre_key">0</string>
@@ -2396,6 +2411,7 @@
     <string name="lib_lumadhsabre_l5_front_key">0</string>
     <string name="lib_smoothing2_n4_key">0</string>
     <string name="lib_hdrsabrev1_n4_key">0</string>
+    <string name="lib_blurpreview_key">84048052</string>
     <string name="pref_social_app_com_facebook_katana">0</string>
     <string name="lib_lumadmsabre_l3a_wide_key">0</string>
     <string name="lib_sabrenoiseart_key">02F0371E</string>
@@ -2430,7 +2446,7 @@
     <string name="exposure_front_key">0</string>
     <string name="lib_denoise_front_key">0</string>
     <string name="lib_sharpenverylow_l3_ldr_key">00409C45</string>
-    <string name="pref_model_front_key">16</string>
+    <string name="pref_model_front_key">14</string>
     <string name="gawbratio_key_20">1.002930</string>
     <string name="lib_coefsabrtun1_n4_key">0</string>
     <string name="lib_sharpenhigh_l1_tele_key">0</string>

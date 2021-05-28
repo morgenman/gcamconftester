@@ -12461,9 +12461,11 @@
     <array name="APKTOOL_DUMMY_24e" />
     <array name="APKTOOL_DUMMY_24f" />
     <string-array name="device_entries">
-        <item>Pixel (sailfish)</item>
+        <item>Nexus 5x (bullhead)</item>
+        <item>Nexus 6P (angler)</item>
+        <item>PIxel (sailfish)</item>
         <item>Pixel XL (marlin)</item>
-        <item>PIxel 2 (walleye)</item>
+        <item>Pixel 2 (walleye)</item>
         <item>Pixel 2 XL (taimen)</item>
         <item>Pixel 3 (blueline)</item>
         <item>Pixel 3 XL (crosshatch)</item>
@@ -12480,6 +12482,7 @@
         <item>Pixel foldable(passport)</item>
     </string-array>
     <string-array name="device_entryvalues">
+        <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -12497,6 +12500,7 @@
         <item>15</item>
         <item>16</item>
         <item>17</item>
+        <item>18</item>
     </string-array>
     <string-array name="raw_entries">
         <item>@string/preview_auto</item>
@@ -12899,5 +12903,21 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+    </string-array>
+    <string-array name="lib_hex_blurpreview_entries">
+        <item>ON</item>
+        <item>Off (as in library)</item>
+    </string-array>
+    <string-array name="lib_hex_blurpreview_entryvalues">
+        <item>84048052</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="lib_hex_allunkndevices_entries">
+        <item>ON</item>
+        <item>Off (as in library)</item>
+    </string-array>
+    <string-array name="lib_hex_allunkndevices_entryvalues">
+        <item>28008052</item>
+        <item>0</item>
     </string-array>
 </resources>
