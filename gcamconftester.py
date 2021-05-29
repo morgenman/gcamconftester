@@ -16,7 +16,16 @@ logging.basicConfig(
 camera_folder = '/storage/self/primary/DCIM/Camera' #папка в которой сохраняются фото
 config_folder = '/storage/self/primary/ConfigsSettings8.2' #папка куда закидывать конфиги
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+def msg(name=None):
+    return '''
+    Использование:
+    python gcamconftester.py [-h] -c конфиг.xml [-k какой ключ перебирать] [-n количество значений для теста]
+    python gcamconftester.py [-h] -c конфиг.xml [-custom номер кастомного адреса] [-a адрес] [-v значения через двоеточие]
 
+    Пример:
+    python gcamconftester.py -c "8.2riv.xml" -k lib_sharpness_key -n 3
+    python gcamconftester.py -c "8.2riv.xml" --custom 2 -a 0de3694 -v 04008052:24008052:44008052
+        '''
 def adb_command(command):
     """
     Вызывает адб из папки adb/adb и выполняет command через него
@@ -214,11 +223,13 @@ if __name__ == "__main__":
     # </set>
     #logging.info("Разрешение экрана - {0}".format(get_screen_size()))
     #print(get_camera_id_from_input("a1.xml", "Ширик"))
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(usage=msg())
     group = parser.add_mutually_exclusive_group(required=True)
+    parser._optionals.title = 'Список аргументов'
+    parser._actions[0].help='Показать информацию для помощи'
     parser.add_argument("-c", "--config", required=True, help="Название конфига")
     group.add_argument("-k", "--key", required=False, help="Название ключа для перебора настроек")
-    parser.add_argument("-n", "--num", required=False, help="Количество значений для перебора")
+    parser.add_argument("-n", "--num", required=False, help="Количество значений для перебора (по умолчанию: 5)")
     group.add_argument("-custom", "--custom", required=False, help="Номер кастомного значения в патчере")
     parser.add_argument("-a", "--address", required=False, help="Адрес кастомного значения")
     parser.add_argument("-v", "--values", required=False, help="Кастомные значения через двоеточие")
