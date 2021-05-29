@@ -64,9 +64,6 @@ https://www.python.org/downloads/
 # Пример 3
 Так же можно тестить кастомные адреса и их значения
 
-```python gcamconftester.py -c имя_конфига --custom номер -a адрес -v значения_через_двоеточие```
-
-Пример:
 ```python gcamconftester.py -c "8.2riv.xml" --custom 2 -a 0de3694 -v 04008052:24008052:44008052```
 
 Это запишет в User Defined Value 2 адрес 0DE3694 и переберет значения 24008052,04008052,44008052
