@@ -54,6 +54,8 @@ https://www.python.org/downloads/
 # Пример 2
 ```python gcamconftester.py -c "8.2riv.xml" -k lib_sharpness_key -n 3```
 
+В этом случае перед сохранением конфига на телефоне камера должна уже стоять нужном модуле
+
 ![изображение](https://user-images.githubusercontent.com/2606215/119966049-97194900-bfb3-11eb-87cd-f7c2a418f705.png)
 
 Название ключа для теста можно узнать в camera_preferences.xml поискав по названию параметра в либпатчере и скопировать то что указано в android:key=
