@@ -16,15 +16,19 @@ logging.basicConfig(
 camera_folder = '/storage/self/primary/DCIM/Camera' #папка в которой сохраняются фото
 config_folder = '/storage/self/primary/ConfigsSettings8.2' #папка куда закидывать конфиги
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+
+
 def msg(name=None):
     return '''
     Использование:
     python gcamconftester.py [-h] -c конфиг.xml [-k какой ключ перебирать] [-n количество значений для теста]
     python gcamconftester.py [-h] -c конфиг.xml [-custom номер кастомного адреса] [-a адрес] [-v значения через двоеточие]
+    python gcamconftester.py [-h] -c конфиг.xml [-p название параметра в конфиге] [-l название модуля камеры] [-n количество значений для теста]
 
     Пример:
     python gcamconftester.py -c "8.2riv.xml" -k lib_sharpness_key -n 3
     python gcamconftester.py -c "8.2riv.xml" --custom 2 -a 0de3694 -v 04008052:24008052:44008052
+    python gcamconftester.py -c "8.2riv.xml" -p "Sharp Depth 2" -l "LDR"
         '''
 def adb_command(command):
     """
@@ -118,7 +122,7 @@ def wait_for_new_photo(folder, local=False):
         else:
             was = now
             time.sleep(1)
-    logging.error("Не могу найти новое фото...")
+    logging.error("Не могу найти новое фото...Скорее всего гкам вылетел :(")
     tap_shutter()
 
 def get_key_from_camera_preferences(config_key):
@@ -207,13 +211,37 @@ def get_camera_id_from_input(config_name, camera_name):
         tree = etree.parse(config_name)
         root = tree.getroot()
         camera_ids = [1, 2, 3, 4, 5, "ldr"]
-        for camera in camera_ids:
+        for idx, camera in enumerate(camera_ids):
             aux_search_string = ".//string[@name='pref_manual_aux_name_" + str(camera) + "_key']"
             aux_element = root.find(aux_search_string)
             if aux_element.text == camera_name:
-                return camera
+                return idx
     except IOError as e:
         logging.error("Не могу найти модуль с именем {0} в конфиге {1} - {2}".format(camera_name, config_name, e))
+
+def get_key_by_camera_and_name(camera_id, key_name):
+    """
+    Ищет ключ в camera_preferences.xml по camera_id и key_name
+    """
+    #patcher_prefixes = ["", "tele", "wide", "n4", "n5", "ldr"]
+    try:
+        tree = etree.parse("camera_preferences.xml")
+        logging.info("Ищу название ключа патчера для {0} (модуль {1})".format(key_name, camera_id))
+        root = tree.getroot()
+        search_string = ".//ListPreference[@android:title='" + key_name + "']"
+        key_element = root.findall(search_string, root.nsmap)
+        try:
+            key = key_element[camera_id].attrib.get('{http://schemas.android.com/apk/res/android}key')
+            return key
+        except IndexError as e:
+            logging.error("Не могу найти ключ - {0}".format(e))
+            exit()
+        except TypeError as e:
+            logging.error("Не могу найти модуль камеры - {0}".format(e))
+            exit()
+        #logging.info("Нашел нужный ключ для {0} - {1}".format(key_name, key_element))
+    except IOError as e:
+        logging.error("Не могу обработать camera_preferences.xml - %sn" % e)
 
 if __name__ == "__main__":
     #pref_aux_key - ид камеры 0-5 на какую переключится
@@ -225,15 +253,16 @@ if __name__ == "__main__":
     #     <string>21</string>
     # </set>
     #logging.info("Разрешение экрана - {0}".format(get_screen_size()))
-    #print(get_camera_id_from_input("a1.xml", "Ширик"))
     parser = argparse.ArgumentParser(usage=msg())
     group = parser.add_mutually_exclusive_group(required=True)
     parser._optionals.title = 'Список аргументов'
     parser._actions[0].help='Показать информацию для помощи'
-    parser.add_argument("-c", "--config", required=True, help="Название конфига")
-    group.add_argument("-k", "--key", required=False, help="Название ключа для перебора настроек")
+    parser.add_argument("-c", "--config", required=True, help="Имя конфига")
+    group.add_argument("-k", "--key", required=False, help="Название ключа для перебора настроек (Например: \"lib_sharpness_key\")")
+    parser.add_argument("-l", "--lens", required=False, help="Имя модуля камеры на котором тестировать патчер (Например: \"LDR\") (по умолчанию: 1х)")
+    group.add_argument("-p", "--parameter", required=False, help="Название параметра в патчере для которого проводить тесты (Например: \"Sharp Depth 2\")")
     parser.add_argument("-n", "--num", required=False, help="Количество значений для перебора (по умолчанию: 5)")
-    group.add_argument("-custom", "--custom", required=False, help="Номер кастомного значения в патчере")
+    group.add_argument("-custom", "--custom", required=False, help="Номер кастомного значения в патчере (от 1 до 12) в который вносить данные")
     parser.add_argument("-a", "--address", required=False, help="Адрес кастомного значения")
     parser.add_argument("-v", "--values", required=False, help="Кастомные значения через двоеточие")
     args = parser.parse_args()
@@ -268,6 +297,7 @@ if __name__ == "__main__":
             pull_last_photo(wait_for_new_photo(camera_folder), custom_addr, entry)
             time.sleep(1)
         exit()
+    
     config_name = args.config
     config_key = args.key
     num_values_to_test = 5 if not args.num else int(args.num)
@@ -276,6 +306,13 @@ if __name__ == "__main__":
     logging.info("Делаю копию конфига {0}".format(new_config_name))
     copyfile(config_name, new_config_name)
     config_name = new_config_name
+    if args.parameter:
+        if args.lens:
+            cam_id = get_camera_id_from_input(args.config, args.lens)
+        else:
+            cam_id = 0
+        find_and_write_to_xml(config_name, "pref_aux_key", str(cam_id))
+        config_key = get_key_by_camera_and_name(cam_id, args.parameter)
     logging.info("Буду подбирать значения ключа {0} для конфига {1}".format(config_key, config_name))
     entries, entryValues = get_key_from_camera_preferences(config_key)
     entries_hash = get_values_from_arrays(entries, entryValues)
