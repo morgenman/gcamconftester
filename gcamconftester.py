@@ -9,7 +9,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler("gcam.log"),
+        logging.FileHandler("gcam.log", encoding="utf-8"),
         logging.StreamHandler()
     ]
 )
@@ -170,7 +170,7 @@ def get_number_of_items_from_array(entries_hash, div):
     """
     num = len(entries_hash)
     if div >= num:
-        logging.warning("В этом массиве меньше {0} значений. Просто возьму все значения".format(div))
+        logging.warning("В этом массиве меньше {0} значений. Просто возьму все значения".format(div)) #TODO: переделай дебил
         div = num
     else:
         logging.info("Делю весь массив из {0} значений на {1} равных промежутков".format(num, div))
@@ -190,7 +190,10 @@ def find_and_write_to_xml(config_name, config_key, value):
         root = tree.getroot()
         config_search_string = ".//string[@name='" + config_key + "']"
         config_element = root.find(config_search_string)
-        logging.info("Текущее значение в конфиге - {0}. Меняю на {1}".format(config_element.text, value))
+        if config_element.text == value:
+            logging.info("Текущее значение для {0} совпадает с нужным {1}".format(config_key, config_element.text))
+            return
+        logging.info("Текущее значение для {0} = {1}. Меняю на {2}".format(config_key, config_element.text, value))
         if config_element is not None:
             config_element.text = value
             etree.ElementTree(root).write(config_name, pretty_print=True)
@@ -210,7 +213,7 @@ def get_camera_id_from_input(config_name, camera_name):
             if aux_element.text == camera_name:
                 return camera
     except IOError as e:
-        logging.error("Не могу найти модуль с именем {0} в конфиге {1}".format(camera_name, config_name))
+        logging.error("Не могу найти модуль с именем {0} в конфиге {1} - {2}".format(camera_name, config_name, e))
 
 if __name__ == "__main__":
     #pref_aux_key - ид камеры 0-5 на какую переключится
@@ -248,9 +251,11 @@ if __name__ == "__main__":
         logging.info("Делаю копию конфига {0}".format(new_config_name))
         copyfile(config_name, new_config_name)
         config_name = new_config_name
-        logging.info("Проверяю включен ли ключ {0} в конфиге".format(custom_value_key))
         find_and_write_to_xml(config_name, custom_value_key, "1") # Пишу lib_user_key_ для включения кастомного значения
-        find_and_write_to_xml(config_name, "pref_spiner_key", "6") #меняю стиль окна конфигов на 7 на всякий случай
+        try:
+            find_and_write_to_xml(config_name, "pref_spiner_key", "6") #меняю стиль окна конфигов на 7 на всякий случай
+        except AttributeError as e:
+            logging.error("Не могу найти ключ со стилем окна конфигов - {0}".format(e))
         for entry in custom_values:
             logging.info("Обрабатываю {0} = {1}".format(custom_addr_num, custom_addr))
             find_and_write_to_xml(config_name, custom_addr_num, custom_addr)
@@ -277,9 +282,11 @@ if __name__ == "__main__":
     entries_hash = entries_hash[:-1] #убирает Off значение из списка
     entries_hash = get_number_of_items_from_array(entries_hash, num_values_to_test)
     for entry in entries_hash:
-        logging.info("Обрабатываю {0} = {1} ({2})".format(config_key, entry[0], entry[1]))
         find_and_write_to_xml(config_name, config_key, entry[1]) 
-        find_and_write_to_xml(config_name, "pref_spiner_key", "6")       
+        try:
+            find_and_write_to_xml(config_name, "pref_spiner_key", "6") #меняю стиль окна конфигов на 7 на всякий случай
+        except AttributeError as e:
+            logging.error("Не могу найти ключ со стилем окна конфигов - {0}".format(e))    
         push_config(config_name)
         gcam_open_config()
         time.sleep(2)
