@@ -23,11 +23,11 @@
     <string name="lib_bigsharp_n4_key">0</string>
     <string name="pref_switch_to_previous_mode_command_string">-1</string>
     <string name="lib_brightnessin_n4_key">0</string>
-    <string name="lib_sharpenmedium_l1_key">00409C45</string>
+    <string name="lib_sharpenmedium_l1_key">CDCCDC3D</string>
     <string name="lib_sabre1_wide_key">0</string>
     <string name="lib_sabre1_ldr_key">0</string>
     <string name="lib_sharpenmediumw_l1_ldr_key">00409C45</string>
-    <string name="lib_sharpenverylow_l1_key">00409C45</string>
+    <string name="lib_sharpenverylow_l1_key">CDCCDC3D</string>
     <string name="lib_noisereducta2_ldr_key">0</string>
     <string name="lib_luma_l4_key">E003679E</string>
     <string name="lib_cg1_n4_key">0</string>
@@ -117,7 +117,7 @@
     <string name="lib_lumadhsabre_l2b_wide_key">0</string>
     <string name="lib_user_n5_value_3"></string>
     <string name="lib_user_n5_value_2"></string>
-    <string name="lib_sharpenverylow_l3_key">00409C45</string>
+    <string name="lib_sharpenverylow_l3_key">CDCCDC3D</string>
     <string name="lib_lumadlsabre_l4a_ldr_key">0</string>
     <string name="lib_user_n5_value_1"></string>
     <string name="lib_saturation2_ldr_key">0</string>
@@ -280,7 +280,7 @@
     <string name="lib_lumadlsabre_l5a_front_key">0</string>
     <string name="pref_noise_model_buttofront_key">-1</string>
     <string name="lib_lumadlsabre_l1a_n4_key">0</string>
-    <string name="lib_exposition_key">9A99C940</string>
+    <string name="lib_exposition_key">3333D340</string>
     <string name="lib_cg1_front_key">0</string>
     <string name="pref_manual_aux_name_1_key">1x</string>
     <string name="lib_noisereductsabre_ldr_key">0</string>
@@ -302,7 +302,7 @@
     <string name="lib_cg2_key">EAF1A772</string>
     <string name="lib_sharpenmedium_l1_front_key">0</string>
     <string name="lib_hdrrangeminus_n4_key">0</string>
-    <string name="lib_sharpenhigh_l1_key">00409C45</string>
+    <string name="lib_sharpenhigh_l1_key">CDCCDC3D</string>
     <string name="lib_spatialdenmi3_wide_key">0</string>
     <string name="lib_colormaplut_key">0</string>
     <string name="lib_zipper1_front_key">0</string>
@@ -424,7 +424,7 @@
     <string name="lib_user_curve_n5_14">0.969</string>
     <string name="pref_awb_front_key">24</string>
     <string name="lib_lumadmsabre_l3_n5_key">0</string>
-    <string name="lib_sharpenhigh_l3_key">00409C45</string>
+    <string name="lib_sharpenhigh_l3_key">CDCCDC3D</string>
     <string name="pref_fine_tuning_ldr">1</string>
     <string name="lib_cg4_key">0</string>
     <string name="lib_cg3_tele_key">0</string>
@@ -433,7 +433,7 @@
     <string name="lib_hdrsabrev2_n5_key">0</string>
     <string name="lib_sharpdistrib3_front_key">0</string>
     <string name="lib_lumadhsabre_l3b_tele_key">0</string>
-    <string name="lib_sharpenmedium_l3_key">00409C45</string>
+    <string name="lib_sharpenmedium_l3_key">CDCCDC3D</string>
     <string name="lib_green_n4_key">0</string>
     <string name="pref_fine_tuning">1</string>
     <string name="lib_lumadhsabre_l1b_ldr_key">0</string>
@@ -579,7 +579,7 @@
     <string name="pref_grgb_ldr_key">1</string>
     <string name="lib_lumadhsabre_l2b_key">0</string>
     <string name="lib_by_tele_key">0</string>
-    <string name="lib_sharpness_key">08F8E7D2</string>
+    <string name="lib_sharpness_key">08FEE7D2</string>
     <string name="lib_lumadlsabre_l2a_n5_key">0</string>
     <string name="lib_smoothness_tele_key">0</string>
     <string name="lib_sharpenmedium_l2_tele_key">0</string>
@@ -660,7 +660,7 @@
     <string name="audiobitrate_120_key">0</string>
     <string name="lib_hdrsabrev1_ldr_key">0</string>
     <string name="lib_sabre2_wide_key">0</string>
-    <string name="lib_sharpenhighw_l2_key">00409C45</string>
+    <string name="lib_sharpenhighw_l2_key">CDCCDC3D</string>
     <string name="pref_gammacurve_preset_n5_key">0</string>
     <string name="lib_saturation_front_key">0</string>
     <string name="lib_sharpenloww_l2_wide_key">0</string>
@@ -671,7 +671,7 @@
     <string name="pref_model_ldr_key">14</string>
     <string name="lib_user_front_value_12"></string>
     <string name="lib_user_front_value_11"></string>
-    <string name="lib_sharpenveryloww_l3_key">00409C45</string>
+    <string name="lib_sharpenveryloww_l3_key">CDCCDC3D</string>
     <string name="lib_curve_pdarks_n4_key">333</string>
     <string name="lib_OemNoise_key">1</string>
     <string name="lib_expocomp_key">9968A772</string>
@@ -701,13 +701,13 @@
     <string name="lib_sect_pwhites_n5_key">333</string>
     <string name="pref_noise_model_main_key">28</string>
     <string name="bb_key">1.6702</string>
-    <string name="lib_sharpenlow_l2_key">00409C45</string>
+    <string name="lib_sharpenlow_l2_key">CDCCDC3D</string>
     <string name="lib_sect_pdarks_ldr_key">333</string>
     <string name="lib_coefsabrtunoise_ldr_key">0</string>
     <string name="lib_chromalow_l4_key">0</string>
     <string name="pref_model_wide_key">14</string>
     <string name="pref_processing_col">1</string>
-    <string name="lib_sharpenmediumw_l1_key">00409C45</string>
+    <string name="lib_sharpenmediumw_l1_key">CDCCDC3D</string>
     <string name="pref_has_checked_ornament_mode">0</string>
     <string name="lib_smoothness_ldr_key">0</string>
     <string name="lib_gamma_darks_n4_key">-6</string>
@@ -832,7 +832,7 @@
     <string name="lib_user_front_value_9"></string>
     <string name="lib_lumadmsabre_l3a_key">0</string>
     <string name="lib_exposure25_front_key">0</string>
-    <string name="lib_sharpenmediumw_l3_key">00409C45</string>
+    <string name="lib_sharpenmediumw_l3_key">CDCCDC3D</string>
     <string name="lib_grid_ldr_key">0</string>
     <string name="lib_lumadhsabre_l3a_n4_key">0</string>
     <string name="lib_user_front_value_1"></string>
@@ -1119,8 +1119,8 @@
     <string name="lib_contrast_1_key">0</string>
     <string name="lib_luma_n5_key">080080D2</string>
     <string name="lib_gamma_key">1</string>
-    <string name="lib_sharpenveryloww_l1_key">00409C45</string>
-    <string name="lib_sharpenloww_l1_key">00409C45</string>
+    <string name="lib_sharpenveryloww_l1_key">CDCCDC3D</string>
+    <string name="lib_sharpenloww_l1_key">CDCCDC3D</string>
     <string name="lib_bettercolwiener_key">01106B1E</string>
     <string name="model_tune_main_key">4</string>
     <string name="gb_n4_key">0.086</string>
@@ -1209,7 +1209,7 @@
     <string name="lib_lumadmsabre_l2a_front_key">0</string>
     <string name="lib_sabrburmerge2_ldr_key">0</string>
     <string name="pref_manual_aux_name_4_key">ID4</string>
-    <string name="lib_sharpenverylow_l2_key">00409C45</string>
+    <string name="lib_sharpenverylow_l2_key">CDCCDC3D</string>
     <string name="lib_ldr_n4_key">0</string>
     <string name="lib_contrast_1_wide_key">0</string>
     <string name="lib_blackness_ldr_key">0</string>
@@ -1263,7 +1263,7 @@
     <string name="lib_blackdensity_n4_key">0</string>
     <string name="lib_user_addr_10">010AE0D4</string>
     <string name="lib_brightnessin_n5_key">0</string>
-    <string name="lib_sharpenmedium_l2_key">00409C45</string>
+    <string name="lib_sharpenmedium_l2_key">CDCCDC3D</string>
     <string name="pref_c2a_key">1</string>
     <string name="lib_chromamicro_tele_key">0</string>
     <string name="pref_settings_color_ldr">1</string>
@@ -1295,7 +1295,7 @@
     <string name="lib_blackdensity_ldr_key">08E8A772</string>
     <string name="lib_lumadhsabre_l5_ldr_key">00000000</string>
     <string name="lib_gamma_pdarks_ldr_key">333</string>
-    <string name="lib_sharpenloww_l3_key">00409C45</string>
+    <string name="lib_sharpenloww_l3_key">CDCCDC3D</string>
     <string name="lib_sharpenveryloww_l1_tele_key">0</string>
     <string name="lib_lumadmsabre_l4a_key">0</string>
     <string name="lib_sharpdistribr2_n5_key">0</string>
@@ -1592,7 +1592,7 @@
     <string name="lib_user_curve_ldr_12">0.88843503</string>
     <string name="lib_user_curve_ldr_13">0.92700954</string>
     <string name="lib_blurpreview_front_key">0</string>
-    <string name="lib_sharpenhigh_l2_key">00409C45</string>
+    <string name="lib_sharpenhigh_l2_key">CDCCDC3D</string>
     <string name="lib_sharpsmoothing_key">000080BF</string>
     <string name="lib_cg1_key">0</string>
     <string name="lib_cg4_ldr_key">0</string>
@@ -1711,7 +1711,7 @@
     <string name="pref_small_levels">1</string>
     <string name="pref_manual_aux_name_2_key">2x</string>
     <string name="lib_volumeprocessing1_wide_key">0D10271E</string>
-    <string name="pref_small_slevels">0</string>
+    <string name="pref_small_slevels">1</string>
     <string name="lib_curve_whites_key">15</string>
     <string name="pref_manual_cameraid_back_2_key">3</string>
     <string name="lib_shallowsharp_n5_key">0</string>
@@ -1797,7 +1797,7 @@
     <string name="lib_user_wide_value_9"></string>
     <string name="lib_sharpenmediumw_l2_ldr_key">00409C45</string>
     <string name="lib_lumadlsabre_l4_key">00000000</string>
-    <string name="pref_camera_dirty_lens_history_key0">-2.4168665|-5.8281507|-6.208039|-5.899418|-5.1113763|-5.1929464|-2.6844065|-2.2151084|-6.3246717|-2.318819|-4.3807373|-4.478455|-4.609061|1.1467689|-0.057003297|-3.4249165|-3.3097894|-1.3444797|-1.900961|-2.2303784|-6.1396103|0.007037312|-1.5415151|0.072026774|-1.4946511|-0.79615015|-0.59755266|-0.678462|-2.6401184|-1.1451513|-1.5361358|-1.354281|</string>
+    <string name="pref_camera_dirty_lens_history_key0">-4.8258195|-2.0379698|-3.9462128|-5.6771803|-9.439949|-2.367766|-4.3178763|-6.179245|-3.123377|-4.5613112|-7.400321|-4.2261043|-4.801315|-3.172596|-4.112547|-6.780833|-3.559302|-3.9924786|0.86353123|-5.1897373|3.2071064|0.4696915|-6.687527|-5.3124113|-4.1228538|-2.741496|-4.8459616|-5.5820737|-4.7065897|-6.999823|-2.5093865|-2.5429192|</string>
     <string name="pref_awb_wide_key">19</string>
     <string name="pref_camera_dirty_lens_history_key1"></string>
     <string name="opmode_video_key">32772</string>
@@ -1834,12 +1834,12 @@
     <string name="lib_green_tele_key">0</string>
     <string name="lib_lumadmsabre_l4_tele_key">00000000</string>
     <string name="pref_hdr_dbl_n4_key">0</string>
-    <string name="lib_sharpenveryloww_l2_key">00409C45</string>
+    <string name="lib_sharpenveryloww_l2_key">CDCCDC3D</string>
     <string name="lib_exposure15_wide_key">0</string>
     <string name="lib_sharpenmedium_l1_n4_key">0</string>
     <string name="lib_user_gamma_tele_0">0.00406</string>
     <string name="lib_sharpdistrib1_n5_key">0</string>
-    <string name="lib_sharpenhighw_l1_key">00409C45</string>
+    <string name="lib_sharpenhighw_l1_key">CDCCDC3D</string>
     <string name="lib_user_gamma_tele_2">0.04487</string>
     <string name="lib_lumadhsabre_l3a_front_key">0</string>
     <string name="pref_gammacurve_preset_n4_key">0</string>
@@ -2060,7 +2060,7 @@
     <string name="pref_gammacurve_preset_wide_key">0</string>
     <string name="lib_blurpreview_n4_key">0</string>
     <string name="lib_blackness_n4_key">0</string>
-    <string name="lib_sharpenlow_l1_key">00409C45</string>
+    <string name="lib_sharpenlow_l1_key">CDCCDC3D</string>
     <string name="lib_lumadenoise3_wide_key">0</string>
     <string name="rg_ldr_key">-0.4732</string>
     <string name="lib_volumeprocessing2_tele_key">0</string>
@@ -2241,7 +2241,7 @@
     <string name="lib_vignettec_front_key">0</string>
     <boolean name="gcam.zsl_ns" value="false" />
     <string name="bb_tele_key">1.83</string>
-    <string name="lib_sharpenmediumw_l2_key">00409C45</string>
+    <string name="lib_sharpenmediumw_l2_key">CDCCDC3D</string>
     <string name="lib_user_gamma_10">0.31546</string>
     <string name="lib_bfchromamin_ldr_key">0</string>
     <string name="lib_lumadhsabre_l1_n4_key">0</string>
@@ -2257,7 +2257,7 @@
     <string name="lib_user_gamma_16">0.56095</string>
     <string name="lib_user_gamma_17">0.59740</string>
     <string name="lib_user_gamma_18">0.63169</string>
-    <string name="lib_sharpenhighw_l3_key">00409C45</string>
+    <string name="lib_sharpenhighw_l3_key">CDCCDC3D</string>
     <string name="lib_user_gamma_19">0.66379</string>
     <string name="lib_sharpenmediumw_l3_front_key">0</string>
     <string name="lib_depth2_wide_key">04102a1e</string>
@@ -2273,7 +2273,7 @@
     <string name="lib_curve_darks_tele_key">-6</string>
     <string name="lib_noisereductao_n4_key">0</string>
     <string name="lib_smoothness_n4_key">0</string>
-    <string name="lib_sharpenlow_l3_key">00409C45</string>
+    <string name="lib_sharpenlow_l3_key">CDCCDC3D</string>
     <string name="lib_coefsabrtunoise_tele_key">0</string>
     <string name="lib_gamma_whites_ldr_key">15</string>
     <string name="lib_user_gamma_ldr_key">1</string>
@@ -2382,7 +2382,7 @@
     <string name="lib_user_n4_addr_9"></string>
     <string name="lib_user_n4_addr_4"></string>
     <string name="lib_volumeprocessing1_key">0D10271E</string>
-    <string name="lib_sharpenloww_l2_key">00409C45</string>
+    <string name="lib_sharpenloww_l2_key">CDCCDC3D</string>
     <string name="lib_lumadmsabre_l5a_wide_key">0</string>
     <string name="lib_lumadhsabre_l5_key">00000000</string>
     <string name="lib_user_n4_addr_3"></string>

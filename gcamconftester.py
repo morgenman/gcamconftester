@@ -47,14 +47,14 @@ def tap_shutter():
 def gcam_open_config():
     logging.info("Восстанавливаю конфиг в гкаме")
     scr_size = get_screen_size()
-    w_conf = int(int(scr_size[0])/3)
-    h_conf = int(int(scr_size[1])*0.8)
+    w_conf = int(348 / 1080 * int(scr_size[0]))
+    h_conf = int(1903 / 2400 * int(scr_size[1]))
     logging.info("Даблтап в {0} {1} для открытия меню конфигов".format(w_conf, h_conf))
     adb_command(f"shell input tap {w_conf} {h_conf} & sleep 0.1; input tap {w_conf} {h_conf}")
     #adb_command('shell input tap 730 1930 & sleep 0.1; input tap 730 1930')
     time.sleep(1)
-    w_ok = int(int(scr_size[0]) - int(int(scr_size[0])/5)) #это пиздец какой-то
-    h_ok = int(int(scr_size[1])*0.57)
+    w_ok = int(881 / 1080 * int(scr_size[0]))
+    h_ok = int(1381 / 2400 * int(scr_size[1]))
     logging.info("Жму в точку {0} {1} для восстановления конфига".format(w_ok, h_ok))
     adb_command(f"shell input tap {w_ok} {h_ok}")
 
@@ -148,13 +148,8 @@ def get_values_from_arrays(entries, entryValues):
     except IOError as e:
         logging.error("Не могу обработать arrays.xml - %sn" % e)
 
-    entries_array = []
-    entryValues_array = []
-    for element in entries_element:
-        entries_array.append(element.text)
-    
-    for element in entryValues_element:
-        entryValues_array.append(element.text)
+    entries_array = [element.text for element in entries_element]
+    entryValues_array = [element.text for element in entryValues_element]
     
     entries_hash = np.array(list(zip(entries_array,entryValues_array)))
     logging.info("Нашел список значений для ключа: от {0} ({1}) до {2} ({3})".format(entries_array[0], entryValues_array[0], entries_array[-2], entryValues_array[-2]))
@@ -244,6 +239,7 @@ if __name__ == "__main__":
         config_name = new_config_name
         logging.info("Проверяю включен ли ключ {0} в конфиге".format(custom_value_key))
         find_and_write_to_xml(config_name, custom_value_key, "1") # Пишу lib_user_key_ для включения кастомного значения
+        find_and_write_to_xml(config_name, "pref_spiner_key", "6") #меняю стиль окна конфигов на 7 на всякий случай
         for entry in custom_values:
             logging.info("Обрабатываю {0} = {1}".format(custom_addr_num, custom_addr))
             find_and_write_to_xml(config_name, custom_addr_num, custom_addr)
@@ -271,7 +267,8 @@ if __name__ == "__main__":
     entries_hash = get_number_of_items_from_array(entries_hash, num_values_to_test)
     for entry in entries_hash:
         logging.info("Обрабатываю {0} = {1} ({2})".format(config_key, entry[0], entry[1]))
-        find_and_write_to_xml(config_name, config_key, entry[1])        
+        find_and_write_to_xml(config_name, config_key, entry[1]) 
+        find_and_write_to_xml(config_name, "pref_spiner_key", "6")       
         push_config(config_name)
         gcam_open_config()
         time.sleep(2)
