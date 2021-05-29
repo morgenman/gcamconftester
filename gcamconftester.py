@@ -307,10 +307,7 @@ if __name__ == "__main__":
     copyfile(config_name, new_config_name)
     config_name = new_config_name
     if args.parameter:
-        if args.lens:
-            cam_id = get_camera_id_from_input(args.config, args.lens)
-        else:
-            cam_id = 0
+        cam_id = get_camera_id_from_input(args.config, args.lens) if args.lens else 0
         find_and_write_to_xml(config_name, "pref_aux_key", str(cam_id))
         config_key = get_key_by_camera_and_name(cam_id, args.parameter)
     logging.info("Буду подбирать значения ключа {0} для конфига {1}".format(config_key, config_name))
