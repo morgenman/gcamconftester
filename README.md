@@ -10,14 +10,21 @@ https://www.python.org/downloads/
 8) Ставим на телефоне время выключения экрана на подольше, запускаем гкам и ставим телефон на штатив или опираем на тапок
 # Использование
 ```
-usage: gcamconftester.py [-h] -c CONFIG [-k KEY] [-n NUM] [-custom CUSTOM] [-a ADDRESS] [-v VALUES]
+Использование:
+  python gcamconftester.py [-h] -c конфиг.xml [-k какой ключ перебирать] [-n количество значений для теста]
+  python gcamconftester.py [-h] -c конфиг.xml [-custom номер кастомного адреса] [-a адрес] [-v значения через двоеточие]
 
-optional arguments:
-  -h, --help            show this help message and exit
+Пример:
+  python gcamconftester.py -c "8.2riv.xml" -k lib_sharpness_key -n 3
+  python gcamconftester.py -c "8.2riv.xml" --custom 2 -a 0de3694 -v 04008052:24008052:44008052
+
+
+Список аргументов:
+  -h, --help            Показать информацию для помощи
   -c CONFIG, --config CONFIG
                         Название конфига
   -k KEY, --key KEY     Название ключа для перебора настроек
-  -n NUM, --num NUM     Количество значений для перебора
+  -n NUM, --num NUM     Количество значений для перебора (по умолчанию: 5)
   -custom CUSTOM, --custom CUSTOM
                         Номер кастомного значения в патчере
   -a ADDRESS, --address ADDRESS
@@ -30,8 +37,6 @@ optional arguments:
 ```python gcamconftester.py -c "8.2riv.xml" -k lib_sharpness_key -n 3```
 
 ![изображение](https://user-images.githubusercontent.com/2606215/119966049-97194900-bfb3-11eb-87cd-f7c2a418f705.png)
-
-Если количество значений для теста не указано, то будут дефолтные 5
 
 Название ключа для теста можно узнать в camera_preferences.xml поискав по названию параметра в либпатчере и скопировать то что указано в android:key=
 
