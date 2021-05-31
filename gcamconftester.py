@@ -79,7 +79,7 @@ def gcam_push_config(config_name):
     logging.info("Перезапускаю гкам {0}".format(gcam_package))
     adb_command(f'shell am force-stop {gcam_package}')
     adb_command(f'shell am start -n {gcam_package}/com.google.android.apps.camera.legacy.app.activity.main.CameraActivity')
-    time.sleep(1)
+    time.sleep(2)
 
 def push_config(config_name):
     """
@@ -116,12 +116,12 @@ def wait_for_new_photo(folder, local=False):
     """
     logging.info("Жду появления нового фото")
     was = get_last_modified_file(folder, local)
-    for i in range(20):
+    for i in range(30):
         now = get_last_modified_file(folder, local)
         if now != was:
             logging.info("Новое фото найдено: {0}".format(now))
             logging.info('Жду окончания обработки фото...')
-            for j in range(10):
+            for j in range(1):
                 was = now
                 now = get_last_modified_file(folder, local)
                 if now != was:
@@ -326,7 +326,8 @@ if __name__ == "__main__":
     entries_hash = get_values_from_arrays(entries, entryValues)
     entries_hash = entries_hash[:-1] #убирает Off значение из списка
     entries_hash = get_number_of_items_from_array(entries_hash, num_values_to_test)
-    for entry in entries_hash:
+    for id, entry in enumerate(entries_hash):
+        logging.info("Обрабатываю {0} [{1} из {2}]".format(str(entry[0]), str(id), str(num_values_to_test)))
         find_and_write_to_xml(config_name, config_key, entry[1]) 
         # try:
         #     find_and_write_to_xml(config_name, "pref_spiner_key", "6") #меняю стиль окна конфигов на 7 на всякий случай
