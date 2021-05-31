@@ -796,7 +796,7 @@
     <string name="lib_smoothingnew_wide_key">0</string>
     <string name="lib_lumadhsabre_l2b_n4_key">0</string>
     <string name="lib_blackness_key">0</string>
-    <string name="lib_user_key_1">0</string>
+    <string name="lib_user_key_1">1</string>
     <string name="lib_smoothingnew_tele_key">0</string>
     <string name="lib_lumadmsabre_l1b_tele_key">0</string>
     <string name="lib_darkenlight_tele_key">0</string>
@@ -1797,7 +1797,7 @@
     <string name="lib_user_wide_value_9"></string>
     <string name="lib_sharpenmediumw_l2_ldr_key">00409C45</string>
     <string name="lib_lumadlsabre_l4_key">CDCC8C3F</string>
-    <string name="pref_camera_dirty_lens_history_key0">-3.2698495|-0.45050287|-3.4597178|-2.9682622|-3.5143776|-1.4165022|-1.1417357|-1.9810593|0.4948838|1.5610291|-2.8087552|-3.7821672|-3.8036106|-2.6115441|-4.664124|-6.1294866|-3.432037|-6.5127687|-3.1749384|-3.9639695|-3.3068314|-4.896587|-7.692802|-6.8636456|-7.465647|-3.6324406|-2.4831681|-1.6118037|-6.162585|1.5351896|-3.4839344|-2.8010807|</string>
+    <string name="pref_camera_dirty_lens_history_key0">-0.45050287|-3.4597178|-2.9682622|-3.5143776|-1.4165022|-1.1417357|-1.9810593|0.4948838|1.5610291|-2.8087552|-3.7821672|-3.8036106|-2.6115441|-4.664124|-6.1294866|-3.432037|-6.5127687|-3.1749384|-3.9639695|-3.3068314|-4.896587|-7.692802|-6.8636456|-7.465647|-3.6324406|-2.4831681|-1.6118037|-6.162585|1.5351896|-3.4839344|-2.8010807|-2.451375|</string>
     <string name="pref_awb_wide_key">19</string>
     <string name="pref_camera_dirty_lens_history_key1"></string>
     <string name="opmode_video_key">32772</string>

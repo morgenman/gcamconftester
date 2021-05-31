@@ -133,7 +133,6 @@ def wait_for_new_photo(folder, local=False):
             was = now
             time.sleep(1)
     logging.error("Не могу найти новое фото...Скорее всего гкам вылетел :(")
-    tap_shutter()
 
 def get_key_from_camera_preferences(config_key):
     """
@@ -184,16 +183,16 @@ def get_number_of_items_from_array(entries_hash, div):
     """
     num = len(entries_hash)
     if div >= num:
-        logging.warning("В этом массиве меньше {0} значений. Просто возьму все значения".format(div)) #TODO: переделай дебил
-        div = num
+        logging.warning("В массиве всего {0} значений что меньше введенного числа {1}. Просто возьму все значения".format(num, div))
+        return np.array(entries_hash)
     else:
         logging.info("Делю весь массив из {0} значений на {1} равных промежутков".format(num, div))
-    entries_hash_count = [num // div + (1 if x < num % div else 0)  for x in range (div)]
-    entries_hash_count = np.cumsum(entries_hash_count)
-    entries_hash_count = np.insert(entries_hash_count, 0, 1)
-    logging.info("Магические числа {0}".format(entries_hash_count-1))
-    entries_hash = np.array(entries_hash)
-    return entries_hash[entries_hash_count-1]
+        entries_hash_count = [num // div + (1 if x < num % div else 0)  for x in range (div)]
+        entries_hash_count = np.cumsum(entries_hash_count)
+        entries_hash_count = np.insert(entries_hash_count, 0, 1)
+        logging.info("Магические числа {0}".format(entries_hash_count-1))
+        entries_hash = np.array(entries_hash)
+        return entries_hash[entries_hash_count-1]
 
 def find_and_write_to_xml(config_name, config_key, value):
     """
@@ -327,7 +326,7 @@ if __name__ == "__main__":
     entries_hash = entries_hash[:-1] #убирает Off значение из списка
     entries_hash = get_number_of_items_from_array(entries_hash, num_values_to_test)
     for id, entry in enumerate(entries_hash):
-        logging.info("Обрабатываю {0} [{1} из {2}]".format(str(entry[0]), str(id), str(num_values_to_test)))
+        logging.info("Обрабатываю {0} [{1} из {2}]".format(str(entry[0]), str(id), str(len(entries_hash))))
         find_and_write_to_xml(config_name, config_key, entry[1]) 
         # try:
         #     find_and_write_to_xml(config_name, "pref_spiner_key", "6") #меняю стиль окна конфигов на 7 на всякий случай
