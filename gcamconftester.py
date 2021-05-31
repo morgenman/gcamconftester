@@ -15,6 +15,7 @@ logging.basicConfig(
 )
 camera_folder = '/storage/self/primary/DCIM/Camera' #папка в которой сохраняются фото
 config_folder = '/storage/self/primary/ConfigsSettings8.2' #папка куда закидывать конфиги
+gcam_package = 'com.google.android.GoogleCameraEng'
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 
@@ -70,6 +71,15 @@ def gcam_open_config():
     h_ok = int(1381 / 2400 * int(scr_size[1]))
     logging.info("Жму в точку {0} {1} для восстановления конфига".format(w_ok, h_ok))
     adb_command(f"shell input tap {w_ok} {h_ok}")
+
+def gcam_push_config(config_name):
+    adb_command('root')
+    logging.info("Закидываю конфиг")
+    adb_command(f'push {config_name} /data/data/{gcam_package}/shared_prefs/{gcam_package}_preferences.xml')
+    logging.info("Перезапускаю гкам {0}".format(gcam_package))
+    adb_command(f'shell am force-stop {gcam_package}')
+    adb_command(f'shell am start -n {gcam_package}/com.google.android.apps.camera.legacy.app.activity.main.CameraActivity')
+    time.sleep(1)
 
 def push_config(config_name):
     """
@@ -281,17 +291,18 @@ if __name__ == "__main__":
         copyfile(config_name, new_config_name)
         config_name = new_config_name
         find_and_write_to_xml(config_name, custom_value_key, "1") # Пишу lib_user_key_ для включения кастомного значения
-        try:
-            find_and_write_to_xml(config_name, "pref_spiner_key", "6") #меняю стиль окна конфигов на 7 на всякий случай
-        except AttributeError as e:
-            logging.error("Не могу найти ключ со стилем окна конфигов - {0}".format(e))
+        # try:
+        #     find_and_write_to_xml(config_name, "pref_spiner_key", "6") #меняю стиль окна конфигов на 7 на всякий случай
+        # except AttributeError as e:
+        #     logging.error("Не могу найти ключ со стилем окна конфигов - {0}".format(e))
         for entry in custom_values:
             logging.info("Обрабатываю {0} = {1}".format(custom_addr_num, custom_addr))
             find_and_write_to_xml(config_name, custom_addr_num, custom_addr)
             logging.info("Обрабатываю {0} = {1}".format(custom_value_num, entry))
             find_and_write_to_xml(config_name, custom_value_num, entry)
-            push_config(config_name)
-            gcam_open_config()
+            #push_config(config_name)
+            #gcam_open_config()
+            gcam_push_config(config_name)
             time.sleep(2)
             tap_shutter()
             pull_last_photo(wait_for_new_photo(camera_folder), custom_addr, entry)
@@ -317,12 +328,13 @@ if __name__ == "__main__":
     entries_hash = get_number_of_items_from_array(entries_hash, num_values_to_test)
     for entry in entries_hash:
         find_and_write_to_xml(config_name, config_key, entry[1]) 
-        try:
-            find_and_write_to_xml(config_name, "pref_spiner_key", "6") #меняю стиль окна конфигов на 7 на всякий случай
-        except AttributeError as e:
-            logging.error("Не могу найти ключ со стилем окна конфигов - {0}".format(e))    
-        push_config(config_name)
-        gcam_open_config()
+        # try:
+        #     find_and_write_to_xml(config_name, "pref_spiner_key", "6") #меняю стиль окна конфигов на 7 на всякий случай
+        # except AttributeError as e:
+        #     logging.error("Не могу найти ключ со стилем окна конфигов - {0}".format(e))    
+        #push_config(config_name)
+        #gcam_open_config()
+        gcam_push_config(config_name)
         time.sleep(2)
         tap_shutter()
         #pull_last_photo(get_last_modified_file(camera_folder), config_key, entry[0])
