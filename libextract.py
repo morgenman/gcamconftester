@@ -1,4 +1,4 @@
-import struct, binascii, mmap
+import struct, binascii, mmap, sys
 import numpy as np
 
 def get_data_offset(tuned_file_name):
@@ -10,6 +10,9 @@ def get_data_offset(tuned_file_name):
     try:
         with open(tuned_file_name, "rb") as f:
             mm = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ) 
+            index = mm.find("1.1.".encode(), 0)
+            if index != -1:
+                raise NotImplementedError("Либы от снап845 и ему подобных на данный момент не поддерживаются")
             mm.seek(192, 0) #оффсет даты всегда будет через C0 (192) от начала файла
             return int.from_bytes(mm.read(4), "little")
     except Exception as e:
@@ -74,7 +77,7 @@ def decode_awb(hexdata):
     hexdata = [i for i in hexdata if not any([e for e in filter_hex if e in i])] #удаление мусора по фильтру
     awb_float = [struct.unpack('<f', binascii.unhexlify(value)) for value in hexdata] #перевод из хекса во флоат
     awb_float = [ '%.6f' % elem for elem in awb_float] #оставляю 6 знаков после запятой
-    #awb_float = list(zip(awb_float[0::2], awb_float[1::2])) #хз надо ли
+    awb_float = list(zip(awb_float[0::2], awb_float[1::2])) #хз надо ли
     return awb_float
 
 
@@ -103,13 +106,13 @@ def decode_cct(hexdata):
     return cct_float
 
 if __name__ == "__main__":
-    tuned_file_name = "com.qti.tuned.j20c_ofilm_imx682_wide_global.bin"
+    tuned_file_name = sys.argv[1] if len(sys.argv) > 1 else "com.qti.tuned.j20c_ofilm_imx682_wide_global.bin"
     data_offset = get_data_offset(tuned_file_name)
     cc13_offsets = get_offsets_and_lengths(tuned_file_name, "mod_cc13_cct_data")
     cc12_offsets = get_offsets_and_lengths(tuned_file_name, "mod_cc12_cct_data")
     refptv1_offset = get_offsets_and_lengths(tuned_file_name, "refPtV1")
     hex_awb = extract_data_by_offsets(tuned_file_name, data_offset, refptv1_offset)
-    #print(decode_awb(hex_awb))
+    print(decode_awb(hex_awb))
     cct13 = decode_cct(extract_data_by_offsets(tuned_file_name, data_offset, cc13_offsets))
     cct12 = decode_cct(extract_data_by_offsets(tuned_file_name, data_offset, cc12_offsets))
     cct = cct13 + cct12

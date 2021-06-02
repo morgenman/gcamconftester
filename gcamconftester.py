@@ -1,5 +1,5 @@
 from lxml import etree
-import os, sys, math, logging, subprocess, re, glob, time, argparse
+import os, sys, math, logging, subprocess, re, glob, time, argparse, libextract
 import numpy as np  
 from sys import argv
 from pathlib import Path
@@ -25,12 +25,15 @@ def msg(name=None):
     python gcamconftester.py [-h] -c конфиг.xml [-k какой ключ перебирать] [-n количество значений для теста]
     python gcamconftester.py [-h] -c конфиг.xml [-custom номер кастомного адреса] [-a адрес] [-v значения через двоеточие]
     python gcamconftester.py [-h] -c конфиг.xml [-p название параметра в конфиге] [-l название модуля камеры] [-n количество значений для теста]
+    python gcamconftester.py [-h] -c конфиг.xml [-cct tuned_либа_из_системы]
 
     Пример:
     python gcamconftester.py -c "8.2riv.xml" -k lib_sharpness_key -n 3
     python gcamconftester.py -c "8.2riv.xml" --custom 2 -a 0de3694 -v 04008052:24008052:44008052
     python gcamconftester.py -c "8.2riv.xml" -p "Sharp Depth 2" -l "LDR"
-        '''
+    python gcamconftester.py -c "8.2riv.xml" --cct com.qti.tuned.j20c_ofilm_imx682_wide_global.bin
+    '''
+
 def adb_command(command):
     """
     Вызывает адб из папки adb/adb и выполняет command через него
@@ -95,7 +98,7 @@ def pull_last_photo(filename, config_key, value):
     """
     Path("{0}".format(config_key)).mkdir(parents=True, exist_ok=True)
     logging.info("Выгружаю фото с телефона в папку {0}".format(config_key))
-    adb_command(f'pull {filename} {config_key}\{value.replace(" ", "")}.jpg')
+    adb_command(f'pull {filename} {config_key}\{str(value).replace(" ", "")}.jpg')
 
 def get_last_modified_file(folder, local=False):
     """
@@ -121,7 +124,7 @@ def wait_for_new_photo(folder, local=False):
         if now != was:
             logging.info("Новое фото найдено: {0}".format(now))
             logging.info('Жду окончания обработки фото...')
-            for j in range(1):
+            for j in range(2):
                 was = now
                 now = get_last_modified_file(folder, local)
                 if now != was:
@@ -291,6 +294,7 @@ if __name__ == "__main__":
     group.add_argument("-custom", "--custom", required=False, help="Номер кастомного значения в патчере (от 1 до 12) в который вносить данные")
     parser.add_argument("-a", "--address", required=False, help="Адрес кастомного значения")
     parser.add_argument("-v", "--values", required=False, help="Кастомные значения через двоеточие")
+    group.add_argument("-cct", "--cct", required=False, help="Название com.qti.tuned либы вытащенной из системы для извлечения и перебора ССТ. Эта либа должна лежать в папке рядом со скриптом")
     args = parser.parse_args()
     if args.custom and (args.address is None or args.values is None):
         parser.error("Для работы --custom нужны --address адрес и --values значения")
@@ -311,10 +315,10 @@ if __name__ == "__main__":
         #     find_and_write_to_xml(config_name, "pref_spiner_key", "6") #меняю стиль окна конфигов на 7 на всякий случай
         # except AttributeError as e:
         #     logging.error("Не могу найти ключ со стилем окна конфигов - {0}".format(e))
-        for entry in custom_values:
+        for id, entry in enumerate(custom_values):
             logging.info("Обрабатываю {0} = {1}".format(custom_addr_num, custom_addr))
             find_and_write_to_xml(config_name, custom_addr_num, custom_addr)
-            logging.info("Обрабатываю {0} = {1}".format(custom_value_num, entry))
+            logging.info("Обрабатываю {0} = {1} [{2} из {3}]".format(custom_value_num, entry, str(id+1), len(custom_values)))
             find_and_write_to_xml(config_name, custom_value_num, entry)
             #push_config(config_name)
             #gcam_open_config()
@@ -324,7 +328,33 @@ if __name__ == "__main__":
             pull_last_photo(wait_for_new_photo(camera_folder), custom_addr, entry)
             time.sleep(1)
         exit()
-    
+    if args.cct:
+        config_name = args.config
+        #<string name="pref_color_transform_key">6</string> - кастом сст
+        #rr_key rg_key rb_key gr_key gg_key gb_key br_key bg_key bb_key
+        logging.info("Вытаскиваю сст из файла {0}".format(args.cct))
+        logging.info("Включаю ручной колор трансформ")
+        find_and_write_to_xml(config_name, "pref_color_transform_key", "6")
+        tuned_file_name = args.cct
+        data_offset = libextract.get_data_offset(tuned_file_name)
+        cc13_offsets = libextract.get_offsets_and_lengths(tuned_file_name, "mod_cc13_cct_data")
+        cc12_offsets = libextract.get_offsets_and_lengths(tuned_file_name, "mod_cc12_cct_data")
+        cct13 = libextract.decode_cct(libextract.extract_data_by_offsets(tuned_file_name, data_offset, cc13_offsets))
+        cct12 = libextract.decode_cct(libextract.extract_data_by_offsets(tuned_file_name, data_offset, cc12_offsets))
+        cct = cct13 + cct12
+        cct = list(dict.fromkeys(cct)) #убирает дубликаты
+        cct_keys = ['rr_key', 'rg_key', 'rb_key', 'gr_key', 'gg_key', 'gb_key', 'br_key', 'bg_key', 'bb_key']
+        for id, matrix in enumerate(cct):
+            logging.info("Матрица {0} [{1} из {2}]".format(matrix, str(id+1), len(cct)))
+            for id, key in enumerate(cct_keys):
+                find_and_write_to_xml(config_name, key, matrix[id])
+            gcam_push_config(config_name)
+            time.sleep(2)
+            tap_shutter()
+            pull_last_photo(wait_for_new_photo(camera_folder), "custom_cct", matrix)
+            time.sleep(1)
+        exit()
+
     config_name = args.config
     config_key = args.key
     num_values_to_test = 5 if not args.num else int(args.num)
@@ -337,7 +367,7 @@ if __name__ == "__main__":
         cam_id = get_camera_id_from_input(args.config, args.lens) if args.lens else 0
         find_and_write_to_xml(config_name, "pref_aux_key", str(cam_id))
         config_key = get_key_by_camera_and_name(cam_id, args.parameter)
-    if args.bsg and args.parameter:
+    if args.parameter and args.bsg:
         cam_id = int(args.bsg)
         config_key = get_key_by_name(args.parameter)
     logging.info("Буду подбирать значения ключа {0} для конфига {1}".format(config_key, config_name))
