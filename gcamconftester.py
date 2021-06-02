@@ -38,7 +38,7 @@ def adb_command(command):
     try:
         response = subprocess.check_output(os.path.join(__location__, "adb/adb") + " " + command, timeout=5)
     except subprocess.CalledProcessError:
-        logging.error('Произошла ошибка adb. Проверьте, подключен ли телефон.')
+        logging.error('Произошла ошибка adb. Проверьте, подключен ли телефон. [{0}]'.format(command))
         exit()
         response = 'Ошибка!'
     except subprocess.TimeoutExpired:
@@ -95,7 +95,7 @@ def pull_last_photo(filename, config_key, value):
     """
     Path("{0}".format(config_key)).mkdir(parents=True, exist_ok=True)
     logging.info("Выгружаю фото с телефона в папку {0}".format(config_key))
-    adb_command(f'pull {filename} {config_key}\{value}.jpg')
+    adb_command(f'pull {filename} {config_key}\{value.replace(" ", "")}.jpg')
 
 def get_last_modified_file(folder, local=False):
     """
@@ -252,6 +252,22 @@ def get_key_by_camera_and_name(camera_id, key_name):
     except IOError as e:
         logging.error("Не могу обработать camera_preferences.xml - %sn" % e)
 
+def get_key_by_name(key_name):
+    """
+    Ищет ключ в camera_preferences.xml по key_name
+    """
+    try:
+        tree = etree.parse("camera_preferences.xml")
+        logging.info("Нашел camera_preferences.xml")
+        root = tree.getroot()
+        search_string = ".//ListPreference[@android:title='" + key_name + "']"
+        key_element = root.find(search_string, root.nsmap)
+        key = key_element.attrib.get('{http://schemas.android.com/apk/res/android}key') #лол блять
+        logging.info("Нашел нужный ключ - {0}".format(key))
+    except IOError as e:
+        logging.error("Не могу обработать camera_preferences.xml - %sn" % e)
+    
+    return key
 if __name__ == "__main__":
     #pref_aux_key - ид камеры 0-5 на какую переключится
     #pref_manual_aux_name_1-6_key - ручное название камеры типа Макро
@@ -271,6 +287,7 @@ if __name__ == "__main__":
     parser.add_argument("-l", "--lens", required=False, help="Имя модуля камеры на котором тестировать патчер (Например: \"LDR\") (по умолчанию: 1х)")
     group.add_argument("-p", "--parameter", required=False, help="Название параметра в патчере для которого проводить тесты (Например: \"Sharp Depth 2\")")
     parser.add_argument("-n", "--num", required=False, help="Количество значений для перебора (по умолчанию: 5)")
+    parser.add_argument("-bsg", "--bsg", required=False, help="Ид камеры для бсг")
     group.add_argument("-custom", "--custom", required=False, help="Номер кастомного значения в патчере (от 1 до 12) в который вносить данные")
     parser.add_argument("-a", "--address", required=False, help="Адрес кастомного значения")
     parser.add_argument("-v", "--values", required=False, help="Кастомные значения через двоеточие")
@@ -316,17 +333,22 @@ if __name__ == "__main__":
     logging.info("Делаю копию конфига {0}".format(new_config_name))
     copyfile(config_name, new_config_name)
     config_name = new_config_name
-    if args.parameter:
+    if args.parameter and not args.bsg:
         cam_id = get_camera_id_from_input(args.config, args.lens) if args.lens else 0
         find_and_write_to_xml(config_name, "pref_aux_key", str(cam_id))
         config_key = get_key_by_camera_and_name(cam_id, args.parameter)
+    if args.bsg and args.parameter:
+        cam_id = int(args.bsg)
+        config_key = get_key_by_name(args.parameter)
     logging.info("Буду подбирать значения ключа {0} для конфига {1}".format(config_key, config_name))
     entries, entryValues = get_key_from_camera_preferences(config_key)
     entries_hash = get_values_from_arrays(entries, entryValues)
     entries_hash = entries_hash[:-1] #убирает Off значение из списка
     entries_hash = get_number_of_items_from_array(entries_hash, num_values_to_test)
+    if args.bsg:
+            config_key = config_key + "_" + args.bsg
     for id, entry in enumerate(entries_hash):
-        logging.info("Обрабатываю {0} [{1} из {2}]".format(str(entry[0]), str(id), str(len(entries_hash))))
+        logging.info("Обрабатываю {0} [{1} из {2}]".format(str(entry[0]), str(id+1), str(len(entries_hash))))
         find_and_write_to_xml(config_name, config_key, entry[1]) 
         # try:
         #     find_and_write_to_xml(config_name, "pref_spiner_key", "6") #меняю стиль окна конфигов на 7 на всякий случай

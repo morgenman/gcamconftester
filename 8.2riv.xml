@@ -25,7 +25,7 @@
     <string name="lib_brightnessin_n4_key">0</string>
     <string name="lib_sharpenmedium_l1_key">00409C45</string>
     <string name="lib_sabre1_wide_key">0</string>
-    <string name="lib_sabre1_ldr_key">0</string>
+    <string name="lib_sabre1_ldr_key">E003271E</string>
     <string name="lib_sharpenmediumw_l1_ldr_key">00409C45</string>
     <string name="lib_sharpenverylow_l1_key">00409C45</string>
     <string name="lib_noisereducta2_ldr_key">0</string>
@@ -1513,7 +1513,7 @@
     <string name="lib_user_gamma_tele_25">0.82478</string>
     <string name="lib_user_gamma_tele_26">0.85573</string>
     <string name="lib_sharpenhigh_l2_n4_key">0</string>
-    <string name="pref_aux_key">0</string>
+    <string name="pref_aux_key">5</string>
     <string name="lib_cg5_wide_key">0</string>
     <string name="lib_scenelightness_key">0</string>
     <string name="lib_curve_pwhites_key">333</string>
@@ -1797,7 +1797,7 @@
     <string name="lib_user_wide_value_9"></string>
     <string name="lib_sharpenmediumw_l2_ldr_key">00409C45</string>
     <string name="lib_lumadlsabre_l4_key">CDCC8C3F</string>
-    <string name="pref_camera_dirty_lens_history_key0">-3.3364244|0.11115017|-3.687848|-6.0612297|-1.3375775|0.70061874|-1.3792657|-2.9837265|-0.7202766|-5.6708674|-3.081636|-3.327733|-0.44209662|-3.080781|-2.7959929|-4.896866|-8.725718|-1.0322528|-6.996395|-3.6984951|-0.7529311|-2.9422147|-0.38139865|-4.3640776|-6.8456616|-3.9421887|-2.8006113|-3.2519898|-5.257977|-0.80241084|-1.1013656|-1.6509602|</string>
+    <string name="pref_camera_dirty_lens_history_key0">-3.687848|-6.0612297|-1.3375775|0.70061874|-1.3792657|-2.9837265|-0.7202766|-5.6708674|-3.081636|-3.327733|-0.44209662|-3.080781|-2.7959929|-4.896866|-8.725718|-1.0322528|-6.996395|-3.6984951|-0.7529311|-2.9422147|-0.38139865|-4.3640776|-6.8456616|-3.9421887|-2.8006113|-3.2519898|-5.257977|-0.80241084|-1.1013656|-1.6509602|-7.0967464|-2.3580241|</string>
     <string name="pref_awb_wide_key">19</string>
     <string name="pref_camera_dirty_lens_history_key1"></string>
     <string name="opmode_video_key">32772</string>
