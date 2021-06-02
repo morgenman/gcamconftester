@@ -18,12 +18,13 @@ https://www.python.org/downloads/
     python gcamconftester.py [-h] -c конфиг.xml [-k какой ключ перебирать] [-n количество значений для теста]
     python gcamconftester.py [-h] -c конфиг.xml [-custom номер кастомного адреса] [-a адрес] [-v значения через двоеточие]
     python gcamconftester.py [-h] -c конфиг.xml [-p название параметра в конфиге] [-l название модуля камеры] [-n количество значений для теста]
+    python gcamconftester.py [-h] -c конфиг.xml [-cct tuned_либа_из_системы]
 
 Пример:
     python gcamconftester.py -c "8.2riv.xml" -k lib_sharpness_key -n 3
     python gcamconftester.py -c "8.2riv.xml" --custom 2 -a 0de3694 -v 04008052:24008052:44008052
     python gcamconftester.py -c "8.2riv.xml" -p "Sharp Depth 2" -l "LDR"
-
+    python gcamconftester.py -c "8.2riv.xml" --cct com.qti.tuned.j20c_ofilm_imx682_wide_global.bin
 
 Список аргументов:
   -h, --help            Показать информацию для помощи
@@ -40,6 +41,8 @@ https://www.python.org/downloads/
                         Адрес кастомного значения
   -v VALUES, --values VALUES
                         Кастомные значения через двоеточие
+  -cct CCT, --cct CCT   Название com.qti.tuned либы вытащенной из системы для извлечения и перебора ССТ. 
+                        Эта либа должна лежать в папке рядом со скриптом
 ```
 # Пример 1
 ```python gcamconftester.py -c "8.2riv.xml" -p "Sharp Depth 2" -l "LDR" -n 10```
@@ -64,6 +67,8 @@ https://www.python.org/downloads/
 
 Название ключа для теста можно узнать в camera_preferences.xml поискав по названию параметра в либпатчере и скопировать то что указано в android:key=
 
+В результате работы рядом со скриптом появится папка с названием ключа. В этой папке будут лежать фото (имя = значение) которые удобно смотреть и сравнивать через FastStone Image Viewer
+![изображение](https://user-images.githubusercontent.com/2606215/119796119-c3fd2b80-bee1-11eb-82c2-89048871156e.png)
 
 # Пример 3
 Так же можно тестить кастомные адреса и их значения
@@ -73,8 +78,15 @@ https://www.python.org/downloads/
 Это запишет в User Defined Value 2 адрес 0DE3694 и переберет значения 24008052,04008052,44008052
 ![изображение](https://user-images.githubusercontent.com/2606215/119966201-bfa14300-bfb3-11eb-8374-89e200edc713.png)
 
-В результате работы рядом со скриптом появится папка с названием ключа. В этой папке будут лежать фото (имя = значение) которые удобно смотреть и сравнивать через FastStone Image Viewer
-![изображение](https://user-images.githubusercontent.com/2606215/119796119-c3fd2b80-bee1-11eb-82c2-89048871156e.png)
+# Пример 4
+Перебор ССТ из системных либ
+
+```python gcamconftester.py -c "8.2riv.xml" -cct com.qti.tuned.j20c_ofilm_imx682_wide_global.bin```
+
+Автоматически вытащит ССТ из указанной либы и будет перебирать их по одной сохраняя фото в папку custom_cct
+![изображение](https://user-images.githubusercontent.com/2606215/120472517-a7b03180-c3ae-11eb-9ad6-2802ce29fdd2.png)
+
+
 
 
 # Баги / особенности
