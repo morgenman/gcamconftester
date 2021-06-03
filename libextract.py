@@ -108,7 +108,7 @@ def decode_cct(hexdata):
     return cct_float
 
 if __name__ == "__main__":
-    tuned_file_name = sys.argv[1] if len(sys.argv) > 1 else "com.samsung.tuned.sony_imx555.bin"
+    tuned_file_name = sys.argv[1] if len(sys.argv) > 1 else "com.qti.tuned.j20c_ofilm_imx682_wide_global.bin"
     print(tuned_file_name)
     data_offset = get_data_offset(tuned_file_name)
     cc13_offsets = get_offsets_and_lengths(tuned_file_name, "mod_cc13_cct_data")
@@ -121,9 +121,11 @@ if __name__ == "__main__":
     print("Order for gcam: ")
     for pair in gcam_order:
         print(awb[pair])
+    
+    cct = []
     cct13 = decode_cct(extract_data_by_offsets(tuned_file_name, data_offset, cc13_offsets))
     cct12 = decode_cct(extract_data_by_offsets(tuned_file_name, data_offset, cc12_offsets))
-    cct = cct13 if cct13 is not None else []
+    cct = cct + cct13 if cct13 is not None else cct
     cct = cct + cct12 if cct12 is not None else cct
     cct = list(dict.fromkeys(cct)) #убирает дубликаты
     print("CCT:")
