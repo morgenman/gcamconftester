@@ -339,9 +339,11 @@ if __name__ == "__main__":
         data_offset = libextract.get_data_offset(tuned_file_name)
         cc13_offsets = libextract.get_offsets_and_lengths(tuned_file_name, "mod_cc13_cct_data")
         cc12_offsets = libextract.get_offsets_and_lengths(tuned_file_name, "mod_cc12_cct_data")
+        cct = []
         cct13 = libextract.decode_cct(libextract.extract_data_by_offsets(tuned_file_name, data_offset, cc13_offsets))
         cct12 = libextract.decode_cct(libextract.extract_data_by_offsets(tuned_file_name, data_offset, cc12_offsets))
-        cct = cct13 + cct12
+        cct = cct + cct13 if cct13 is not None else cct
+        cct = cct + cct12 if cct12 is not None else cct
         cct = list(dict.fromkeys(cct)) #убирает дубликаты
         cct_keys = ['rr_key', 'rg_key', 'rb_key', 'gr_key', 'gg_key', 'gb_key', 'br_key', 'bg_key', 'bb_key']
         for id, matrix in enumerate(cct):
