@@ -70,13 +70,13 @@ def decode_awb(hexdata):
     Переводит hexdata в пары авб
     """
     if len(hexdata) % 4 == 0:
-        raise ValueError("Что-то пошло не так")
+        raise ValueError("Что-то пошло не так [{0}]".format(hexdata))
     n = 8 #8 символов = 4 байта
     hexdata = [hexdata[0][i:i+n] for i in range(0, len(hexdata[0]), n)] #деление всей строки на список значений по 4 байта
     filter_hex = ["01000000", "02000000", "00000000"] #фильтр мусора
     hexdata = [i for i in hexdata if not any([e for e in filter_hex if e in i])] #удаление мусора по фильтру
     awb_float = [struct.unpack('<f', binascii.unhexlify(value)) for value in hexdata] #перевод из хекса во флоат
-    awb_float = [ '%.6f' % elem for elem in awb_float] #оставляю 6 знаков после запятой
+    awb_float = [ '%.5f' % elem for elem in awb_float] #оставляю 5 знаков после запятой
     awb_float = list(zip(awb_float[0::2], awb_float[1::2])) #хз надо ли
     return awb_float
 
@@ -86,8 +86,10 @@ def decode_cct(hexdata):
     Переводит hexdata в матрицы сст по 9 значений
     """
     cct_float = []
+    if hexdata == []:
+        return
     if len(hexdata) % 4 == 0:
-        raise ValueError("Что-то пошло не так")
+        raise ValueError("Что-то пошло не так [{0}]".format(hexdata))
     n = 8 #8 символов = 4 байта
     for cct_hex in hexdata:
         cct_hex = [cct_hex[i:i+n] for i in range(0, len(cct_hex), n)] #деление всей строки на список значений по 4 байта
@@ -106,15 +108,24 @@ def decode_cct(hexdata):
     return cct_float
 
 if __name__ == "__main__":
-    tuned_file_name = sys.argv[1] if len(sys.argv) > 1 else "com.qti.tuned.j20c_ofilm_imx682_wide_global.bin"
+    tuned_file_name = sys.argv[1] if len(sys.argv) > 1 else "com.samsung.tuned.sony_imx555.bin"
+    print(tuned_file_name)
     data_offset = get_data_offset(tuned_file_name)
     cc13_offsets = get_offsets_and_lengths(tuned_file_name, "mod_cc13_cct_data")
     cc12_offsets = get_offsets_and_lengths(tuned_file_name, "mod_cc12_cct_data")
     refptv1_offset = get_offsets_and_lengths(tuned_file_name, "refPtV1")
     hex_awb = extract_data_by_offsets(tuned_file_name, data_offset, refptv1_offset)
-    print(decode_awb(hex_awb))
+    gcam_order = [2, 1, 7, 6, 4, 8, 3, 5]
+    awb = decode_awb(hex_awb)
+    print("Awb in lib: \n" + str(awb))
+    print("Order for gcam: ")
+    for pair in gcam_order:
+        print(awb[pair])
     cct13 = decode_cct(extract_data_by_offsets(tuned_file_name, data_offset, cc13_offsets))
     cct12 = decode_cct(extract_data_by_offsets(tuned_file_name, data_offset, cc12_offsets))
-    cct = cct13 + cct12
+    cct = cct13 if cct13 is not None else []
+    cct = cct + cct12 if cct12 is not None else cct
     cct = list(dict.fromkeys(cct)) #убирает дубликаты
-    print(cct)
+    print("CCT:")
+    for matrix in cct:
+        print(matrix)
