@@ -373,7 +373,7 @@ if __name__ == "__main__":
     logging.info("Буду подбирать значения ключа {0} для конфига {1}".format(config_key, config_name))
     entries, entryValues = get_key_from_camera_preferences(config_key)
     entries_hash = get_values_from_arrays(entries, entryValues)
-    #entries_hash = entries_hash[:-1] #убирает Off значение из списка
+    entries_hash = entries_hash[:-1] if "Off" in entries_hash[-1] else entries_hash #убирает Off значение из списка
     entries_hash = get_number_of_items_from_array(entries_hash, num_values_to_test)
     if args.bsg:
             config_key = config_key + "_" + args.bsg
