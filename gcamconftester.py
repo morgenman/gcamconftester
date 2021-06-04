@@ -346,7 +346,10 @@ if __name__ == "__main__":
         cct = cct + cct13 if cct13 is not None else cct
         cct = cct + cct12 if cct12 is not None else cct
         cct = list(dict.fromkeys(cct)) #убирает дубликаты
-        cct_keys = ['rr_key', 'rg_key', 'rb_key', 'gr_key', 'gg_key', 'gb_key', 'br_key', 'bg_key', 'bb_key']
+        aux_prefixes = ["", "_tele", "_wide", "_n4", "_n5", "_ldr", "_front"]
+        cam_id = get_camera_id_from_input(args.config, args.lens) if args.lens else 0
+        cct_keys = ['rr', 'rg', 'rb', 'gr', 'gg', 'gb', 'br', 'bg', 'bb']
+        cct_keys = [key + aux_prefixes[cam_id] + "_key" for key in cct_keys]
         for id, matrix in enumerate(cct):
             logging.info("Матрица {0} [{1} из {2}]".format(matrix, str(id+1), len(cct)))
             for id, key in enumerate(cct_keys):
