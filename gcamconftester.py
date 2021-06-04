@@ -42,6 +42,7 @@ def adb_command(command):
         response = subprocess.check_output(os.path.join(__location__, "adb/adb") + " " + command, timeout=5)
     except subprocess.CalledProcessError:
         logging.error('Произошла ошибка adb. Проверьте, подключен ли телефон. [{0}]'.format(command))
+        response = 'Ошибка!'
         exit()
     except subprocess.TimeoutExpired:
         logging.error('Процесс adb превысил время ожидания и был закрыт. Попробуем еще раз [{0}]'.format(command))
@@ -298,9 +299,6 @@ if __name__ == "__main__":
     if args.custom and (args.address is None or args.values is None):
         parser.error("Для работы --custom нужны --address адрес и --values значения")
     
-    logging.info(f"Запускаю гкам {gcam_package}")
-    adb_command(f'shell am start -n {gcam_package}/com.google.android.apps.camera.legacy.app.activity.main.CameraActivity')
-
     if args.custom:
         config_name = args.config
         custom_addr_num = "lib_user_addr_" + args.custom
@@ -397,5 +395,3 @@ if __name__ == "__main__":
         #pull_last_photo(get_last_modified_file(camera_folder), config_key, entry[0])
         pull_last_photo(wait_for_new_photo(camera_folder), config_key, entry[0])
         time.sleep(1)
-    logging.info("Дело сделано, выключаю гкам")
-    adb_command(f'shell am force-stop {gcam_package}')
