@@ -301,9 +301,11 @@ if __name__ == "__main__":
     
     if args.custom:
         config_name = args.config
-        custom_addr_num = "lib_user_addr_" + args.custom
-        custom_value_num = "lib_user_value_" + args.custom
-        custom_value_key = "lib_user_key_" + args.custom
+        aux_prefixes = ["", "_tele", "_wide", "_n4", "_n5", "_ldr", "_front"] #lib_user_tele_addr_8
+        cam_id = get_camera_id_from_input(args.config, args.lens) if args.lens else 0
+        custom_addr_num = f"lib_user{aux_prefixes[cam_id]}_addr_" + args.custom
+        custom_value_num = f"lib_user{aux_prefixes[cam_id]}_value_" + args.custom
+        custom_value_key = f"lib_user{aux_prefixes[cam_id]}_key_" + args.custom
         custom_addr = args.address
         custom_values = args.values
         custom_values = custom_values.split(":")
