@@ -1,6 +1,6 @@
 import struct, binascii, mmap, sys
 import numpy as np
-
+is_snap845 = False
 def get_data_offset(tuned_file_name):
     """
     Возвращает смещение для начала блока data в файле tuned_file_name
@@ -12,7 +12,11 @@ def get_data_offset(tuned_file_name):
             mm = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ) 
             index = mm.find("1.1.".encode(), 0)
             if index != -1:
-                raise NotImplementedError("Либы от снап845 и ему подобных на данный момент не поддерживаются")
+                #raise NotImplementedError("Либы от снап845 и ему подобных на данный момент не поддерживаются")
+                global is_snap845
+                is_snap845 = True
+                mm.seek(176, 0) # на 845 оффсет даты лежит через B0 (176) от начала файла
+                return int.from_bytes(mm.read(4), "little")
             mm.seek(192, 0) #оффсет даты всегда будет через C0 (192) от начала файла
             return int.from_bytes(mm.read(4), "little")
     except Exception as e:
@@ -32,10 +36,10 @@ def get_offsets_and_lengths(tuned_file_name, name):
             mm = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ) 
             index = mm.find(name.encode(), 0)
             while index >= 0:
-                index = index + 48 #оффсет будет через 30 (48) после названия
+                index = index + 48 if not is_snap845 else index + 52 #оффсет будет через 30 (48) после названия для нормальных либ или через 34 (52) для хуйни типа 845
                 mm.seek(index, 0) 
                 offsets.append(int.from_bytes(mm.read(4), "little")) #перевод 4 байтов длины в инт
-                index = index + 8 #длина будет через 4 байта после оффсета
+                index = index + 8 if not is_snap845 else index + 4 #длина будет через 4 байта после оффсета для нормальных либ или сразу за оффсетом для 845
                 mm.seek(index, 0) 
                 length = mm.read(2).hex() #длина всего 2 байта
                 length = length[2:4] + length[0:2] #переворот длины в хексе с предподвыподвертом
@@ -69,8 +73,8 @@ def decode_awb(hexdata):
     """
     Переводит hexdata в пары авб
     """
-    if len(hexdata) % 4 == 0:
-        raise ValueError("Что-то пошло не так [{0}]".format(hexdata))
+    # if len(hexdata) % 4 == 0:
+    #     raise ValueError("Что-то пошло не так [{0}]".format(hexdata))
     n = 8 #8 символов = 4 байта
     hexdata = [hexdata[0][i:i+n] for i in range(0, len(hexdata[0]), n)] #деление всей строки на список значений по 4 байта
     filter_hex = ["01000000", "02000000", "00000000"] #фильтр мусора
@@ -88,8 +92,8 @@ def decode_cct(hexdata):
     cct_float = []
     if hexdata == []:
         return
-    if len(hexdata) % 4 == 0:
-        raise ValueError("Что-то пошло не так [{0}]".format(hexdata))
+    # if len(hexdata) % 4 == 0:
+    #     raise ValueError("Что-то пошло не так [{0}]".format(hexdata))
     n = 8 #8 символов = 4 байта
     for cct_hex in hexdata:
         cct_hex = [cct_hex[i:i+n] for i in range(0, len(cct_hex), n)] #деление всей строки на список значений по 4 байта
