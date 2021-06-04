@@ -138,6 +138,16 @@
                     android:dependency="pref_category_main"
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_hardjpgquality_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
+                    android:entries="@array/lib_hex_hardsejpgquality_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/hardsejpgquality"
+                    android:key="lib_hardsejpgquality_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_main"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_hardsejpgquality_entryvalues" />
                 <PreferenceScreen
                     android:icon="@drawable/noise"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
@@ -1667,14 +1677,14 @@
                             android:entryValues="@array/lib_hex_smoothingsabre_entryvalues" />
                         <ListPreference
                             android:icon="@drawable/dot"
-                            android:entries="@array/lib_hex_shastamerge3_entries"
+                            android:entries="@array/lib_hex_sharpnew_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
                             android:title="Sharp New"
                             android:key="lib_sharpnew_key"
                             android:summary="%s "
                             android:dependency="pref_fine_tuning"
                             android:defaultValue="0"
-                            android:entryValues="@array/lib_hex_shastamerge3_entryvalues" />
+                            android:entryValues="@array/lib_hex_sharpnew_entryvalues" />
                         <PreferenceCategory
                             android:layout="@layout/preference_with_margin_haslicategoryname"
                             android:title="Zipper NR"
@@ -3653,6 +3663,16 @@
                     android:dependency="pref_category_tele"
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_hardjpgquality_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
+                    android:entries="@array/lib_hex_hardsejpgquality_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/hardsejpgquality"
+                    android:key="lib_hardsejpgquality_tele_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_tele"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_hardsejpgquality_entryvalues" />
                 <PreferenceScreen
                     android:icon="@drawable/quantum_gm_ic_noisemodel_gm_grey_24"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
@@ -5216,14 +5236,14 @@
                             android:entryValues="@array/lib_hex_smoothingsabre_entryvalues" />
                         <ListPreference
                             android:icon="@drawable/dot"
-                            android:entries="@array/lib_hex_shastamerge3_entries"
+                            android:entries="@array/lib_hex_sharpnew_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
                             android:title="Sharp New"
                             android:key="lib_sharpnew_tele_key"
                             android:summary="%s "
                             android:dependency="pref_fine_tuning_tele"
                             android:defaultValue="0"
-                            android:entryValues="@array/lib_hex_shastamerge3_entryvalues" />
+                            android:entryValues="@array/lib_hex_sharpnew_entryvalues" />
                         <PreferenceCategory
                             android:layout="@layout/preference_with_margin_haslicategoryname"
                             android:title="Zipper NR"
@@ -7212,6 +7232,16 @@
                     android:dependency="pref_category_wide"
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_hardjpgquality_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
+                    android:entries="@array/lib_hex_hardsejpgquality_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/hardsejpgquality"
+                    android:key="lib_hardsejpgquality_wide_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_wide"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_hardsejpgquality_entryvalues" />
                 <PreferenceScreen
                     android:icon="@drawable/quantum_gm_ic_noisemodel_gm_grey_24"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
@@ -8775,14 +8805,14 @@
                             android:entryValues="@array/lib_hex_smoothingsabre_entryvalues" />
                         <ListPreference
                             android:icon="@drawable/dot"
-                            android:entries="@array/lib_hex_shastamerge3_entries"
+                            android:entries="@array/lib_hex_sharpnew_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
                             android:title="Sharp New"
                             android:key="lib_sharpnew_wide_key"
                             android:summary="%s "
                             android:dependency="pref_fine_tuning_wide"
                             android:defaultValue="0"
-                            android:entryValues="@array/lib_hex_shastamerge3_entryvalues" />
+                            android:entryValues="@array/lib_hex_sharpnew_entryvalues" />
                         <PreferenceCategory
                             android:layout="@layout/preference_with_margin_haslicategoryname"
                             android:title="Zipper NR"
@@ -10771,6 +10801,16 @@
                     android:dependency="pref_category_id4"
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_hardjpgquality_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
+                    android:entries="@array/lib_hex_hardsejpgquality_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/hardsejpgquality"
+                    android:key="lib_hardsejpgquality_n4_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_id4"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_hardsejpgquality_entryvalues" />
                 <PreferenceScreen
                     android:icon="@drawable/quantum_gm_ic_noisemodel_gm_grey_24"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
@@ -12340,14 +12380,14 @@
                             android:entryValues="@array/lib_hex_smoothingsabre_entryvalues" />
                         <ListPreference
                             android:icon="@drawable/dot"
-                            android:entries="@array/lib_hex_shastamerge3_entries"
+                            android:entries="@array/lib_hex_sharpnew_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
                             android:title="Sharp New"
                             android:key="lib_sharpnew_n4_key"
                             android:summary="%s "
                             android:dependency="pref_fine_tuning_n4"
                             android:defaultValue="0"
-                            android:entryValues="@array/lib_hex_shastamerge3_entryvalues" />
+                            android:entryValues="@array/lib_hex_sharpnew_entryvalues" />
                         <PreferenceCategory
                             android:layout="@layout/preference_with_margin_haslicategoryname"
                             android:title="Zipper NR"
@@ -14336,6 +14376,16 @@
                     android:dependency="pref_category_id5"
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_hardjpgquality_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
+                    android:entries="@array/lib_hex_hardsejpgquality_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/hardsejpgquality"
+                    android:key="lib_hardsejpgquality_n5_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_id5"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_hardsejpgquality_entryvalues" />
                 <PreferenceScreen
                     android:icon="@drawable/quantum_gm_ic_noisemodel_gm_grey_24"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
@@ -15905,14 +15955,14 @@
                             android:entryValues="@array/lib_hex_smoothingsabre_entryvalues" />
                         <ListPreference
                             android:icon="@drawable/dot"
-                            android:entries="@array/lib_hex_shastamerge3_entries"
+                            android:entries="@array/lib_hex_sharpnew_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
                             android:title="Sharp New"
                             android:key="lib_sharpnew_n5_key"
                             android:summary="%s "
                             android:dependency="pref_fine_tuning_n5"
                             android:defaultValue="0"
-                            android:entryValues="@array/lib_hex_shastamerge3_entryvalues" />
+                            android:entryValues="@array/lib_hex_sharpnew_entryvalues" />
                         <PreferenceCategory
                             android:layout="@layout/preference_with_margin_haslicategoryname"
                             android:title="Zipper NR"
@@ -17901,6 +17951,16 @@
                     android:dependency="pref_category_ldr"
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_hardjpgquality_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
+                    android:entries="@array/lib_hex_hardsejpgquality_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/hardsejpgquality"
+                    android:key="lib_hardsejpgquality_ldr_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_ldr"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_hardsejpgquality_entryvalues" />
                 <PreferenceScreen
                     android:icon="@drawable/quantum_gm_ic_noisemodel_gm_grey_24"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
@@ -19468,14 +19528,14 @@
                             android:entryValues="@array/lib_hex_smoothingsabre_entryvalues" />
                         <ListPreference
                             android:icon="@drawable/dot"
-                            android:entries="@array/lib_hex_shastamerge3_entries"
+                            android:entries="@array/lib_hex_sharpnew_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
                             android:title="Sharp New"
                             android:key="lib_sharpnew_ldr_key"
                             android:summary="%s "
                             android:dependency="pref_fine_tuning_ldr"
                             android:defaultValue="0"
-                            android:entryValues="@array/lib_hex_shastamerge3_entryvalues" />
+                            android:entryValues="@array/lib_hex_sharpnew_entryvalues" />
                         <PreferenceCategory
                             android:layout="@layout/preference_with_margin_haslicategoryname"
                             android:title="Zipper NR"
@@ -21469,6 +21529,16 @@
                     android:dependency="pref_category_front"
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_hardjpgquality_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
+                    android:entries="@array/lib_hex_hardsejpgquality_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/hardsejpgquality"
+                    android:key="lib_hardsejpgquality_front_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_front"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_hardsejpgquality_entryvalues" />
                 <PreferenceScreen
                     android:icon="@drawable/quantum_gm_ic_noisemodel_gm_grey_24"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
@@ -23047,14 +23117,14 @@
                             android:entryValues="@array/lib_hex_smoothingsabre_entryvalues" />
                         <ListPreference
                             android:icon="@drawable/dot"
-                            android:entries="@array/lib_hex_shastamerge3_entries"
+                            android:entries="@array/lib_hex_sharpnew_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
                             android:title="Sharp New"
                             android:key="lib_sharpnew_front_key"
                             android:summary="%s "
                             android:dependency="pref_fine_tuning_front"
                             android:defaultValue="0"
-                            android:entryValues="@array/lib_hex_shastamerge3_entryvalues" />
+                            android:entryValues="@array/lib_hex_sharpnew_entryvalues" />
                         <PreferenceCategory
                             android:layout="@layout/preference_with_margin_haslicategoryname"
                             android:title="Zipper NR"
@@ -25295,13 +25365,6 @@
             android:layout="@layout/preference_with_margin_haslicategoryname"
             android:title="@string/fix"
             android:key="pref_category_xml" />
-        <com.google.android.apps.camera.ui.preference.ManagedSwitchPreference
-            android:icon="@drawable/fixsolnce"
-            android:layout="@layout/preference_with_margin_haslisettingsparam"
-            android:title="@string/pref_sunlight_title"
-            android:key="pref_sunlight_key"
-            android:summary="@string/sunlightdesc"
-            android:defaultValue="false" />
         <ListPreference
             android:icon="@drawable/quantum_gm_ic_c2a_gm_grey_24"
             android:entries="@array/pref_c2a_entries"

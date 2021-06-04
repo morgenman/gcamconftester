@@ -283,6 +283,7 @@
     <string name="lib_lumadlsabre_l5a_front_key">0</string>
     <string name="pref_noise_model_buttofront_key">-1</string>
     <string name="lib_lumadlsabre_l1a_n4_key">0</string>
+    <string name="lib_hardsejpgquality_n5_key">0</string>
     <string name="lib_exposition_key">9A99C940</string>
     <string name="lib_cg1_front_key">0</string>
     <string name="pref_manual_aux_name_1_key">1x</string>
@@ -640,6 +641,7 @@
     <string name="lib_user_gamma_wide_4">0.10745</string>
     <string name="lib_lumadlsabre_l2a_wide_key">0</string>
     <string name="lib_coefsabrtun1_tele_key">0</string>
+    <string name="lib_hardsejpgquality_ldr_key">950C8052</string>
     <string name="lib_sharpenlow_l2_n5_key">0</string>
     <string name="lib_exposure_tele_key">0</string>
     <string name="lib_zipper3_n5_key">0</string>
@@ -680,6 +682,7 @@
     <string name="lib_sharpenveryloww_l3_key">00409C45</string>
     <string name="lib_curve_pdarks_n4_key">333</string>
     <string name="lib_OemNoise_key">1</string>
+    <string name="lib_hardsejpgquality_tele_key">0</string>
     <string name="lib_expocomp_key">9968A772</string>
     <string name="lib_sharpdistrib1_n4_key">0</string>
     <string name="lib_darkenlight_ldr_key">0</string>
@@ -773,7 +776,7 @@
     <string name="pref_video_fps_p2018_key">FPS_AUTO</string>
     <string name="lib_expocor_n4_key">0</string>
     <string name="pref_camera_raw_output_key">0</string>
-    <string name="lib_hardjpgquality_key">950C8052</string>
+    <string name="lib_hardjpgquality_key">16008052</string>
     <string name="pref_tonecurve_preset_ldr_key">0</string>
     <string name="lib_cg10_wide_key">0</string>
     <string name="lib_fixshastamerge1_tele_key">09F0371E</string>
@@ -914,11 +917,12 @@
     <string name="lib_noisesuppression_key">00000044</string>
     <string name="lib_user_sect_2">0.5089</string>
     <string name="lib_user_sect_5">1.0</string>
+    <string name="lib_hardsejpgquality_front_key">0</string>
     <string name="lib_user_sect_4">0.865</string>
     <string name="lib_lumadhsabre_l1b_n4_key">0</string>
     <string name="lib_fixraw16merge_key">0</string>
     <string name="lib_user_tele_sect_0">0.1696</string>
-    <string name="lib_hardjpgquality_ldr_key">950C8052</string>
+    <string name="lib_hardjpgquality_ldr_key">16008052</string>
     <string name="lib_sharpenloww_l3_ldr_key">00409C45</string>
     <int name="gcam.max_burst_size" value="17" />
     <string name="lib_lumadhsabre_l1_wide_key">00000000</string>
@@ -1190,6 +1194,7 @@
     <string name="hwlevel_key_20">0</string>
     <string name="lib_red_key">0</string>
     <string name="lib_hdrsabrev2_key">0</string>
+    <string name="lib_hardsejpgquality_key">950C8052</string>
     <string name="lib_hot_pixel_suppression_key">80F6004F</string>
     <string name="lib_cg9_n4_key">0</string>
     <string name="lib_user_n5_addr_9"></string>
@@ -1307,7 +1312,7 @@
     <int name="gcam_capture_thread_count" value="2" />
     <string name="lib_contrast_1_tele_key">0</string>
     <string name="lib_lumadlsabre_l2_front_key">0</string>
-    <string name="pref_tracking_focus_key">0</string>
+    <string name="pref_tracking_focus_key">1</string>
     <string name="lib_blackdensity_ldr_key">08E8A772</string>
     <string name="lib_lumadhsabre_l5_ldr_key">00000000</string>
     <string name="lib_gamma_pdarks_ldr_key">333</string>
@@ -1589,6 +1594,7 @@
     <string name="lib_user_ldr_addr_2">011C23A0</string>
     <string name="lib_sabrenoiseart_front_key">0</string>
     <string name="lib_user_ldr_addr_1">007A6C60</string>
+    <string name="lib_hardsejpgquality_n4_key">0</string>
     <string name="lib_hdrsabrev2_n4_key">0</string>
     <string name="lib_volumeprocessing2_front_key">0</string>
     <string name="lib_cg6_tele_key">0</string>
@@ -2301,6 +2307,7 @@
     <string name="lib_sharpenlow_l3_key">00409C45</string>
     <string name="lib_coefsabrtunoise_tele_key">0</string>
     <string name="lib_gamma_whites_ldr_key">15</string>
+    <string name="lib_hardsejpgquality_wide_key">0</string>
     <string name="lib_user_gamma_ldr_key">1</string>
     <string name="lib_user_gamma_wide_29">0.94663</string>
     <string name="lib_user_gamma_wide_28">0.92003</string>

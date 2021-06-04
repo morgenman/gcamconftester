@@ -12951,10 +12951,62 @@
         <item>0</item>
     </string-array>
     <string-array name="lib_hex_hardjpgquality_entries">
-        <item>ON</item>
+        <item>100%</item>
+        <item>98%</item>
         <item>Off (as in library)</item>
     </string-array>
     <string-array name="lib_hex_hardjpgquality_entryvalues">
+        <item>16008052</item>
+        <item>D6008052</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="lib_hex_sharpnew_entries">
+        <item>0.125</item>
+        <item>0.179</item>
+        <item>0.250</item>
+        <item>0.375</item>
+        <item>0.500</item>
+        <item>0.625</item>
+        <item>0.750</item>
+        <item>0.875</item>
+        <item>1.000</item>
+        <item>1.125</item>
+        <item>1.250</item>
+        <item>1.375</item>
+        <item>1.500</item>
+        <item>1.625</item>
+        <item>1.750</item>
+        <item>1.875</item>
+        <item>2.000</item>
+        <item>(Default)</item>
+        <item>Off (as in library)</item>
+    </string-array>
+    <string-array name="lib_hex_sharpnew_entryvalues">
+        <item>0110681E</item>
+        <item>01F0681E</item>
+        <item>01106A1E</item>
+        <item>01106B1E</item>
+        <item>01106C1E</item>
+        <item>01906C1E</item>
+        <item>01106D1E</item>
+        <item>01906D1E</item>
+        <item>01106E1E</item>
+        <item>01506E1E</item>
+        <item>01906E1E</item>
+        <item>01D06E1E</item>
+        <item>01106F1E</item>
+        <item>01506F1E</item>
+        <item>01906F1E</item>
+        <item>01D06F1E</item>
+        <item>0110601E</item>
+        <item>2108631E</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="lib_hex_hardsejpgquality_entries">
+        <item>ON</item>
+        <item>Off (as in library)</item>
+    </string-array>
+    <string-array name="lib_hex_hardsejpgquality_entryvalues">
         <item>950C8052</item>
         <item>0</item>
     </string-array>
