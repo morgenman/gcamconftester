@@ -72,6 +72,11 @@
         <item>30.GN2 Main Mi11 Ultra</item>
         <item>31.IMX 586 Tele Mi11 Ultra</item>
         <item>32.IMX 586 UWide Mi11 Ultra</item>
+        <item>33.OV48C Wide Mi10 Ultra</item>
+        <item>34.S5K3T2 Front Mi10 Ultra</item>
+        <item>35.S5K2L7 2X Mi10 Ultra</item>
+        <item>36.IMX350 UWide Mi10 Ultra</item>
+        <item>37.IMX586 Periscope Mi10 Ultra</item>
     </string-array>
     <string-array name="pref_noise_model_entryvalues">
         <item>-1</item>
@@ -108,6 +113,11 @@
         <item>30</item>
         <item>31</item>
         <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
     </string-array>
     <string-array name="pref_noise_model_tune_entries">
         <item>@string/pref_noise_model_tune_default</item>
@@ -298,12 +308,14 @@
         <item>5</item>
     </string-array>
     <string-array name="pref_sabre_entries">
+        <item>4 (sabre)</item>
         <item>3 (gluing without sabre)</item>
         <item>2 (spatial bayer)</item>
-        <item>1 (sabre always)</item>
+        <item>1 (Sabre always)</item>
         <item>0 (Default)</item>
     </string-array>
     <string-array name="pref_sabre_entryvalues">
+        <item>4</item>
         <item>3</item>
         <item>2</item>
         <item>1</item>
@@ -12421,7 +12433,6 @@
         <item>0</item>
     </string-array>
     <string-array name="model_entries">
-        <item>Nexus 5x</item>
         <item>Nexus 6p</item>
         <item>Pixel XL</item>
         <item>"Pixel 2 "</item>
@@ -12438,7 +12449,6 @@
         <item>Pixel 5 XL</item>
     </string-array>
     <string-array name="model_entryvalues">
-        <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -12461,8 +12471,6 @@
     <array name="APKTOOL_DUMMY_24e" />
     <array name="APKTOOL_DUMMY_24f" />
     <string-array name="device_entries">
-        <item>Nexus 5x (bullhead)</item>
-        <item>Nexus 6P (angler)</item>
         <item>PIxel (sailfish)</item>
         <item>Pixel XL (marlin)</item>
         <item>Pixel 2 (walleye)</item>
@@ -12482,8 +12490,7 @@
         <item>Pixel foldable(passport)</item>
     </string-array>
     <string-array name="device_entryvalues">
-        <item>0</item>
-        <item>1</item>
+        <item>2</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
@@ -12500,7 +12507,6 @@
         <item>15</item>
         <item>16</item>
         <item>17</item>
-        <item>18</item>
     </string-array>
     <string-array name="raw_entries">
         <item>@string/preview_auto</item>
@@ -12918,6 +12924,38 @@
     </string-array>
     <string-array name="lib_hex_allunkndevices_entryvalues">
         <item>28008052</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="lib_hex_fixraw16merge_entries">
+        <item>ON</item>
+        <item>Off (as in library)</item>
+    </string-array>
+    <string-array name="lib_hex_fixraw16merge_entryvalues">
+        <item>08028052</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="lib_hex_hardmerge_entries">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>Off (as in library)</item>
+    </string-array>
+    <string-array name="lib_hex_hardmerge_entryvalues">
+        <item>04008052</item>
+        <item>24008052</item>
+        <item>44008052</item>
+        <item>64008052</item>
+        <item>84008052</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="lib_hex_hardjpgquality_entries">
+        <item>ON</item>
+        <item>Off (as in library)</item>
+    </string-array>
+    <string-array name="lib_hex_hardjpgquality_entryvalues">
+        <item>950C8052</item>
         <item>0</item>
     </string-array>
 </resources>

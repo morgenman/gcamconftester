@@ -43,7 +43,6 @@ def adb_command(command):
     except subprocess.CalledProcessError:
         logging.error('Произошла ошибка adb. Проверьте, подключен ли телефон. [{0}]'.format(command))
         exit()
-        response = 'Ошибка!'
     except subprocess.TimeoutExpired:
         logging.error('Процесс adb превысил время ожидания и был закрыт. Попробуем еще раз [{0}]'.format(command))
         response = adb_command(command)
