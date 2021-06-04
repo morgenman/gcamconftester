@@ -1,5 +1,4 @@
 import struct, binascii, mmap, sys
-import numpy as np
 is_snap845 = False
 def get_data_offset(tuned_file_name):
     """
