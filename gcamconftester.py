@@ -303,6 +303,7 @@ if __name__ == "__main__":
         config_name = args.config
         aux_prefixes = ["", "_tele", "_wide", "_n4", "_n5", "_ldr", "_front"] #lib_user_tele_addr_8
         cam_id = get_camera_id_from_input(args.config, args.lens) if args.lens else 0
+        find_and_write_to_xml(config_name, "pref_aux_key", str(cam_id))
         custom_addr_num = f"lib_user{aux_prefixes[cam_id]}_addr_" + args.custom
         custom_value_num = f"lib_user{aux_prefixes[cam_id]}_value_" + args.custom
         custom_value_key = f"lib_user{aux_prefixes[cam_id]}_key_" + args.custom
@@ -350,6 +351,7 @@ if __name__ == "__main__":
         cct = list(dict.fromkeys(cct)) #убирает дубликаты
         aux_prefixes = ["", "_tele", "_wide", "_n4", "_n5", "_ldr", "_front"]
         cam_id = get_camera_id_from_input(args.config, args.lens) if args.lens else 0
+        find_and_write_to_xml(config_name, "pref_aux_key", str(cam_id))
         cct_keys = ['rr', 'rg', 'rb', 'gr', 'gg', 'gb', 'br', 'bg', 'bb']
         cct_keys = [key + aux_prefixes[cam_id] + "_key" for key in cct_keys]
         for id, matrix in enumerate(cct):
