@@ -550,7 +550,6 @@
     </string-array>
     <string-array name="libs_entries">
         <item>Google</item>
-        <item>R1_01c</item>
     </string-array>
     <string-array name="libs_entryvalues">
         <item>0</item>
@@ -12901,6 +12900,7 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
     </string-array>
     <string-array name="color_entryvalues">
         <item>0</item>
@@ -12909,6 +12909,7 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
     </string-array>
     <string-array name="lib_hex_blurpreview_entries">
         <item>ON</item>
@@ -12934,20 +12935,206 @@
         <item>08028052</item>
         <item>0</item>
     </string-array>
-    <string-array name="lib_hex_hardmerge_entries">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
+    <string-array name="lib_hex_saturation3_entries">
+        <item>-31.00</item>
+        <item>-20.00</item>
+        <item>-10.00</item>
+        <item>-4.000</item>
+        <item>-2.000</item>
+        <item>-1.875</item>
+        <item>-1.750</item>
+        <item>-1.625</item>
+        <item>-1.500</item>
+        <item>-1.375</item>
+        <item>-1.3125</item>
+        <item>-1.250</item>
+        <item>-1.1875</item>
+        <item>-1.125</item>
+        <item>-1.0625</item>
+        <item>-1.000</item>
+        <item>-0.9375</item>
+        <item>-0.875</item>
+        <item>-0.750</item>
+        <item>-0.6875</item>
+        <item>-0.625</item>
+        <item>-0.500</item>
+        <item>-0.350</item>
+        <item>-0.250</item>
+        <item>-0.125</item>
+        <item>0.000</item>
+        <item>0.125</item>
+        <item>0.250</item>
+        <item>0.350</item>
+        <item>0.500</item>
+        <item>0.625</item>
+        <item>0.6875</item>
+        <item>0.750</item>
+        <item>0.875</item>
+        <item>0.9375</item>
+        <item>1.000(Default)</item>
+        <item>1.0625</item>
+        <item>1.125</item>
+        <item>1.1875</item>
+        <item>1.250</item>
+        <item>1.3125</item>
+        <item>1.375</item>
+        <item>1.500</item>
+        <item>1.625</item>
+        <item>1.750</item>
+        <item>1.875</item>
+        <item>2.000</item>
+        <item>2.125</item>
+        <item>2.250</item>
+        <item>2.500</item>
+        <item>2.75</item>
+        <item>3.00</item>
+        <item>3.125</item>
+        <item>3.250</item>
+        <item>3.50</item>
+        <item>3.75</item>
+        <item>4.00</item>
+        <item>4.25</item>
+        <item>4.500</item>
+        <item>4.75</item>
+        <item>5.00</item>
+        <item>5.25</item>
+        <item>5.50</item>
+        <item>5.75</item>
+        <item>6.00</item>
+        <item>6.25</item>
+        <item>6.50</item>
+        <item>6.75</item>
+        <item>7.00</item>
+        <item>7.25</item>
+        <item>7.50</item>
+        <item>7.75</item>
+        <item>8.00</item>
+        <item>8.50</item>
+        <item>9.00</item>
+        <item>9.50</item>
+        <item>10.00</item>
+        <item>10.50</item>
+        <item>11.00</item>
+        <item>11.50</item>
+        <item>12.00</item>
+        <item>12.50</item>
+        <item>13.00</item>
+        <item>13.50</item>
+        <item>14.00</item>
+        <item>14.50</item>
+        <item>15.00</item>
+        <item>15.50</item>
+        <item>16.00</item>
+        <item>17.00</item>
+        <item>18.00</item>
+        <item>20.00</item>
+        <item>22.00</item>
+        <item>24.00</item>
+        <item>26.00</item>
+        <item>28.00</item>
+        <item>30.00</item>
+        <item>31.00</item>
         <item>Off (as in library)</item>
     </string-array>
-    <string-array name="lib_hex_hardmerge_entryvalues">
-        <item>04008052</item>
-        <item>24008052</item>
-        <item>44008052</item>
-        <item>64008052</item>
-        <item>84008052</item>
+    <string-array name="lib_hex_saturation3_entryvalues">
+        <item>00F0771E</item>
+        <item>0090761E</item>
+        <item>0090741E</item>
+        <item>0010721E</item>
+        <item>0010701E</item>
+        <item>00D07F1E</item>
+        <item>00907F1E</item>
+        <item>00507F1E</item>
+        <item>00107F1E</item>
+        <item>00D07E1E</item>
+        <item>00B07E1E</item>
+        <item>00907E1E</item>
+        <item>00707E1E</item>
+        <item>00507E1E</item>
+        <item>00307E1E</item>
+        <item>00107E1E</item>
+        <item>00D07D1E</item>
+        <item>00907D1E</item>
+        <item>00107D1E</item>
+        <item>00D07C1E</item>
+        <item>00907C1E</item>
+        <item>00107C1E</item>
+        <item>00107B1E</item>
+        <item>00107A1E</item>
+        <item>0010781E</item>
+        <item>E003679E</item>
+        <item>0010681E</item>
+        <item>00106A1E</item>
+        <item>00106B1E</item>
+        <item>00106C1E</item>
+        <item>00906C1E</item>
+        <item>00D06C1E</item>
+        <item>00106D1E</item>
+        <item>00906D1E</item>
+        <item>00D06D1E</item>
+        <item>00106E1E</item>
+        <item>00306E1E</item>
+        <item>00506E1E</item>
+        <item>00706E1E</item>
+        <item>00906E1E</item>
+        <item>00B06E1E</item>
+        <item>00D06E1E</item>
+        <item>00106F1E</item>
+        <item>00506F1E</item>
+        <item>00906F1E</item>
+        <item>00D06F1E</item>
+        <item>0010601E</item>
+        <item>0030601E</item>
+        <item>0050601E</item>
+        <item>0090601E</item>
+        <item>00D0601E</item>
+        <item>0010611E</item>
+        <item>0030611E</item>
+        <item>0050611E</item>
+        <item>0090611E</item>
+        <item>00D0611E</item>
+        <item>0010621E</item>
+        <item>0030621E</item>
+        <item>0050621E</item>
+        <item>0070621E</item>
+        <item>0090621E</item>
+        <item>00B0621E</item>
+        <item>00D0621E</item>
+        <item>00F0621E</item>
+        <item>0010631E</item>
+        <item>0030631E</item>
+        <item>0050631E</item>
+        <item>0070631E</item>
+        <item>0090631E</item>
+        <item>00B0631E</item>
+        <item>00D0631E</item>
+        <item>00F0631E</item>
+        <item>0010641E</item>
+        <item>0030641E</item>
+        <item>0050641E</item>
+        <item>0070641E</item>
+        <item>0090641E</item>
+        <item>00B0641E</item>
+        <item>00D0641E</item>
+        <item>00F0641E</item>
+        <item>0010651E</item>
+        <item>0030651E</item>
+        <item>0050651E</item>
+        <item>0070651E</item>
+        <item>0090651E</item>
+        <item>00B0651E</item>
+        <item>00D0651E</item>
+        <item>00F0651E</item>
+        <item>0010661E</item>
+        <item>0030661E</item>
+        <item>0050661E</item>
+        <item>0090661E</item>
+        <item>00D0661E</item>
+        <item>0010671E</item>
+        <item>0050671E</item>
+        <item>0090671E</item>
+        <item>00D0671E</item>
+        <item>00F0671E</item>
         <item>0</item>
     </string-array>
     <string-array name="lib_hex_hardjpgquality_entries">
@@ -13008,6 +13195,136 @@
     </string-array>
     <string-array name="lib_hex_hardsejpgquality_entryvalues">
         <item>950C8052</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="lib_hex_normalexposure_entryvalues">
+        <item>00F0771E</item>
+        <item>0090761E</item>
+        <item>0090741E</item>
+        <item>0010721E</item>
+        <item>0010701E</item>
+        <item>00D07F1E</item>
+        <item>00907F1E</item>
+        <item>00507F1E</item>
+        <item>00107F1E</item>
+        <item>00D07E1E</item>
+        <item>00B07E1E</item>
+        <item>00907E1E</item>
+        <item>00707E1E</item>
+        <item>00507E1E</item>
+        <item>00307E1E</item>
+        <item>00107E1E</item>
+        <item>00D07D1E</item>
+        <item>00907D1E</item>
+        <item>00107D1E</item>
+        <item>00D07C1E</item>
+        <item>00907C1E</item>
+        <item>00107C1E</item>
+        <item>00107B1E</item>
+        <item>00107A1E</item>
+        <item>0010781E</item>
+        <item>E003679E</item>
+        <item>0010681E</item>
+        <item>00106A1E</item>
+        <item>00106B1E</item>
+        <item>00106C1E</item>
+        <item>00906C1E</item>
+        <item>00D06C1E</item>
+        <item>00106D1E</item>
+        <item>00906D1E</item>
+        <item>00D06D1E</item>
+        <item>00106E1E</item>
+        <item>00306E1E</item>
+        <item>00506E1E</item>
+        <item>00706E1E</item>
+        <item>00906E1E</item>
+        <item>00B06E1E</item>
+        <item>00D06E1E</item>
+        <item>00106F1E</item>
+        <item>00506F1E</item>
+        <item>00906F1E</item>
+        <item>00D06F1E</item>
+        <item>0010601E</item>
+        <item>0030601E</item>
+        <item>0050601E</item>
+        <item>0090601E</item>
+        <item>00D0601E</item>
+        <item>0010611E</item>
+        <item>0030611E</item>
+        <item>0050611E</item>
+        <item>0090611E</item>
+        <item>00D0611E</item>
+        <item>0010621E</item>
+        <item>0030621E</item>
+        <item>0050621E</item>
+        <item>0070621E</item>
+        <item>0090621E</item>
+        <item>00B0621E</item>
+        <item>00D0621E</item>
+        <item>00F0621E</item>
+        <item>0010631E</item>
+        <item>0030631E</item>
+        <item>0050631E</item>
+        <item>0070631E</item>
+        <item>0090631E</item>
+        <item>00B0631E</item>
+        <item>00D0631E</item>
+        <item>00F0631E</item>
+        <item>0010641E</item>
+        <item>0030641E</item>
+        <item>0050641E</item>
+        <item>0070641E</item>
+        <item>0090641E</item>
+        <item>00B0641E</item>
+        <item>00D0641E</item>
+        <item>00F0641E</item>
+        <item>0010651E</item>
+        <item>0030651E</item>
+        <item>0050651E</item>
+        <item>0070651E</item>
+        <item>0090651E</item>
+        <item>00B0651E</item>
+        <item>00D0651E</item>
+        <item>00F0651E</item>
+        <item>0010661E</item>
+        <item>0030661E</item>
+        <item>0050661E</item>
+        <item>0090661E</item>
+        <item>00D0661E</item>
+        <item>0010671E</item>
+        <item>0050671E</item>
+        <item>0090671E</item>
+        <item>00D0671E</item>
+        <item>00F0671E</item>
+        <item>0008611E</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="lib_hex_resampling_entries">
+        <item>0</item>
+        <item>1 (Lanczos)</item>
+        <item>2 (Raisr2020)</item>
+        <item>Off (as in library)</item>
+    </string-array>
+    <string-array name="lib_hex_resampling_entryvalues">
+        <item>04008052</item>
+        <item>24008052</item>
+        <item>44008052</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="lib_hex_sunbug_entries">
+        <item>ON</item>
+        <item>Off (as in library)</item>
+    </string-array>
+    <string-array name="lib_hex_sunbug_entryvalues">
+        <item>E0570036</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="lib_hex_shastaforce_entries">
+        <item>ON</item>
+        <item>Off (as in library)</item>
+    </string-array>
+    <string-array name="lib_hex_shastaforce_entryvalues">
+        <item>28008052</item>
         <item>0</item>
     </string-array>
 </resources>

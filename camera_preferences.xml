@@ -6,23 +6,45 @@
     <PreferenceScreen
         android:icon="@drawable/quantum_gm_ic_haslitouch_grey_24"
         android:layout="@layout/preference_with_margin_hasliname"
-        android:key="emptycategory">
-        <PreferenceScreen
+        android:key="emptycategory"> android:orderingFromXml="true"
+            android:key="prefscreen_top">
+                                <PreferenceScreen
             android:layout="@layout/authorpagehasli"
+            android:key="emptycategory" />
+        <ListPreference
+            android:icon="@drawable/ic_brush"
+            android:entries="@array/pref_nightmode_entries"
+            android:layout="@layout/preference_with_margin_haslisettingsparam"
+            android:title="@string/night_mod"
+            android:key="pref_nightmode_key"
+            android:summary="%s"
+            android:defaultValue="2"
+            android:entryValues="@array/pref_nightmode_entryvalues" />
+        <Preference
+            android:icon="@drawable/ic_tutorial"
+            android:layout="@layout/preference_with_margin_haslisettingsparam"
+            android:title="Tutorial"
+            android:key="pref_category_about">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://clck.ru/VHk5M" />
+        </Preference>
+        <PreferenceScreen
+            android:layout="@layout/authorpagehasli2"
             android:key="emptycategory" />
         <Preference
             android:icon="@drawable/celso"
-            android:layout="@layout/preference_with_margin"
+            android:layout="@layout/preference_with_margin_haslicategoryname"
             android:title="www.celsoazevedo.com"
             android:key="pref_category_about"
             android:summary="celsoazevedo">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://www.celsoazevedo.com/files/android/google-camera/" />
+                android:data="https://www.celsoazevedo.com/files/android/google-camera/dev-P-Z-D/" />
         </Preference>
         <Preference
-            android:icon="@null"
-            android:layout="@layout/preference_with_margin"
+            android:icon="@drawable/tg"
+            android:layout="@layout/preference_with_margin_haslicategoryname"
             android:title="GCam.LibPitbuLL"
             android:key="pref_category_about"
             android:summary="Telegram">
@@ -30,27 +52,6 @@
                 android:action="android.intent.action.VIEW"
                 android:data="https://t.me/LibPitbuLL" />
         </Preference>
-        <ListPreference
-            android:icon="@drawable/ic_brush"
-            android:entries="@array/pref_nightmode_entries"
-            android:layout="@layout/preference_with_margin_haslisettingsparam"
-            android:title="Ночной режим"
-            android:key="pref_nightmode_key"
-            android:summary="%s"
-            android:defaultValue="2"
-            android:entryValues="@array/pref_nightmode_entryvalues" />
-        <ListPreference
-            android:icon="@drawable/ic_tutorial"
-            android:entries="@array/pref_nightmode_entries"
-            android:layout="@layout/preference_with_margin_haslisettingsparam"
-            android:title="Инструкция"
-            android:key="pref_category_name"
-            android:summary="%s"
-            android:defaultValue="2"
-            android:entryValues="@array/pref_nightmode_entryvalues" />
-        <PreferenceScreen
-            android:layout="@layout/authorpagehasli2"
-            android:key="emptycategory" />
         <PreferenceScreen
             android:layout="@layout/authorpagehasli3"
             android:key="emptycategory" />
@@ -109,7 +110,7 @@
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_allunkndevices_entryvalues" />
                 <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_raw_gm_grey_24"
+                    android:icon="@drawable/raw16fix"
                     android:entries="@array/lib_hex_fixraw16merge_entries"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
                     android:title="@string/fixraw16merge"
@@ -118,16 +119,6 @@
                     android:dependency="pref_category_main"
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_fixraw16merge_entryvalues" />
-                <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_sabre_gm_grey_24"
-                    android:entries="@array/lib_hex_hardmerge_entries"
-                    android:layout="@layout/preference_with_margin_haslisettingsparam"
-                    android:title="@string/hardmerge"
-                    android:key="lib_hardmerge_key"
-                    android:summary="%s "
-                    android:dependency="pref_category_main"
-                    android:defaultValue="0"
-                    android:entryValues="@array/lib_hex_hardmerge_entryvalues" />
                 <ListPreference
                     android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
                     android:entries="@array/lib_hex_hardjpgquality_entries"
@@ -139,15 +130,45 @@
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_hardjpgquality_entryvalues" />
                 <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
-                    android:entries="@array/lib_hex_hardsejpgquality_entries"
+                    android:icon="@drawable/shasta"
+                    android:entries="@array/lib_hex_shastaforce_entries"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
-                    android:title="@string/hardsejpgquality"
-                    android:key="lib_hardsejpgquality_key"
+                    android:title="@string/shastaforce"
+                    android:key="lib_shastaforce_key"
                     android:summary="%s "
                     android:dependency="pref_category_main"
                     android:defaultValue="0"
-                    android:entryValues="@array/lib_hex_hardsejpgquality_entryvalues" />
+                    android:entryValues="@array/lib_hex_shastaforce_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/shasta"
+                    android:entries="@array/lib_hex_temporaldenoise_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/shastafactor"
+                    android:key="lib_shastafactor_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_main"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_temporaldenoise_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/raisr"
+                    android:entries="@array/lib_hex_resampling_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/resampling"
+                    android:key="lib_resampling_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_main"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_resampling_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/sun"
+                    android:entries="@array/lib_hex_sunbug_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/sunbug"
+                    android:key="lib_sunbug_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_main"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_sunbug_entryvalues" />
                 <PreferenceScreen
                     android:icon="@drawable/noise"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
@@ -168,6 +189,13 @@
                         android:layout="@layout/preference_with_margin_haslisettingsparam"
                         android:title="@string/oemnoise"
                         android:key="pref_noise_key"
+                        android:summary="@string/oemnoisedesc"
+                        android:defaultValue="false" />
+                    <com.google.android.apps.camera.ui.preference.ManagedSwitchPreference
+                        android:icon="@drawable/oemnoise"
+                        android:layout="@layout/preference_with_margin_haslisettingsparam"
+                        android:title="Black screen"
+                        android:key="pref_black_key"
                         android:summary="@string/oemnoisedesc"
                         android:defaultValue="false" />
                     <ListPreference
@@ -1545,6 +1573,16 @@
                             android:entryValues="@array/lib_hex_saturation2_entryvalues" />
                         <ListPreference
                             android:icon="@drawable/dot"
+                            android:entries="@array/lib_hex_saturation3_entries"
+                            android:layout="@layout/preference_with_margin_haslisettingsparam"
+                            android:title="@string/saturation3"
+                            android:key="lib_saturation3_key"
+                            android:summary="%s "
+                            android:dependency="pref_global_settings"
+                            android:defaultValue="0"
+                            android:entryValues="@array/lib_hex_saturation3_entryvalues" />
+                        <ListPreference
+                            android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_iso_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
                             android:title="Iso"
@@ -1669,7 +1707,7 @@
                             android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_smoothingsabre_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
-                            android:title="Big Sharp "
+                            android:title="Big Sharp"
                             android:key="lib_bigsharp_key"
                             android:summary="%s "
                             android:dependency="pref_fine_tuning"
@@ -1871,7 +1909,7 @@
                             android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_expocomp_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
-                            android:title="Expo-compensation *"
+                            android:title="Expo-compensation"
                             android:key="lib_expocomp_key"
                             android:summary="%s "
                             android:dependency="pref_exposure_setting"
@@ -1881,12 +1919,22 @@
                             android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_expocor_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
-                            android:title="Expo-correction *"
+                            android:title="Expo-correction"
                             android:key="lib_expocor_key"
                             android:summary="%s "
                             android:dependency="pref_exposure_setting"
                             android:defaultValue="0"
                             android:entryValues="@array/lib_hex_expocor_entryvalues" />
+                        <ListPreference
+                            android:icon="@drawable/dot"
+                            android:entries="@array/lib_hex_noisereducta2_entries"
+                            android:layout="@layout/preference_with_margin_haslisettingsparam"
+                            android:title="Normalizes Exposure *"
+                            android:key="lib_normalexposure_key"
+                            android:summary="%s "
+                            android:dependency="pref_exposure_setting"
+                            android:defaultValue="0"
+                            android:entryValues="@array/lib_hex_normalexposure_entryvalues" />
                     </PreferenceScreen>
                 </PreferenceCategory>
                 <PreferenceCategory
@@ -3634,7 +3682,7 @@
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_allunkndevices_entryvalues" />
                 <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_raw_gm_grey_24"
+                    android:icon="@drawable/raw16fix"
                     android:entries="@array/lib_hex_fixraw16merge_entries"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
                     android:title="@string/fixraw16merge"
@@ -3643,16 +3691,6 @@
                     android:dependency="pref_category_tele"
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_fixraw16merge_entryvalues" />
-                <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_sabre_gm_grey_24"
-                    android:entries="@array/lib_hex_hardmerge_entries"
-                    android:layout="@layout/preference_with_margin_haslisettingsparam"
-                    android:title="@string/hardmerge"
-                    android:key="lib_hardmerge_tele_key"
-                    android:summary="%s "
-                    android:dependency="pref_category_tele"
-                    android:defaultValue="0"
-                    android:entryValues="@array/lib_hex_hardmerge_entryvalues" />
                 <ListPreference
                     android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
                     android:entries="@array/lib_hex_hardjpgquality_entries"
@@ -3664,15 +3702,45 @@
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_hardjpgquality_entryvalues" />
                 <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
-                    android:entries="@array/lib_hex_hardsejpgquality_entries"
+                    android:icon="@drawable/shasta"
+                    android:entries="@array/lib_hex_shastaforce_entries"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
-                    android:title="@string/hardsejpgquality"
-                    android:key="lib_hardsejpgquality_tele_key"
+                    android:title="@string/shastaforce"
+                    android:key="lib_shastaforce_tele_key"
                     android:summary="%s "
                     android:dependency="pref_category_tele"
                     android:defaultValue="0"
-                    android:entryValues="@array/lib_hex_hardsejpgquality_entryvalues" />
+                    android:entryValues="@array/lib_hex_shastaforce_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/shasta"
+                    android:entries="@array/lib_hex_temporaldenoise_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/shastafactor"
+                    android:key="lib_shastafactor_tele_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_tele"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_temporaldenoise_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/raisr"
+                    android:entries="@array/lib_hex_resampling_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/resampling"
+                    android:key="lib_resampling_tele_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_tele"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_resampling_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/sun"
+                    android:entries="@array/lib_hex_sunbug_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/sunbug"
+                    android:key="lib_sunbug_tele_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_tele"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_sunbug_entryvalues" />
                 <PreferenceScreen
                     android:icon="@drawable/quantum_gm_ic_noisemodel_gm_grey_24"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
@@ -5104,6 +5172,16 @@
                             android:entryValues="@array/lib_hex_saturation2_entryvalues" />
                         <ListPreference
                             android:icon="@drawable/dot"
+                            android:entries="@array/lib_hex_saturation3_entries"
+                            android:layout="@layout/preference_with_margin_haslisettingsparam"
+                            android:title="@string/saturation3"
+                            android:key="lib_saturation3_tele_key"
+                            android:summary="%s "
+                            android:dependency="pref_global_settings_tele"
+                            android:defaultValue="0"
+                            android:entryValues="@array/lib_hex_saturation3_entryvalues" />
+                        <ListPreference
+                            android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_iso_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
                             android:title="Iso"
@@ -5440,7 +5518,7 @@
                             android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_expocomp_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
-                            android:title="Expo-compensation *"
+                            android:title="Expo-compensation"
                             android:key="lib_expocomp_tele_key"
                             android:summary="%s "
                             android:dependency="pref_exposure_setting_tele"
@@ -5450,12 +5528,22 @@
                             android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_expocor_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
-                            android:title="Expo-correction *"
+                            android:title="Expo-correction"
                             android:key="lib_expocor_tele_key"
                             android:summary="%s "
                             android:dependency="pref_exposure_setting_tele"
                             android:defaultValue="0"
                             android:entryValues="@array/lib_hex_expocor_entryvalues" />
+                        <ListPreference
+                            android:icon="@drawable/dot"
+                            android:entries="@array/lib_hex_noisereducta2_entries"
+                            android:layout="@layout/preference_with_margin_haslisettingsparam"
+                            android:title="Normalizes Exposure *"
+                            android:key="lib_normalexposure_tele_key"
+                            android:summary="%s "
+                            android:dependency="pref_exposure_setting_tele"
+                            android:defaultValue="0"
+                            android:entryValues="@array/lib_hex_normalexposure_entryvalues" />
                     </PreferenceScreen>
                 </PreferenceCategory>
                 <PreferenceCategory
@@ -7203,7 +7291,7 @@
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_allunkndevices_entryvalues" />
                 <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_raw_gm_grey_24"
+                    android:icon="@drawable/raw16fix"
                     android:entries="@array/lib_hex_fixraw16merge_entries"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
                     android:title="@string/fixraw16merge"
@@ -7212,16 +7300,6 @@
                     android:dependency="pref_category_wide"
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_fixraw16merge_entryvalues" />
-                <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_sabre_gm_grey_24"
-                    android:entries="@array/lib_hex_hardmerge_entries"
-                    android:layout="@layout/preference_with_margin_haslisettingsparam"
-                    android:title="@string/hardmerge"
-                    android:key="lib_hardmerge_wide_key"
-                    android:summary="%s "
-                    android:dependency="pref_category_wide"
-                    android:defaultValue="0"
-                    android:entryValues="@array/lib_hex_hardmerge_entryvalues" />
                 <ListPreference
                     android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
                     android:entries="@array/lib_hex_hardjpgquality_entries"
@@ -7233,15 +7311,45 @@
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_hardjpgquality_entryvalues" />
                 <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
-                    android:entries="@array/lib_hex_hardsejpgquality_entries"
+                    android:icon="@drawable/shasta"
+                    android:entries="@array/lib_hex_shastaforce_entries"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
-                    android:title="@string/hardsejpgquality"
-                    android:key="lib_hardsejpgquality_wide_key"
+                    android:title="@string/shastaforce"
+                    android:key="lib_shastaforce_wide_key"
                     android:summary="%s "
                     android:dependency="pref_category_wide"
                     android:defaultValue="0"
-                    android:entryValues="@array/lib_hex_hardsejpgquality_entryvalues" />
+                    android:entryValues="@array/lib_hex_shastaforce_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/shasta"
+                    android:entries="@array/lib_hex_temporaldenoise_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/shastafactor"
+                    android:key="lib_shastafactor_wide_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_wide"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_temporaldenoise_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/raisr"
+                    android:entries="@array/lib_hex_resampling_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/resampling"
+                    android:key="lib_resampling_wide_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_wide"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_resampling_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/sun"
+                    android:entries="@array/lib_hex_sunbug_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/sunbug"
+                    android:key="lib_sunbug_wide_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_wide"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_sunbug_entryvalues" />
                 <PreferenceScreen
                     android:icon="@drawable/quantum_gm_ic_noisemodel_gm_grey_24"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
@@ -8673,6 +8781,16 @@
                             android:entryValues="@array/lib_hex_saturation2_entryvalues" />
                         <ListPreference
                             android:icon="@drawable/dot"
+                            android:entries="@array/lib_hex_saturation3_entries"
+                            android:layout="@layout/preference_with_margin_haslisettingsparam"
+                            android:title="@string/saturation3"
+                            android:key="lib_saturation3_wide_key"
+                            android:summary="%s "
+                            android:dependency="pref_global_settings_wide"
+                            android:defaultValue="0"
+                            android:entryValues="@array/lib_hex_saturation3_entryvalues" />
+                        <ListPreference
+                            android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_iso_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
                             android:title="Iso"
@@ -9009,7 +9127,7 @@
                             android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_expocomp_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
-                            android:title="Expo-compensation *"
+                            android:title="Expo-compensation"
                             android:key="lib_expocomp_wide_key"
                             android:summary="%s "
                             android:dependency="pref_exposure_setting_wide"
@@ -9019,12 +9137,22 @@
                             android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_expocor_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
-                            android:title="Expo-correction *"
+                            android:title="Expo-correction"
                             android:key="lib_expocor_wide_key"
                             android:summary="%s "
                             android:dependency="pref_exposure_setting_wide"
                             android:defaultValue="0"
                             android:entryValues="@array/lib_hex_expocor_entryvalues" />
+                        <ListPreference
+                            android:icon="@drawable/dot"
+                            android:entries="@array/lib_hex_noisereducta2_entries"
+                            android:layout="@layout/preference_with_margin_haslisettingsparam"
+                            android:title="Normalizes Exposure *"
+                            android:key="lib_normalexposure_wide_key"
+                            android:summary="%s "
+                            android:dependency="pref_exposure_setting_wide"
+                            android:defaultValue="0"
+                            android:entryValues="@array/lib_hex_normalexposure_entryvalues" />
                     </PreferenceScreen>
                 </PreferenceCategory>
                 <PreferenceCategory
@@ -10772,7 +10900,7 @@
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_allunkndevices_entryvalues" />
                 <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_raw_gm_grey_24"
+                    android:icon="@drawable/raw16fix"
                     android:entries="@array/lib_hex_fixraw16merge_entries"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
                     android:title="@string/fixraw16merge"
@@ -10781,16 +10909,6 @@
                     android:dependency="pref_category_id4"
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_fixraw16merge_entryvalues" />
-                <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_sabre_gm_grey_24"
-                    android:entries="@array/lib_hex_hardmerge_entries"
-                    android:layout="@layout/preference_with_margin_haslisettingsparam"
-                    android:title="@string/hardmerge"
-                    android:key="lib_hardmerge_n4_key"
-                    android:summary="%s "
-                    android:dependency="pref_category_id4"
-                    android:defaultValue="0"
-                    android:entryValues="@array/lib_hex_hardmerge_entryvalues" />
                 <ListPreference
                     android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
                     android:entries="@array/lib_hex_hardjpgquality_entries"
@@ -10802,15 +10920,45 @@
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_hardjpgquality_entryvalues" />
                 <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
-                    android:entries="@array/lib_hex_hardsejpgquality_entries"
+                    android:icon="@drawable/shasta"
+                    android:entries="@array/lib_hex_shastaforce_entries"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
-                    android:title="@string/hardsejpgquality"
-                    android:key="lib_hardsejpgquality_n4_key"
+                    android:title="@string/shastaforce"
+                    android:key="lib_shastaforce_n4_key"
                     android:summary="%s "
                     android:dependency="pref_category_id4"
                     android:defaultValue="0"
-                    android:entryValues="@array/lib_hex_hardsejpgquality_entryvalues" />
+                    android:entryValues="@array/lib_hex_shastaforce_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/shasta"
+                    android:entries="@array/lib_hex_temporaldenoise_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/shastafactor"
+                    android:key="lib_shastafactor_n4_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_id4"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_temporaldenoise_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/raisr"
+                    android:entries="@array/lib_hex_resampling_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/resampling"
+                    android:key="lib_resampling_n4_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_id4"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_resampling_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/sun"
+                    android:entries="@array/lib_hex_sunbug_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/sunbug"
+                    android:key="lib_sunbug_n4_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_id4"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_sunbug_entryvalues" />
                 <PreferenceScreen
                     android:icon="@drawable/quantum_gm_ic_noisemodel_gm_grey_24"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
@@ -12248,6 +12396,16 @@
                             android:entryValues="@array/lib_hex_saturation2_entryvalues" />
                         <ListPreference
                             android:icon="@drawable/dot"
+                            android:entries="@array/lib_hex_saturation3_entries"
+                            android:layout="@layout/preference_with_margin_haslisettingsparam"
+                            android:title="@string/saturation3"
+                            android:key="lib_saturation3_n4_key"
+                            android:summary="%s "
+                            android:dependency="pref_global_settings_n4"
+                            android:defaultValue="0"
+                            android:entryValues="@array/lib_hex_saturation3_entryvalues" />
+                        <ListPreference
+                            android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_iso_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
                             android:title="Iso"
@@ -12584,7 +12742,7 @@
                             android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_expocomp_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
-                            android:title="Expo-compensation *"
+                            android:title="Expo-compensation"
                             android:key="lib_expocomp_n4_key"
                             android:summary="%s "
                             android:dependency="pref_exposure_setting_n4"
@@ -12594,12 +12752,22 @@
                             android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_expocor_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
-                            android:title="Expo-correction *"
+                            android:title="Expo-correction"
                             android:key="lib_expocor_n4_key"
                             android:summary="%s "
                             android:dependency="pref_exposure_setting_n4"
                             android:defaultValue="0"
                             android:entryValues="@array/lib_hex_expocor_entryvalues" />
+                        <ListPreference
+                            android:icon="@drawable/dot"
+                            android:entries="@array/lib_hex_noisereducta2_entries"
+                            android:layout="@layout/preference_with_margin_haslisettingsparam"
+                            android:title="Normalizes Exposure *"
+                            android:key="lib_normalexposure_n4_key"
+                            android:summary="%s "
+                            android:dependency="pref_exposure_setting_n4"
+                            android:defaultValue="0"
+                            android:entryValues="@array/lib_hex_normalexposure_entryvalues" />
                     </PreferenceScreen>
                 </PreferenceCategory>
                 <PreferenceCategory
@@ -14347,7 +14515,7 @@
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_allunkndevices_entryvalues" />
                 <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_raw_gm_grey_24"
+                    android:icon="@drawable/raw16fix"
                     android:entries="@array/lib_hex_fixraw16merge_entries"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
                     android:title="@string/fixraw16merge"
@@ -14356,16 +14524,6 @@
                     android:dependency="pref_category_id5"
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_fixraw16merge_entryvalues" />
-                <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_sabre_gm_grey_24"
-                    android:entries="@array/lib_hex_hardmerge_entries"
-                    android:layout="@layout/preference_with_margin_haslisettingsparam"
-                    android:title="@string/hardmerge"
-                    android:key="lib_hardmerge_n5_key"
-                    android:summary="%s "
-                    android:dependency="pref_category_id5"
-                    android:defaultValue="0"
-                    android:entryValues="@array/lib_hex_hardmerge_entryvalues" />
                 <ListPreference
                     android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
                     android:entries="@array/lib_hex_hardjpgquality_entries"
@@ -14377,15 +14535,45 @@
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_hardjpgquality_entryvalues" />
                 <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
-                    android:entries="@array/lib_hex_hardsejpgquality_entries"
+                    android:icon="@drawable/shasta"
+                    android:entries="@array/lib_hex_shastaforce_entries"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
-                    android:title="@string/hardsejpgquality"
-                    android:key="lib_hardsejpgquality_n5_key"
+                    android:title="@string/shastaforce"
+                    android:key="lib_shastaforce_n5_key"
                     android:summary="%s "
                     android:dependency="pref_category_id5"
                     android:defaultValue="0"
-                    android:entryValues="@array/lib_hex_hardsejpgquality_entryvalues" />
+                    android:entryValues="@array/lib_hex_shastaforce_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/shasta"
+                    android:entries="@array/lib_hex_temporaldenoise_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/shastafactor"
+                    android:key="lib_shastafactor_n5_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_id5"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_temporaldenoise_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/raisr"
+                    android:entries="@array/lib_hex_resampling_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/resampling"
+                    android:key="lib_resampling_n5_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_id5"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_resampling_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/sun"
+                    android:entries="@array/lib_hex_sunbug_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/sunbug"
+                    android:key="lib_sunbug_n5_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_id5"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_sunbug_entryvalues" />
                 <PreferenceScreen
                     android:icon="@drawable/quantum_gm_ic_noisemodel_gm_grey_24"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
@@ -15823,6 +16011,16 @@
                             android:entryValues="@array/lib_hex_saturation2_entryvalues" />
                         <ListPreference
                             android:icon="@drawable/dot"
+                            android:entries="@array/lib_hex_saturation3_entries"
+                            android:layout="@layout/preference_with_margin_haslisettingsparam"
+                            android:title="@string/saturation3"
+                            android:key="lib_saturation3_n5_key"
+                            android:summary="%s "
+                            android:dependency="pref_global_settings_n5"
+                            android:defaultValue="0"
+                            android:entryValues="@array/lib_hex_saturation3_entryvalues" />
+                        <ListPreference
+                            android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_iso_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
                             android:title="Iso"
@@ -16159,7 +16357,7 @@
                             android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_expocomp_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
-                            android:title="Expo-compensation *"
+                            android:title="Expo-compensation"
                             android:key="lib_expocomp_n5_key"
                             android:summary="%s "
                             android:dependency="pref_exposure_setting_n5"
@@ -16169,12 +16367,22 @@
                             android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_expocor_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
-                            android:title="Expo-correction *"
+                            android:title="Expo-correction"
                             android:key="lib_expocor_n5_key"
                             android:summary="%s "
                             android:dependency="pref_exposure_setting_n5"
                             android:defaultValue="0"
                             android:entryValues="@array/lib_hex_expocor_entryvalues" />
+                        <ListPreference
+                            android:icon="@drawable/dot"
+                            android:entries="@array/lib_hex_noisereducta2_entries"
+                            android:layout="@layout/preference_with_margin_haslisettingsparam"
+                            android:title="Normalizes Exposure *"
+                            android:key="lib_normalexposure_n5_key"
+                            android:summary="%s "
+                            android:dependency="pref_exposure_setting_n5"
+                            android:defaultValue="0"
+                            android:entryValues="@array/lib_hex_normalexposure_entryvalues" />
                     </PreferenceScreen>
                 </PreferenceCategory>
                 <PreferenceCategory
@@ -17922,7 +18130,7 @@
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_allunkndevices_entryvalues" />
                 <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_raw_gm_grey_24"
+                    android:icon="@drawable/raw16fix"
                     android:entries="@array/lib_hex_fixraw16merge_entries"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
                     android:title="@string/fixraw16merge"
@@ -17931,16 +18139,6 @@
                     android:dependency="pref_category_ldr"
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_fixraw16merge_entryvalues" />
-                <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_sabre_gm_grey_24"
-                    android:entries="@array/lib_hex_hardmerge_entries"
-                    android:layout="@layout/preference_with_margin_haslisettingsparam"
-                    android:title="@string/hardmerge"
-                    android:key="lib_hardmerge_ldr_key"
-                    android:summary="%s "
-                    android:dependency="pref_category_ldr"
-                    android:defaultValue="0"
-                    android:entryValues="@array/lib_hex_hardmerge_entryvalues" />
                 <ListPreference
                     android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
                     android:entries="@array/lib_hex_hardjpgquality_entries"
@@ -17952,15 +18150,45 @@
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_hardjpgquality_entryvalues" />
                 <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
-                    android:entries="@array/lib_hex_hardsejpgquality_entries"
+                    android:icon="@drawable/shasta"
+                    android:entries="@array/lib_hex_shastaforce_entries"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
-                    android:title="@string/hardsejpgquality"
-                    android:key="lib_hardsejpgquality_ldr_key"
+                    android:title="@string/shastaforce"
+                    android:key="lib_shastaforce_ldr_key"
                     android:summary="%s "
                     android:dependency="pref_category_ldr"
                     android:defaultValue="0"
-                    android:entryValues="@array/lib_hex_hardsejpgquality_entryvalues" />
+                    android:entryValues="@array/lib_hex_shastaforce_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/shasta"
+                    android:entries="@array/lib_hex_temporaldenoise_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/shastafactor"
+                    android:key="lib_shastafactor_ldr_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_ldr"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_temporaldenoise_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/raisr"
+                    android:entries="@array/lib_hex_resampling_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/resampling"
+                    android:key="lib_resampling_ldr_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_ldr"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_resampling_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/sun"
+                    android:entries="@array/lib_hex_sunbug_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/sunbug"
+                    android:key="lib_sunbug_ldr_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_ldr"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_sunbug_entryvalues" />
                 <PreferenceScreen
                     android:icon="@drawable/quantum_gm_ic_noisemodel_gm_grey_24"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
@@ -19396,6 +19624,16 @@
                             android:entryValues="@array/lib_hex_saturation2_entryvalues" />
                         <ListPreference
                             android:icon="@drawable/dot"
+                            android:entries="@array/lib_hex_saturation3_entries"
+                            android:layout="@layout/preference_with_margin_haslisettingsparam"
+                            android:title="@string/saturation3"
+                            android:key="lib_saturation3_ldr_key"
+                            android:summary="%s "
+                            android:dependency="pref_global_settings_ldr"
+                            android:defaultValue="0"
+                            android:entryValues="@array/lib_hex_saturation3_entryvalues" />
+                        <ListPreference
+                            android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_iso_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
                             android:title="Iso"
@@ -19732,7 +19970,7 @@
                             android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_expocomp_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
-                            android:title="Expo-compensation *"
+                            android:title="Expo-compensation"
                             android:key="lib_expocomp_ldr_key"
                             android:summary="%s "
                             android:dependency="pref_exposure_setting_ldr"
@@ -19742,12 +19980,22 @@
                             android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_expocor_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
-                            android:title="Expo-correction *"
+                            android:title="Expo-correction"
                             android:key="lib_expocor_ldr_key"
                             android:summary="%s "
                             android:dependency="pref_exposure_setting_ldr"
                             android:defaultValue="0"
                             android:entryValues="@array/lib_hex_expocor_entryvalues" />
+                        <ListPreference
+                            android:icon="@drawable/dot"
+                            android:entries="@array/lib_hex_noisereducta2_entries"
+                            android:layout="@layout/preference_with_margin_haslisettingsparam"
+                            android:title="Normalizes Exposure *"
+                            android:key="lib_normalexposure_ldr_key"
+                            android:summary="%s "
+                            android:dependency="pref_exposure_setting_ldr"
+                            android:defaultValue="0"
+                            android:entryValues="@array/lib_hex_normalexposure_entryvalues" />
                     </PreferenceScreen>
                 </PreferenceCategory>
                 <PreferenceCategory
@@ -21468,7 +21716,7 @@
             <PreferenceScreen
                 android:icon="@drawable/front"
                 android:layout="@layout/preference_with_margin_haslisettingsparam"
-                android:title="@string/lens_front"
+                android:title="@string/front_libp"
                 android:key="lib_group_key">
                 <ListPreference
                     android:icon="@drawable/libentry"
@@ -21500,7 +21748,7 @@
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_allunkndevices_entryvalues" />
                 <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_raw_gm_grey_24"
+                    android:icon="@drawable/raw16fix"
                     android:entries="@array/lib_hex_fixraw16merge_entries"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
                     android:title="@string/fixraw16merge"
@@ -21509,16 +21757,6 @@
                     android:dependency="pref_category_front"
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_fixraw16merge_entryvalues" />
-                <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_sabre_gm_grey_24"
-                    android:entries="@array/lib_hex_hardmerge_entries"
-                    android:layout="@layout/preference_with_margin_haslisettingsparam"
-                    android:title="@string/hardmerge"
-                    android:key="lib_hardmerge_front_key"
-                    android:summary="%s "
-                    android:dependency="pref_category_front"
-                    android:defaultValue="0"
-                    android:entryValues="@array/lib_hex_hardmerge_entryvalues" />
                 <ListPreference
                     android:icon="@drawable/quantum_gm_ic_jpeg_gm_grey_24"
                     android:entries="@array/lib_hex_hardjpgquality_entries"
@@ -21539,6 +21777,46 @@
                     android:dependency="pref_category_front"
                     android:defaultValue="0"
                     android:entryValues="@array/lib_hex_hardsejpgquality_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/shasta"
+                    android:entries="@array/lib_hex_shastaforce_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/shastaforce"
+                    android:key="lib_shastaforce_front_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_front"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_shastaforce_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/shasta"
+                    android:entries="@array/lib_hex_temporaldenoise_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/shastafactor"
+                    android:key="lib_shastafactor_front_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_front"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_temporaldenoise_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/raisr"
+                    android:entries="@array/lib_hex_resampling_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/resampling"
+                    android:key="lib_resampling_front_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_front"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_resampling_entryvalues" />
+                <ListPreference
+                    android:icon="@drawable/sun"
+                    android:entries="@array/lib_hex_sunbug_entries"
+                    android:layout="@layout/preference_with_margin_haslisettingsparam"
+                    android:title="@string/sunbug"
+                    android:key="lib_sunbug_front_key"
+                    android:summary="%s "
+                    android:dependency="pref_category_front"
+                    android:defaultValue="0"
+                    android:entryValues="@array/lib_hex_sunbug_entryvalues" />
                 <PreferenceScreen
                     android:icon="@drawable/quantum_gm_ic_noisemodel_gm_grey_24"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
@@ -21749,7 +22027,7 @@
                 <com.google.android.apps.camera.ui.preference.ManagedSwitchPreference
                     android:icon="@drawable/quantum_gm_ic_libpatcher_app_gm_grey_24"
                     android:layout="@layout/preference_with_margin_haslisettingsparam"
-                    android:title="Restart front"
+                    android:title="@string/front_title_libp"
                     android:key="pref_enable_restart_front_key"
                     android:defaultValue="false"
                     android:summaryOn="Restart On"
@@ -22985,6 +23263,16 @@
                             android:entryValues="@array/lib_hex_saturation2_entryvalues" />
                         <ListPreference
                             android:icon="@drawable/dot"
+                            android:entries="@array/lib_hex_saturation3_entries"
+                            android:layout="@layout/preference_with_margin_haslisettingsparam"
+                            android:title="@string/saturation3"
+                            android:key="lib_saturation3_front_key"
+                            android:summary="%s "
+                            android:dependency="pref_global_settings_front"
+                            android:defaultValue="0"
+                            android:entryValues="@array/lib_hex_saturation3_entryvalues" />
+                        <ListPreference
+                            android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_iso_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
                             android:title="Iso"
@@ -23321,7 +23609,7 @@
                             android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_expocomp_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
-                            android:title="Expo-compensation *"
+                            android:title="Expo-compensation"
                             android:key="lib_expocomp_front_key"
                             android:summary="%s "
                             android:dependency="pref_exposure_setting_front"
@@ -23331,12 +23619,22 @@
                             android:icon="@drawable/dot"
                             android:entries="@array/lib_hex_expocor_entries"
                             android:layout="@layout/preference_with_margin_haslisettingsparam"
-                            android:title="Expo-correction *"
+                            android:title="Expo-correction"
                             android:key="lib_expocor_front_key"
                             android:summary="%s "
                             android:dependency="pref_exposure_setting_front"
                             android:defaultValue="0"
                             android:entryValues="@array/lib_hex_expocor_entryvalues" />
+                        <ListPreference
+                            android:icon="@drawable/dot"
+                            android:entries="@array/lib_hex_noisereducta2_entries"
+                            android:layout="@layout/preference_with_margin_haslisettingsparam"
+                            android:title="Normalizes Exposure *"
+                            android:key="lib_normalexposure_front_key"
+                            android:summary="%s "
+                            android:dependency="pref_exposure_setting_front"
+                            android:defaultValue="0"
+                            android:entryValues="@array/lib_hex_normalexposure_entryvalues" />
                     </PreferenceScreen>
                 </PreferenceCategory>
                 <PreferenceCategory
@@ -25060,30 +25358,6 @@
             android:title="@string/color_settings_title"
             android:key="pref_color_key"
             android:summary="@string/regcolor">
-            <PreferenceScreen
-                android:icon="@drawable/dbl"
-                android:layout="@layout/preference_with_margin_haslisettingsparam"
-                android:title="@string/black_level_title"
-                android:key="black_level_screen">
-                <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_blacklevel_gm_grey_24"
-                    android:entries="@array/black_level_entries"
-                    android:layout="@layout/preference_with_margin_haslisettingsparam"
-                    android:title="@string/black_level_f_title"
-                    android:key="black_level_f_key"
-                    android:summary="%s"
-                    android:defaultValue="0"
-                    android:entryValues="@array/black_level_entryvalues" />
-                <ListPreference
-                    android:icon="@drawable/quantum_gm_ic_blacklevelcorrection_gm_grey_24"
-                    android:entries="@array/pref_dbl_entries"
-                    android:layout="@layout/preference_with_margin_haslisettingsparam"
-                    android:title="@string/pref_dbl_f_title"
-                    android:key="pref_hdr_dbl_f_key"
-                    android:summary="%s"
-                    android:defaultValue="0"
-                    android:entryValues="@array/pref_dbl_entryvalues" />
-            </PreferenceScreen>
             <com.google.android.apps.camera.ui.preference.ManagedSwitchPreference
                 android:icon="@drawable/quantum_gm_ic_neutralcolor_gm_grey_24"
                 android:layout="@layout/preference_with_margin_haslisettingsparam"
@@ -25101,15 +25375,6 @@
                     android:key="pref_gcam_awb_key"
                     android:summary="@string/gcamawbdesc"
                     android:defaultValue="false" />
-                <ListPreference
-                    android:icon="@drawable/awfront"
-                    android:entries="@array/pref_awb_entries"
-                    android:layout="@layout/preference_with_margin_haslisettingsparam"
-                    android:title="@string/front_awb"
-                    android:key="pref_awb_front_key"
-                    android:summary="%s"
-                    android:defaultValue="24"
-                    android:entryValues="@array/pref_awb_entryvalues" />
                 <ListPreference
                     android:icon="@drawable/gbgrmain"
                     android:entries="@array/pref_grgb_entries"
@@ -25361,6 +25626,13 @@
             android:summary="%s"
             android:defaultValue="97"
             android:entryValues="@array/pref_qjpg_entryvalues" />
+        <com.google.android.apps.camera.ui.preference.ManagedSwitchPreference
+            android:icon="@drawable/googlephoto"
+            android:layout="@layout/preference_with_margin_haslisettingsparam"
+            android:title="Google Photos"
+            android:key="pref_gallery_key"
+            android:summary="@string/gphotobutton"
+            android:defaultValue="false" />
         <PreferenceCategory
             android:layout="@layout/preference_with_margin_haslicategoryname"
             android:title="@string/fix"
@@ -25374,6 +25646,76 @@
             android:summary="%s"
             android:defaultValue="1"
             android:entryValues="@array/pref_c2a_entryvalues" />
+        <PreferenceScreen
+            android:icon="@drawable/raw"
+            android:layout="@layout/preference_with_margin_haslisettingsparam"
+            android:title="@string/screen_raw_title"
+            android:key="screen_raw"
+            android:summary="@string/rawdesc">
+            <ListPreference
+                android:icon="@drawable/front"
+                android:entries="@array/raw_entries"
+                android:layout="@layout/preference_with_margin_haslisettingsparam"
+                android:title="@string/title_FRONT"
+                android:key="pref_raw_key_front"
+                android:summary="%s"
+                android:defaultValue="0"
+                android:entryValues="@array/raw_entryvalues" />
+            <ListPreference
+                android:icon="@drawable/camera1"
+                android:entries="@array/raw_entries"
+                android:layout="@layout/preference_with_margin_haslisettingsparam"
+                android:title="@string/title_MAIN"
+                android:key="pref_raw_key_main"
+                android:summary="%s"
+                android:defaultValue="0"
+                android:entryValues="@array/raw_entryvalues" />
+            <ListPreference
+                android:icon="@drawable/camera2"
+                android:entries="@array/raw_entries"
+                android:layout="@layout/preference_with_margin_haslisettingsparam"
+                android:title="@string/title_TELE"
+                android:key="pref_raw_key_tele"
+                android:summary="%s"
+                android:defaultValue="0"
+                android:entryValues="@array/raw_entryvalues" />
+            <ListPreference
+                android:icon="@drawable/camera3"
+                android:entries="@array/raw_entries"
+                android:layout="@layout/preference_with_margin_haslisettingsparam"
+                android:title="@string/title_WIDE"
+                android:key="pref_raw_key_wide"
+                android:summary="%s"
+                android:defaultValue="0"
+                android:entryValues="@array/raw_entryvalues" />
+            <ListPreference
+                android:icon="@drawable/camera4"
+                android:entries="@array/raw_entries"
+                android:layout="@layout/preference_with_margin_haslisettingsparam"
+                android:title="@string/title_ID4"
+                android:key="pref_raw_key_id4"
+                android:summary="%s"
+                android:defaultValue="0"
+                android:entryValues="@array/raw_entryvalues" />
+            <ListPreference
+                android:icon="@drawable/camera5"
+                android:entries="@array/raw_entries"
+                android:layout="@layout/preference_with_margin_haslisettingsparam"
+                android:title="@string/title_ID5"
+                android:key="pref_raw_key_id5"
+                android:summary="%s"
+                android:defaultValue="0"
+                android:entryValues="@array/raw_entryvalues" />
+            <ListPreference
+                android:icon="@drawable/camera5"
+                android:entries="@array/raw_entries"
+                android:layout="@layout/preference_with_margin_haslisettingsparam"
+                android:title="@string/ldr_name"
+                android:key="pref_raw_key_ldr"
+                android:summary="%s"
+                android:defaultValue="0"
+                android:entryValues="@array/raw_entryvalues" />
+        </PreferenceScreen>
         <PreferenceCategory
             android:layout="@layout/preference_with_margin_haslicategoryname"
             android:title="@string/modelhdr"
@@ -25560,83 +25902,6 @@
                 android:defaultValue="6"
                 android:entryValues="@array/device_entryvalues" />
         </PreferenceScreen>
-        <PreferenceScreen
-            android:icon="@drawable/raw"
-            android:layout="@layout/preference_with_margin_haslisettingsparam"
-            android:title="@string/screen_raw_title"
-            android:key="screen_raw"
-            android:summary="@string/rawdesc">
-            <ListPreference
-                android:icon="@drawable/front"
-                android:entries="@array/raw_entries"
-                android:layout="@layout/preference_with_margin_haslisettingsparam"
-                android:title="@string/title_FRONT"
-                android:key="pref_raw_key_front"
-                android:summary="%s"
-                android:defaultValue="0"
-                android:entryValues="@array/raw_entryvalues" />
-            <ListPreference
-                android:icon="@drawable/camera1"
-                android:entries="@array/raw_entries"
-                android:layout="@layout/preference_with_margin_haslisettingsparam"
-                android:title="@string/title_MAIN"
-                android:key="pref_raw_key_main"
-                android:summary="%s"
-                android:defaultValue="0"
-                android:entryValues="@array/raw_entryvalues" />
-            <ListPreference
-                android:icon="@drawable/camera2"
-                android:entries="@array/raw_entries"
-                android:layout="@layout/preference_with_margin_haslisettingsparam"
-                android:title="@string/title_TELE"
-                android:key="pref_raw_key_tele"
-                android:summary="%s"
-                android:defaultValue="0"
-                android:entryValues="@array/raw_entryvalues" />
-            <ListPreference
-                android:icon="@drawable/camera3"
-                android:entries="@array/raw_entries"
-                android:layout="@layout/preference_with_margin_haslisettingsparam"
-                android:title="@string/title_WIDE"
-                android:key="pref_raw_key_wide"
-                android:summary="%s"
-                android:defaultValue="0"
-                android:entryValues="@array/raw_entryvalues" />
-            <ListPreference
-                android:icon="@drawable/camera4"
-                android:entries="@array/raw_entries"
-                android:layout="@layout/preference_with_margin_haslisettingsparam"
-                android:title="@string/title_ID4"
-                android:key="pref_raw_key_id4"
-                android:summary="%s"
-                android:defaultValue="0"
-                android:entryValues="@array/raw_entryvalues" />
-            <ListPreference
-                android:icon="@drawable/camera5"
-                android:entries="@array/raw_entries"
-                android:layout="@layout/preference_with_margin_haslisettingsparam"
-                android:title="@string/title_ID5"
-                android:key="pref_raw_key_id5"
-                android:summary="%s"
-                android:defaultValue="0"
-                android:entryValues="@array/raw_entryvalues" />
-            <ListPreference
-                android:icon="@drawable/camera5"
-                android:entries="@array/raw_entries"
-                android:layout="@layout/preference_with_margin_haslisettingsparam"
-                android:title="@string/ldr_name"
-                android:key="pref_raw_key_ldr"
-                android:summary="%s"
-                android:defaultValue="0"
-                android:entryValues="@array/raw_entryvalues" />
-        </PreferenceScreen>
-        <com.google.android.apps.camera.ui.preference.ManagedSwitchPreference
-            android:icon="@drawable/googlephoto"
-            android:layout="@layout/preference_with_margin_haslisettingsparam"
-            android:title="Google Photos"
-            android:key="pref_gallery_key"
-            android:summary="@string/gphotobutton"
-            android:defaultValue="false" />
         <com.google.android.apps.camera.ui.preference.ManagedSwitchPreference
             android:icon="@drawable/hdrnet"
             android:layout="@layout/hide"
@@ -25691,6 +25956,10 @@
             android:summary="%s"
             android:defaultValue="@string/preference_double_tap_switch_camera"
             android:entryValues="@array/pref_double_tap_entryvalues" />
+        <PreferenceCategory
+            android:layout="@layout/preference_with_margin_haslicategoryname"
+            android:title="@string/buttonsettings"
+            android:key="pref_category_xml" />
         <com.google.android.apps.camera.ui.preference.ManagedSwitchPreference
             android:icon="@drawable/autonsbutton"
             android:layout="@layout/preference_with_margin_haslisettingsparam"
@@ -26061,6 +26330,13 @@
             android:title="@string/config_share"
             android:key="pref_share_cfg"
             android:summary="@string/config_share_sum" />
+        <com.google.android.apps.camera.ui.preference.ManagedSwitchPreference
+            android:icon="@drawable/styleconf"
+            android:layout="@layout/preference_with_margin_haslisettingsparam"
+            android:title="@string/black_screen"
+            android:key="pref_black_key"
+            android:summary=""
+            android:defaultValue="false" />
         <ListPreference
             android:icon="@drawable/styleconf"
             android:entries="@array/spiner_entries"
@@ -26074,10 +26350,10 @@
             android:icon="@drawable/colorstyle"
             android:entries="@array/color_entries"
             android:layout="@layout/preference_with_margin_haslisettingsparam"
-            android:title="Color"
+            android:title="@string/colorset"
             android:key="pref_color_spiner_key"
             android:summary="%s"
-            android:defaultValue="0"
+            android:defaultValue="6"
             android:entryValues="@array/color_entryvalues" />
     </PreferenceScreen>
     <PreferenceScreen
@@ -26144,19 +26420,19 @@
                 android:defaultValue="0"
                 android:entryValues="@array/pref_bitrate_entryvalues" />
             <ListPreference
-                android:icon="@drawable/quantum_gm_ic_arrow_gm_grey_24"
+                android:icon="@drawable/quantum_ic_bitraite_grey_24"
                 android:entries="@array/pref_bitrate_entries"
-                android:layout="@layout/preference_with_margin"
-                android:title="Битрейт тайм-лапс"
+                android:layout="@layout/preference_with_margin_haslisettingsparam"
+                android:title="@string/bit_time"
                 android:key="pref_bitrate_time_lapse_key"
                 android:summary="%s."
                 android:defaultValue="0"
                 android:entryValues="@array/pref_bitrate_entryvalues" />
             <ListPreference
-                android:icon="@drawable/quantum_gm_ic_arrow_gm_grey_24"
+                android:icon="@drawable/quantum_ic_bitraite_grey_24"
                 android:entries="@array/pref_bitrate_entries"
-                android:layout="@layout/preference_with_margin"
-                android:title="Битрейт слоу-мо"
+                android:layout="@layout/preference_with_margin_haslisettingsparam"
+                android:title="@string/bit_slo"
                 android:key="pref_bitrate_slow_motion_key"
                 android:summary="%s."
                 android:defaultValue="0"
