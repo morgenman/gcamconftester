@@ -1,5 +1,9 @@
 import struct, binascii, mmap, sys
 is_snap845 = False
+
+def float_to_hex(f):
+    return hex(struct.unpack('<I', struct.pack('<f', f))[0])
+
 def get_data_offset(tuned_file_name):
     """
     Возвращает смещение для начала блока data в файле tuned_file_name
@@ -79,7 +83,7 @@ def decode_awb(hexdata):
     filter_hex = ["01000000", "02000000", "00000000"] #фильтр мусора
     hexdata = [i for i in hexdata if not any([e for e in filter_hex if e in i])] #удаление мусора по фильтру
     awb_float = [struct.unpack('<f', binascii.unhexlify(value)) for value in hexdata] #перевод из хекса во флоат
-    awb_float = [ '%.5f' % elem for elem in awb_float] #оставляю 5 знаков после запятой
+    awb_float = [ '%.6f' % elem for elem in awb_float] #оставляю 5 знаков после запятой
     awb_float = list(zip(awb_float[0::2], awb_float[1::2])) #хз надо ли
     return awb_float
 
@@ -121,16 +125,24 @@ if __name__ == "__main__":
     gcam_order = [2, 1, 7, 6, 4, 8, 3, 5]
     awb = decode_awb(hex_awb)
     print("Awb in lib: \n" + str(awb))
-    print("Order for gcam: ")
+    print("\nOrder for gcam: ")
     for pair in gcam_order:
         print(awb[pair])
     
+    print("\nIn hex: ")
+    print("RG ")
+    for pair in gcam_order:
+        print(str(float_to_hex(float(awb[pair][0]))))
+
+    print("BG ")
+    for pair in gcam_order:
+        print(str(float_to_hex(float(awb[pair][1]))))
     cct = []
     cct13 = decode_cct(extract_data_by_offsets(tuned_file_name, data_offset, cc13_offsets))
     cct12 = decode_cct(extract_data_by_offsets(tuned_file_name, data_offset, cc12_offsets))
     cct = cct + cct13 if cct13 is not None else cct
     cct = cct + cct12 if cct12 is not None else cct
     cct = list(dict.fromkeys(cct)) #убирает дубликаты
-    print("CCT:")
+    print("\nCCT: ")
     for matrix in cct:
         print(matrix)
