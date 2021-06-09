@@ -116,7 +116,6 @@ def decode_cct(hexdata):
 
 if __name__ == "__main__":
     tuned_file_name = sys.argv[1] if len(sys.argv) > 1 else "com.qti.tuned.j20c_ofilm_imx682_wide_global.bin"
-    print(tuned_file_name)
     data_offset = get_data_offset(tuned_file_name)
     cc13_offsets = get_offsets_and_lengths(tuned_file_name, "mod_cc13_cct_data")
     cc12_offsets = get_offsets_and_lengths(tuned_file_name, "mod_cc12_cct_data")
@@ -146,3 +145,21 @@ if __name__ == "__main__":
     print("\nCCT: ")
     for matrix in cct:
         print(matrix)
+    
+    with open(tuned_file_name + ".txt","w", encoding = 'utf-8') as f:
+        f.write("Awb in lib: \n" + str(awb))
+        f.write("\n\nOrder for gcam: \n")
+        for pair in gcam_order:
+            f.write(str(awb[pair]) + "\n")
+        f.write("\nIn hex: \n")
+        f.write("RG \n")
+        for pair in gcam_order:
+            f.write(str(float_to_hex(float(awb[pair][0]))) + "\n")
+
+        f.write("BG \n")
+        for pair in gcam_order:
+            f.write(str(float_to_hex(float(awb[pair][1]))) + "\n")
+
+        f.write("\nCCT: \n")
+        for matrix in cct:
+            f.write(str(matrix) + "\n")
