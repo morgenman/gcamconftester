@@ -15,7 +15,7 @@ logging.basicConfig(
 )
 camera_folder = '/storage/self/primary/DCIM/Camera' #папка в которой сохраняются фото
 config_folder = '/storage/self/primary/ConfigsSettings8.2' #папка куда закидывать конфиги
-gcam_package = 'com.google.android.GoogleCameraEng'
+gcam_package = 'com.google.android.GoogleCameraEng2'
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 
